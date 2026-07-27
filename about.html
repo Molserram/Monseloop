@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Monserrat Molina Ramirez</title>
+<meta name="description" content="About Monserrat Molina Ramirez — visual designer based in Mexico City, working across brand identity, digital experiences, and design systems.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@300..700&family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+/* ============ TOKENS ============ */
+:root{
+  --paper: #FAFAF8;
+  --paper-shade: #F1EEE6;
+  --ink: #151417;
+  --ink-soft: #57544D;
+  --blue: #2C46D0;
+  --blue-deep: #1A2FBF;
+  --black: #0B0B0C;
+  --sky: #90D5FB;
+  --lime: #C3EE71;
+  --coral: #ED7463;
+  --mustard: #ECC651;
+  --sage: #779861;
+  --purple: #A450EE;
+  --cream: #F5F0DE;
+  --line: rgba(21,20,23,0.14);
+  --line-soft: rgba(21,20,23,0.08);
+  --on-dark: rgba(250,250,248,0.86);
+  --on-dark-soft: rgba(250,250,248,0.55);
+
+  --s1: 8px; --s2: 16px; --s3: 24px; --s4: 40px; --s5: 64px; --s6: 96px; --s7: 160px;
+
+  --margin: clamp(24px, 6vw, 120px);
+  --gutter: 24px;
+  --maxw: 1280px;
+
+  --serif: 'Instrument Serif', Georgia, serif;
+  --sans: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  --mono: 'IBM Plex Mono', ui-monospace, monospace;
+
+  --fs-hero: clamp(2.9rem, 6.6vw, 6.4rem);
+  --fs-h1: clamp(2.2rem, 4.4vw, 3.6rem);
+  --fs-h2: clamp(1.5rem, 2.6vw, 2.15rem);
+  --fs-lead: clamp(1.15rem, 1.6vw, 1.5rem);
+  --fs-body: 1.0625rem;
+  --fs-small: 0.9rem;
+  --fs-cap: 0.75rem;
+
+  --ease: cubic-bezier(.22,.61,.16,1);
+}
+
+@media (prefers-reduced-motion: reduce){
+  *{ animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
+}
+
+*{ box-sizing: border-box; margin:0; padding:0; }
+html{ scroll-behavior: smooth; }
+body{
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: var(--fs-body);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+img,svg{ display:block; max-width:100%; }
+a{ color: inherit; text-decoration: none; }
+p{ text-wrap: pretty; }
+.container{ max-width: var(--maxw); margin: 0 auto; padding-inline: var(--margin); }
+.grid{ display:grid; grid-template-columns: repeat(12, 1fr); column-gap: var(--gutter); }
+
+@media (max-width: 1024px){ .grid{ grid-template-columns: repeat(8, 1fr); } }
+@media (max-width: 640px){ .grid{ grid-template-columns: repeat(4, 1fr); } }
+
+section{ position: relative; }
+
+/* ============ TYPE HELPERS ============ */
+.eyebrow{
+  font-family: var(--mono); font-size: var(--fs-cap); letter-spacing: 0.09em; text-transform: uppercase;
+  color: var(--ink-soft); display:flex; align-items:center; gap: 10px;
+}
+.eyebrow::before{ content:''; width: 22px; height: 1px; background: var(--ink-soft); display:inline-block; }
+.eyebrow.on-dark{ color: var(--on-dark-soft); }
+.eyebrow.on-dark::before{ background: var(--on-dark-soft); }
+h1,h2,h3{ font-family: var(--serif); font-weight: 400; letter-spacing: -0.01em; text-wrap: balance; }
+.lead{ font-size: var(--fs-lead); line-height: 1.45; color: var(--ink-soft); font-weight: 400; }
+.rule{ height:1px; background: var(--line); border:none; width:100%; }
+.mono-cap{ font-family: var(--mono); font-size: var(--fs-cap); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-soft); }
+
+/* ============ REVEAL ============ */
+[data-reveal]{ opacity: 0; transform: translateY(22px); transition: opacity 0.9s var(--ease), transform 0.9s var(--ease); }
+[data-reveal].in-view{ opacity: 1; transform: translateY(0); }
+[data-reveal="fade"]{ transform: none; }
+
+/* ============ NAV ============ */
+.nav{ position: fixed; top:0; left:0; right:0; z-index: 100; background: var(--paper); border-bottom: 1px solid var(--line); transition: transform 0.5s var(--ease); }
+.nav.hide{ transform: translateY(-100%); }
+.nav-inner{ max-width: var(--maxw); margin: 0 auto; padding-inline: var(--margin); height: 72px; display:flex; align-items:center; justify-content: space-between; }
+.brand{ display:flex; align-items:center; gap: 12px; }
+.brand .mark{ width: 30px; height: auto; }
+.brand .mark path{ stroke: var(--blue); }
+.wordmark{ font-family: var(--serif); font-style: italic; font-size: 1.15rem; }
+.nav-links{ display:flex; gap: var(--s4); font-family: var(--mono); font-size: var(--fs-cap); letter-spacing: 0.06em; text-transform: uppercase; }
+.nav-links a{ position:relative; padding-bottom: 2px; }
+.nav-links a::after{ content:''; position:absolute; left:0; bottom:-2px; width:0; height:1px; background: var(--coral); transition: width 0.35s var(--ease); }
+.nav-links a:hover::after{ width:100%; }
+.nav-links a:hover{ color: var(--coral); }
+
+.nav-controls{ display:flex; align-items:center; gap: var(--s3); }
+.lang-switch{ position:relative; }
+.lang-btn{ display:flex; align-items:center; gap:4px; font-family: var(--mono); font-size: var(--fs-cap); letter-spacing:0.06em; text-transform:uppercase; background:none; border:none; cursor:pointer; color:var(--ink); padding:4px 2px; }
+.lang-btn:hover{ color:var(--blue); }
+.lang-chevron{ transition: transform 0.25s var(--ease); }
+.lang-switch.open .lang-chevron{ transform: rotate(180deg); }
+.lang-menu{ position:absolute; top: calc(100% + 10px); right:0; background:var(--paper); border:1px solid var(--line); min-width:130px; list-style:none; box-shadow: 0 8px 24px rgba(21,20,23,0.12); opacity:0; visibility:hidden; transform: translateY(-6px); transition: opacity 0.2s var(--ease), transform 0.2s var(--ease), visibility 0.2s; z-index:110; }
+.lang-switch.open .lang-menu{ opacity:1; visibility:visible; transform:translateY(0); }
+.lang-menu li{ font-family: var(--mono); font-size: var(--fs-cap); letter-spacing:0.06em; text-transform:uppercase; padding:10px 14px; cursor:pointer; }
+.lang-menu li:hover{ background: var(--paper-shade); color:var(--blue); }
+.lang-menu li[aria-selected="true"]{ color: var(--blue); }
+
+.menu-toggle{ display:none; flex-direction:column; justify-content:center; gap:5px; width:32px; height:32px; background:none; border:none; cursor:pointer; padding:0; flex-shrink:0; }
+.menu-toggle span{ display:block; width:100%; height:1.5px; background:var(--ink); transition: transform 0.3s var(--ease), opacity 0.3s var(--ease); }
+.menu-toggle.open span:nth-child(1){ transform: translateY(6.5px) rotate(45deg); }
+.menu-toggle.open span:nth-child(2){ opacity:0; }
+.menu-toggle.open span:nth-child(3){ transform: translateY(-6.5px) rotate(-45deg); }
+
+@media (max-width: 640px){
+  .menu-toggle{ display:flex; }
+  .nav-links{
+    display:flex; position:absolute; top:100%; left:0; right:0; flex-direction:column; gap:0;
+    background:var(--paper); border-bottom:1px solid var(--line);
+    max-height:0; overflow:hidden; opacity:0; pointer-events:none;
+    transition: max-height 0.35s var(--ease), opacity 0.25s var(--ease);
+  }
+  .nav-links.open{ max-height: 320px; opacity:1; pointer-events:auto; }
+  .nav-links a{ padding: var(--s3) var(--margin); border-top:1px solid var(--line); }
+  .nav-links a:first-child{ border-top:none; }
+}
+
+/* ============ FOLIO ============ */
+.folio{ position: fixed; right: var(--s3); bottom: var(--s3); z-index: 90; font-family: var(--mono); font-size: var(--fs-cap); color: var(--ink-soft); writing-mode: vertical-rl; letter-spacing: 0.08em; display:flex; align-items:center; gap: 10px; pointer-events:none; }
+@media (max-width: 640px){ .folio{ display:none; } }
+
+/* ============ LINE MOTIF / DIVIDERS ============ */
+.stroke-divider{ width:100%; display:flex; justify-content:center; padding: var(--s5) 0; }
+.stroke-divider svg{ width: min(300px, 55%); height:auto; }
+.stroke-divider path{ stroke: var(--ink); opacity: 0.28; }
+.stroke-divider.blue path{ stroke: var(--blue); opacity: 0.6; }
+.stroke-divider.flip svg{ transform: scaleY(-1) rotate(2deg); }
+
+/* ============ POSTER BLOCKS (signature richness) ============ */
+.poster-row{ display:grid; grid-template-columns: 1.1fr 0.9fr 1fr; gap: 1px; background: var(--ink); }
+.poster{ position:relative; aspect-ratio: 4/5; overflow:hidden; display:flex; flex-direction:column; justify-content:flex-end; padding: var(--s4); }
+.poster svg{ position:absolute; inset:0; width:100%; height:100%; }
+.poster .p-label{ position:relative; z-index:2; font-family: var(--mono); font-size: var(--fs-cap); letter-spacing:0.06em; text-transform:uppercase; }
+.poster-blue{ background: var(--blue); color: var(--cream); }
+.poster-black{ background: var(--black); color: var(--on-dark); }
+.poster-sky{ background: var(--sky); color: var(--black); }
+.poster-cream{ background: var(--cream); color: var(--ink); }
+.poster-stack{ position:relative; z-index:2; font-family: var(--serif); font-style: italic; font-size: clamp(2.2rem, 4vw, 3.6rem); line-height: 0.92; }
+@media (max-width: 900px){ .poster-row{ grid-template-columns: 1fr; } .poster{ aspect-ratio: 16/10; } }
+
+/* ============ SECTION HEADS ============ */
+.section-head{ grid-column: 1 / 13; margin-bottom: var(--s5); }
+.section-head h2{ font-size: var(--fs-h1); margin-top: var(--s2); max-width: 18ch; }
+@media (max-width: 640px){ .section-head{ grid-column: 1 / 5; } }
+
+/* ============ WORK ============ */
+.work{ padding-block: var(--s6); }
+.project{ grid-column: 1 / 13; margin-bottom: var(--s7); }
+.project:last-child{ margin-bottom: 0; }
+.project-row{ display:grid; grid-template-columns: repeat(12, 1fr); column-gap: var(--gutter); align-items: end; }
+.project-visual{ grid-column: 1 / 9; aspect-ratio: 16/10.5; position:relative; overflow:hidden; }
+.project.alt .project-visual{ grid-column: 5 / 13; order:2; }
+.project-visual svg{ width:100%; height:100%; }
+.grain{ position:absolute; inset:0; opacity: 0.4; mix-blend-mode: multiply; pointer-events:none; }
+.project-text{ grid-column: 9 / 13; padding-bottom: var(--s4); }
+.project.alt .project-text{ grid-column: 1 / 5; order:1; align-self:end; }
+.project-text .num{ font-family: var(--mono); font-size: var(--fs-cap); color: var(--ink-soft); }
+.project-text h3{ font-size: var(--fs-h2); margin-top: var(--s2); font-style: italic; }
+.project-text p{ margin-top: var(--s2); color: var(--ink-soft); font-size: var(--fs-small); line-height:1.55; }
+.tags{ margin-top: var(--s3); display:flex; gap: var(--s2); flex-wrap:wrap; }
+.tags span{ font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.05em; text-transform: uppercase; border: 1px solid var(--line); padding: 5px 10px; color: var(--ink-soft); }
+.view-case{ display:inline-flex; align-items:center; gap: 8px; margin-top: var(--s3); font-family: var(--mono); font-size: var(--fs-cap); letter-spacing:0.05em; text-transform:uppercase; color: var(--blue); border-bottom: 1px solid var(--blue); padding-bottom: 3px; width: fit-content; }
+.view-case:hover{ color: var(--coral); border-color: var(--coral); }
+.view-case svg{ width: 14px; height:14px; }
+
+@media (max-width: 1024px){
+  .project-visual, .project.alt .project-visual{ grid-column: 1 / 9; order:1; }
+  .project-text, .project.alt .project-text{ grid-column: 1 / 9; order:2; margin-top: var(--s3); }
+}
+@media (max-width: 640px){
+  .project-row{ grid-template-columns: repeat(4,1fr); }
+  .project-visual, .project.alt .project-visual, .project-text, .project.alt .project-text{ grid-column: 1 / 5; }
+}
+
+/* ============ PHILOSOPHY ============ */
+.philosophy{ padding-block: var(--s6); background: var(--black); color: var(--paper); }
+.philosophy .grid{ align-items:start; }
+.philosophy-text{ grid-column: 3 / 10; }
+.philosophy h2{ font-size: var(--fs-h1); margin-top: var(--s3); }
+.philosophy p{ margin-top: var(--s4); font-size: var(--fs-lead); line-height: 1.6; color: rgba(250,250,248,0.82); max-width: 46ch; }
+.philosophy blockquote{ font-family: var(--serif); font-style: italic; font-size: clamp(1.6rem, 3vw, 2.4rem); color: #93A6FF; margin-block: var(--s5); line-height: 1.3; max-width: 22ch; }
+@media (max-width: 1024px){ .philosophy-text{ grid-column: 1 / 9; } }
+@media (max-width: 640px){ .philosophy-text{ grid-column: 1 / 5; } }
+
+.flow{ grid-column: 1 / 13; margin-top: var(--s6); display:flex; align-items:center; justify-content: space-between; gap: var(--s2); flex-wrap: wrap; }
+.flow-step{ display:flex; flex-direction:column; align-items:center; gap: var(--s2); text-align:center; width: 100px; }
+.flow-step .dot{ width: 46px; height:46px; border-radius:50%; border: 1px solid rgba(250,250,248,0.35); display:flex; align-items:center; justify-content:center; font-family: var(--mono); font-size: 0.7rem; }
+.flow-step .label{ font-family: var(--mono); font-size: 0.68rem; letter-spacing:0.05em; text-transform:uppercase; color: rgba(250,250,248,0.6); }
+.flow-connector{ flex:1; min-width: 30px; height: 30px; }
+.flow-connector path{ stroke: rgba(250,250,248,0.35); fill:none; stroke-width:1.5; }
+@media (max-width: 780px){ .flow{ display:none; } }
+
+/* ============ EXPERIMENTS ============ */
+.more-work{ padding-block: var(--s6); background: var(--paper-shade); }
+.work-grid{ grid-column: 1/13; display:grid; grid-template-columns: repeat(3, 1fr); column-gap: var(--gutter); row-gap: var(--s5); }
+.work-card{ display:block; background: var(--paper); border: 1px solid var(--line); padding: var(--s3); transition: border-color 0.3s var(--ease); }
+a.work-card:hover{ border-color: var(--blue); }
+.work-thumb{ aspect-ratio: 4/3; margin-bottom: var(--s2); overflow:hidden; background: #E4E0D4; }
+.work-thumb img{ width:100%; height:100%; object-fit:cover; display:block; }
+.work-thumb-placeholder{ display:flex; align-items:center; justify-content:center; font-family: var(--mono); font-size: 0.7rem; letter-spacing:0.05em; color:#9A9484; }
+.work-card h4{ font-family: var(--serif); font-style: italic; font-size: 1.15rem; font-weight:400; margin-top: 4px; }
+.behance-link{ display:inline-flex; align-items:center; gap:6px; margin-top: var(--s2); font-family: var(--mono); font-size: 0.7rem; letter-spacing:0.05em; text-transform:uppercase; color: var(--blue); }
+.behance-link svg{ width:12px; height:12px; }
+@media (max-width: 1024px){ .work-grid{ grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 640px){ .work-grid{ grid-template-columns: repeat(1,1fr); } }
+
+/* ============ NOTES ============ */
+.notes{ padding-block: var(--s6); }
+.note{ grid-column: 1/13; display:grid; grid-template-columns: repeat(12,1fr); column-gap: var(--gutter); padding-block: var(--s4); border-top: 1px solid var(--line); }
+.notes-list .note:last-child{ border-bottom: 1px solid var(--line); }
+.note .date{ grid-column: 1/3; font-family: var(--mono); font-size: var(--fs-cap); color: var(--ink-soft); padding-top: 4px; }
+.note .title{ grid-column: 3/9; font-family: var(--serif); font-style: italic; font-size: 1.5rem; }
+.note .excerpt{ grid-column: 9/13; font-size: var(--fs-small); color: var(--ink-soft); line-height:1.55; }
+@media (max-width: 1024px){ .note{ grid-template-columns: repeat(8,1fr); row-gap: var(--s2); } .note .date{ grid-column: 1/4; } .note .title{ grid-column: 1/9; } .note .excerpt{ grid-column: 1/9; } }
+@media (max-width: 640px){ .note{ grid-template-columns: repeat(4,1fr); } .note .date, .note .title, .note .excerpt{ grid-column: 1/5; } }
+
+.reading{ grid-column: 1/13; margin-top: var(--s5); }
+.reading-list{ display:flex; flex-wrap:wrap; gap: var(--s2) var(--s5); margin-top: var(--s3); }
+.reading-list li{ list-style:none; font-family: var(--mono); font-size: var(--fs-small); }
+.reading-list li span{ display:block; color: var(--ink-soft); font-size: var(--fs-cap); margin-top: 2px; }
+
+/* ============ CONTACT ============ */
+.contact{ padding-block: var(--s7) var(--s6); }
+.contact-inner{ grid-column: 1/13; text-align:left; }
+.contact h2{ font-size: var(--fs-h1); max-width: 13ch; }
+.contact-email{ display:inline-block; margin-top: var(--s5); font-family: var(--serif); font-style: italic; font-size: clamp(1.8rem,3.4vw,2.8rem); color: var(--blue); border-bottom: 1.5px solid var(--blue); padding-bottom: 6px; transition: color 0.3s ease, border-color 0.3s ease; }
+.contact-email:hover{ color: var(--coral); border-color: var(--coral); }
+.contact-links{ margin-top: var(--s6); display:flex; gap: var(--s5); flex-wrap:wrap; font-family: var(--mono); font-size: var(--fs-small); }
+.contact-links a{ border-bottom: 1px solid var(--line); padding-bottom: 2px; }
+.contact-links a:hover{ color: var(--blue); border-color: var(--blue); }
+
+footer{ border-top: 1px solid var(--line); padding-block: var(--s3); }
+.footer-inner{ display:flex; justify-content: space-between; flex-wrap:wrap; gap: var(--s2); font-family: var(--mono); font-size: var(--fs-cap); color: var(--ink-soft); }
+
+:focus-visible{ outline: 2px solid var(--blue); outline-offset: 3px; }
+
+/* ============ CASE STUDY PAGES ============ */
+.cs-hero{ padding-top: calc(72px + var(--s5)); padding-bottom: var(--s5); position:relative; overflow:hidden; }
+.cs-hero.on-blue{ background: var(--blue); color: var(--cream); }
+.cs-hero.on-black{ background: var(--black); color: var(--on-dark); }
+.cs-hero.on-sky{ background: var(--sky); color: var(--black); }
+.cs-hero-bg{ position:absolute; inset:0; opacity:0.35; z-index:0; }
+.cs-hero-inner{ position:relative; z-index:1; }
+.back-link{ font-family: var(--mono); font-size: var(--fs-cap); letter-spacing:0.06em; text-transform:uppercase; display:inline-flex; align-items:center; gap:8px; opacity:0.8; }
+.back-link:hover{ opacity:1; }
+.cs-hero h1{ font-size: clamp(2.6rem, 5.6vw, 5.2rem); margin-top: var(--s3); max-width: 16ch; line-height:1.03; }
+.cs-hero .cs-sub{ margin-top: var(--s3); font-size: var(--fs-lead); max-width: 46ch; opacity:0.85; }
+.cs-meta-row{ margin-top: var(--s6); display:flex; flex-wrap:wrap; gap: var(--s5); font-family: var(--mono); font-size: var(--fs-cap); }
+.cs-meta-row .m{ opacity:0.65; display:block; margin-bottom:4px; }
+
+.cs-section{ padding-block: var(--s6); }
+.cs-section.shade{ background: var(--paper-shade); }
+.cs-label{ grid-column: 1/3; }
+.cs-label .n{ font-family: var(--mono); font-size: var(--fs-cap); color: var(--ink-soft); }
+.cs-label h3{ font-size: 1.6rem; font-style: italic; margin-top: var(--s2); }
+.cs-body{ grid-column: 4/11; }
+.cs-body p{ font-size: var(--fs-body); line-height: 1.7; color: var(--ink-soft); margin-bottom: var(--s3); max-width: 66ch; }
+.cs-body p:last-child{ margin-bottom:0; }
+.cs-body ul{ margin-top: var(--s3); padding-left: 1.1em; }
+.cs-body li{ color: var(--ink-soft); line-height:1.6; margin-bottom: var(--s2); max-width: 62ch; }
+.cs-body li b{ color: var(--ink); font-weight: 500; }
+.cs-body blockquote{ font-family: var(--serif); font-style: italic; font-size: clamp(1.35rem,2vw,1.8rem); color: var(--blue); margin-block: var(--s4); max-width: 24ch; line-height:1.35; }
+@media (max-width: 1024px){ .cs-label{ grid-column: 1/9; margin-bottom: var(--s2);} .cs-body{ grid-column: 1/9; } }
+@media (max-width: 640px){ .cs-label{ grid-column: 1/5; } .cs-body{ grid-column: 1/5; } }
+
+.cs-gallery{ grid-column: 1/13; display:grid; grid-template-columns: repeat(12,1fr); gap: var(--gutter); margin-top: var(--s5); }
+.cs-gallery .g1{ grid-column: 1/8; aspect-ratio: 16/10; }
+.cs-gallery .g2{ grid-column: 8/13; aspect-ratio: 3/4; transform: translateY(var(--s4)); }
+.cs-gallery .g3{ grid-column: 1/6; aspect-ratio: 4/3; }
+.cs-gallery .g4{ grid-column: 6/13; aspect-ratio: 16/9; }
+.cs-gallery svg{ width:100%; height:100%; }
+.cs-gallery figure{ overflow:hidden; position:relative; background: var(--paper-shade); }
+.cs-gallery figcaption{ position:absolute; left:12px; bottom:12px; z-index:2; font-family: var(--mono); font-size: 0.68rem; letter-spacing:0.04em; text-transform:uppercase; background: var(--paper); padding: 4px 8px; }
+@media (max-width: 1024px){ .cs-gallery .g1,.g2,.g3,.g4{ grid-column: 1/9; transform:none; } }
+@media (max-width: 640px){ .cs-gallery .g1,.g2,.g3,.g4{ grid-column: 1/5; } }
+
+.cs-next{ padding-block: var(--s7) var(--s6); }
+.cs-next a{ display:block; }
+.cs-next .eyebrow{ margin-bottom: var(--s2); }
+.cs-next h2{ font-size: var(--fs-h1); transition: color 0.3s ease; }
+.cs-next a:hover h2{ color: var(--blue); }
+
+
+.about-intro{ padding-top: calc(72px + var(--s6)); padding-bottom: var(--s6); position:relative; overflow:hidden; }
+.about-intro .container{ position:relative; z-index:1; }
+.about-intro-content{ grid-column: 1/9; }
+.about-intro-content h1{ font-size: var(--fs-hero); line-height:1.04; max-width:14ch; margin-top: var(--s3); }
+.about-intro-content p{ margin-top: var(--s3); font-size: var(--fs-lead); line-height:1.5; color: var(--ink-soft); max-width: 56ch; }
+.about-intro-content p:last-of-type{ color: var(--ink); }
+.about-mark{ position:absolute; top:50%; right:-1.5%; width:min(44%, 620px); transform:translateY(-52%); opacity:0.3; z-index:0; pointer-events:none; }
+@media (max-width: 1024px){ .about-mark{ display:none; } .about-intro-content{ grid-column: 1/9; } }
+
+.my-experience{ padding-block: var(--s6); background: var(--black); color: var(--paper); }
+.my-experience .label{ grid-column: 1/13; margin-bottom: var(--s4); }
+.my-experience h2{ font-size: 1.9rem; font-style:italic; margin-top: var(--s2); color: var(--paper); }
+.my-experience p{ grid-column: 1/13; font-size: var(--fs-lead); line-height:1.6; color: rgba(250,250,248,0.75); max-width: 62ch; }
+
+.what-doing{ padding-block: var(--s6); }
+.what-doing .label{ grid-column: 1/13; margin-bottom: var(--s4); }
+.what-doing h2{ font-size: 1.9rem; font-style:italic; margin-top: var(--s2); }
+.what-doing p{ grid-column: 1/13; font-size: var(--fs-body); line-height:1.7; color: var(--ink-soft); max-width: 66ch; margin-bottom: var(--s3); }
+.what-doing p:last-child{ color: var(--ink); margin-bottom:0; }
+
+.what-i-do{ padding-block: var(--s6); background: var(--blue); color: var(--cream); }
+.what-i-do .label{ grid-column: 1/13; margin-bottom: var(--s5); }
+.what-i-do h2{ font-size: 1.9rem; font-style:italic; margin-top: var(--s2); color: var(--cream); }
+.stage-flow{ grid-column: 1/13; display:grid; grid-template-columns: 1fr auto 1fr; column-gap: var(--s5); align-items:center; }
+.stage-col{ display:flex; flex-direction:column; gap: var(--s5); }
+.stage-portrait{ width: 320px; height: 320px; overflow:hidden; justify-self:center; }
+.stage-portrait img{ width:100%; height:100%; object-fit:cover; display:block; }
+.stage-card .stage-num{ font-family: var(--mono); font-size: var(--fs-cap); color: var(--cream); opacity:0.7; }
+.stage-card h4{ font-family: var(--serif); font-style:italic; font-size:1.3rem; font-weight:400; margin-top:6px; color: var(--cream); }
+.stage-card p{ margin-top: var(--s2); font-size: var(--fs-small); line-height:1.55; color: rgba(245,240,222,0.75); }
+@media (max-width: 1024px){ .stage-flow{ grid-template-columns: 1fr; row-gap: var(--s5); } .stage-portrait{ order:-1; width:240px; height:240px; } .stage-col{ flex-direction:row; flex-wrap:wrap; gap: var(--s4); } .stage-card{ flex:1; min-width:220px; } }
+@media (max-width: 640px){ .stage-col{ flex-direction:column; } }
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="brand">
+      <svg class="mark" viewBox="0 0 305 232" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M117.015 30.9328C143.392 30.9328 166.567 56.3497 166.567 87.5243C166.567 118.699 156.979 165.694 138.509 165.694C107.733 165.694 148.581 6 240.89 6C333.199 6 303.392 206.456 230.343 206.456C162.728 206.456 196.298 66.9054 230.343 66.9054C264.387 66.9054 199.627 216.528 123.885 216.528C48.1443 216.528 67.1412 88.4839 93.679 88.4839C129.168 88.4839 73.5357 225.64 28.4596 225.64C-26.7731 225.64 26.379 30.9413 117.015 30.9413V30.9328Z" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span class="wordmark">Monserrat Molina Ramirez</span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html" data-i18n="nav_home">Home</a>
+      <a href="index.html#work" data-i18n="nav_work">Work</a>
+      <a href="about.html" style="color:var(--blue)" data-i18n="nav_about">About</a>
+      <a href="index.html#contact" data-i18n="nav_contact">Contact</a>
+    </div>
+    <div class="nav-controls">
+      <div class="lang-switch" id="langSwitch">
+        <button type="button" class="lang-btn" id="langBtn" aria-haspopup="listbox" aria-expanded="false">
+          <span id="langBtnLabel">EN</span>
+          <svg class="lang-chevron" viewBox="0 0 12 8" width="10" height="7" aria-hidden="true"><path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <ul class="lang-menu" id="langMenu" role="listbox">
+          <li role="option" data-lang="en" aria-selected="true">EN</li>
+          <li role="option" data-lang="es" aria-selected="false">ES</li>
+        </ul>
+      </div>
+      <button type="button" class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<main id="top">
+
+<!-- ============ INTRO ============ -->
+<section class="about-intro" id="about" data-section="about">
+  <svg class="about-mark" viewBox="0 0 617 463" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path class="draw-path" d="M234.417 54.5655C289.49 54.5655 337.877 107.513 337.877 172.456C337.877 237.398 317.858 335.297 279.294 335.297C215.037 335.297 300.324 2.62604 493.057 2.62604C685.791 2.62604 623.556 420.211 471.036 420.211C329.862 420.211 399.953 129.503 471.036 129.503C542.117 129.503 406.904 441.193 248.761 441.193C90.6203 441.193 130.284 174.455 185.693 174.455C259.791 174.455 143.635 460.175 49.5203 460.175C-65.801 460.175 45.1762 54.5832 234.417 54.5832V54.5655Z" stroke="#2C46D0" stroke-width="5.25208" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+  <div class="container grid">
+    <div class="about-intro-content">
+      <p class="eyebrow" data-i18n="about_eyebrow">About</p>
+      <h1 data-i18n="about_title">Learn about me</h1>
+      <p data-i18n="about_p1">I'm a graphic designer based in Mexico City. I've worked for more than 10 years across different industries, which has taught me to adapt, stay curious, and bring a proactive, creative approach to every project.</p>
+      <p data-i18n="about_p2">I'm a visual designer focused on building brand identities, websites, and reusable design systems that help teams communicate with clarity.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MY EXPERIENCE ============ -->
+<section class="my-experience" data-section="experience">
+  <div class="container grid">
+    <div class="label" data-reveal>
+      <h2 data-i18n="experience_title">My Experience</h2>
+    </div>
+    <p data-reveal data-i18n="experience_body">For almost nine years, I've worked remotely as a graphic designer — building presentations, websites, and templates, and learning how to help clients connect with their audiences through storytelling and strong visuals.</p>
+  </div>
+</section>
+
+<!-- ============ WHAT I DO (flow) ============ -->
+<section class="what-i-do" data-section="flow">
+  <div class="container grid">
+    <div class="label" data-reveal>
+      <h2 data-i18n="whatido_title">What I do</h2>
+    </div>
+
+    <div class="stage-flow" data-reveal>
+      <div class="stage-col">
+        <div class="stage-card">
+          <p class="stage-num">(01)</p>
+          <h4 data-i18n="stage1_title">Visual Communication</h4>
+          <p data-i18n="stage1_body">Designing presentations, campaigns, and brand assets that communicate ideas clearly.</p>
+        </div>
+        <div class="stage-card">
+          <p class="stage-num">(02)</p>
+          <h4 data-i18n="stage2_title">Digital Experiences</h4>
+          <p data-i18n="stage2_body">Designing websites and interactive experiences for marketing and product teams.</p>
+        </div>
+      </div>
+
+      <div class="stage-portrait">
+        <img src="assets/images/me.png" alt="Portrait of Monserrat Molina Ramirez">
+      </div>
+
+      <div class="stage-col">
+        <div class="stage-card">
+          <p class="stage-num">(03)</p>
+          <h4 data-i18n="stage3_title">Design Systems</h4>
+          <p data-i18n="stage3_body">Creating reusable templates, components, and workflows that help teams scale consistently.</p>
+        </div>
+        <div class="stage-card">
+          <p class="stage-num">(04)</p>
+          <h4 data-i18n="stage4_title">Continuous Learning</h4>
+          <p data-i18n="stage4_body">Exploring new tools — including AI — to understand how they can support better design processes.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHAT I'M DOING ============ -->
+<section class="what-doing" data-section="doing">
+  <div class="container grid">
+    <div class="label" data-reveal>
+      <h2 data-i18n="doing_title">What I'm doing</h2>
+    </div>
+    <p data-reveal data-i18n="doing_p1">Lately, I've been focused on improving the user experience of the templates I build — making them easier for people to actually use, not just look at.</p>
+    <p data-reveal data-i18n="doing_p2">Every project and every team is different, so I'm learning as I go — which tools actually help, and where they don't — always with the goal of keeping the process human-centered.</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <span data-i18n="footer1">© 2026 Monserrat Molina Ramirez — Visual systems &amp; design strategy</span>
+    <span data-i18n="footer2">One continuous stroke. Infinite possibilities.</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // ---------- i18n dictionary ----------
+  var i18n = {
+    en: {
+      nav_home: "Home", nav_work: "Work", nav_about: "About", nav_contact: "Contact",
+      about_eyebrow: "About",
+      about_title: "Learn about me",
+      about_p1: "I'm a graphic designer based in Mexico City. I've worked for more than 10 years across different industries, which has taught me to adapt, stay curious, and bring a proactive, creative approach to every project.",
+      about_p2: "I'm a visual designer focused on building brand identities, websites, and reusable design systems that help teams communicate with clarity.",
+      experience_title: "My Experience",
+      experience_body: "For almost nine years, I've worked remotely as a graphic designer — building presentations, websites, and templates, and learning how to help clients connect with their audiences through storytelling and strong visuals.",
+      whatido_title: "What I do",
+      stage1_title: "Visual Communication",
+      stage1_body: "Designing presentations, campaigns, and brand assets that communicate ideas clearly.",
+      stage2_title: "Digital Experiences",
+      stage2_body: "Designing websites and interactive experiences for marketing and product teams.",
+      stage3_title: "Design Systems",
+      stage3_body: "Creating reusable templates, components, and workflows that help teams scale consistently.",
+      stage4_title: "Continuous Learning",
+      stage4_body: "Exploring new tools — including AI — to understand how they can support better design processes.",
+      doing_title: "What I'm doing",
+      doing_p1: "Lately, I've been focused on improving the user experience of the templates I build — making them easier for people to actually use, not just look at.",
+      doing_p2: "Every project and every team is different, so I'm learning as I go — which tools actually help, and where they don't — always with the goal of keeping the process human-centered.",
+      footer1: "© 2026 Monserrat Molina Ramirez — Visual systems &amp; design strategy",
+      footer2: "One continuous stroke. Infinite possibilities."
+    },
+    es: {
+      nav_home: "Inicio", nav_work: "Trabajo", nav_about: "Acerca de", nav_contact: "Contacto",
+      about_eyebrow: "Acerca de",
+      about_title: "Conóceme",
+      about_p1: "Soy diseñadora gráfica radicada en la Ciudad de México. He trabajado por más de 10 años en distintas industrias, lo que me ha enseñado a adaptarme, mantenerme curiosa y aportar un enfoque proactivo y creativo a cada proyecto.",
+      about_p2: "Soy diseñadora visual enfocada en construir identidades de marca, sitios web y sistemas de diseño reutilizables que ayudan a los equipos a comunicarse con claridad.",
+      experience_title: "Mi experiencia",
+      experience_body: "Durante casi nueve años he trabajado de forma remota como diseñadora gráfica — creando presentaciones, sitios web y plantillas, y aprendiendo a ayudar a los clientes a conectar con sus audiencias a través del storytelling y visuales sólidos.",
+      whatido_title: "Qué hago",
+      stage1_title: "Comunicación visual",
+      stage1_body: "Diseño presentaciones, campañas y activos de marca que comunican ideas con claridad.",
+      stage2_title: "Experiencias digitales",
+      stage2_body: "Diseño sitios web y experiencias interactivas para equipos de marketing y producto.",
+      stage3_title: "Sistemas de diseño",
+      stage3_body: "Creo plantillas, componentes y flujos de trabajo reutilizables que ayudan a los equipos a escalar de forma consistente.",
+      stage4_title: "Aprendizaje continuo",
+      stage4_body: "Explorando nuevas herramientas — incluyendo IA — para entender cómo pueden apoyar mejores procesos de diseño.",
+      doing_title: "En qué estoy trabajando",
+      doing_p1: "Últimamente me he enfocado en mejorar la experiencia de uso de las plantillas que construyo — haciéndolas más fáciles de usar de verdad, no solo de ver.",
+      doing_p2: "Cada proyecto y cada equipo es diferente, así que voy aprendiendo sobre la marcha — qué herramientas realmente ayudan y cuáles no — siempre con el objetivo de mantener el proceso centrado en las personas.",
+      footer1: "© 2026 Monserrat Molina Ramirez — Sistemas visuales y estrategia de diseño",
+      footer2: "Un solo trazo continuo. Infinitas posibilidades."
+    }
+  };
+
+  var currentLang = 'en';
+  var folioLabels = {
+    en: { about: "01 / 04 — About", experience: "02 / 04 — My Experience", flow: "03 / 04 — What I do", doing: "04 / 04 — What I'm doing" },
+    es: { about: "01 / 04 — Acerca de", experience: "02 / 04 — Mi experiencia", flow: "03 / 04 — Qué hago", doing: "04 / 04 — En qué estoy trabajando" }
+  };
+
+  // ---------- Reveal on scroll ----------
+  var revealEls = document.querySelectorAll('[data-reveal]');
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('in-view'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.14, rootMargin: '0px 0px -40px 0px' });
+  revealEls.forEach(function(el){ io.observe(el); });
+
+  // ---------- Mobile menu toggle ----------
+  var menuToggle = document.getElementById('menuToggle');
+  var navLinksEl = document.getElementById('navLinks');
+  if(menuToggle && navLinksEl){
+    menuToggle.addEventListener('click', function(){
+      var isOpen = navLinksEl.classList.toggle('open');
+      menuToggle.classList.toggle('open', isOpen);
+      menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+    navLinksEl.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){
+        navLinksEl.classList.remove('open');
+        menuToggle.classList.remove('open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+
+  // ---------- Language switcher ----------
+  var langSwitch = document.getElementById('langSwitch');
+  var langBtn = document.getElementById('langBtn');
+  var langMenu = document.getElementById('langMenu');
+  var langBtnLabel = document.getElementById('langBtnLabel');
+  function setLang(lang){
+    currentLang = lang;
+    document.documentElement.setAttribute('lang', lang);
+    document.querySelectorAll('[data-i18n]').forEach(function(el){
+      var key = el.getAttribute('data-i18n');
+      if(i18n[lang] && i18n[lang][key] != null) el.innerHTML = i18n[lang][key];
+    });
+    if(langBtnLabel) langBtnLabel.textContent = lang.toUpperCase();
+    if(langMenu){
+      langMenu.querySelectorAll('li').forEach(function(li){
+        li.setAttribute('aria-selected', li.getAttribute('data-lang') === lang ? 'true' : 'false');
+      });
+    }
+    var linkedinEl = document.querySelector('[data-linkedin]');
+    if(linkedinEl){
+      linkedinEl.href = lang === 'es'
+        ? 'https://www.linkedin.com/in/monserrat-molina-ramirez/?locale=es-ES'
+        : 'https://www.linkedin.com/in/monserrat-molina-ramirez/?locale=en-US';
+    }
+    try{ localStorage.setItem('lang', lang); }catch(e){}
+    renderFolio();
+  }
+  if(langBtn && langSwitch && langMenu){
+    langBtn.addEventListener('click', function(e){
+      e.stopPropagation();
+      var isOpen = langSwitch.classList.toggle('open');
+      langBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+    langMenu.querySelectorAll('li').forEach(function(li){
+      li.addEventListener('click', function(){
+        setLang(li.getAttribute('data-lang'));
+        langSwitch.classList.remove('open');
+        langBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
+    document.addEventListener('click', function(e){
+      if(!langSwitch.contains(e.target)) langSwitch.classList.remove('open');
+    });
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape') langSwitch.classList.remove('open');
+    });
+  }
+  var savedLang = (function(){ try{ return localStorage.getItem('lang'); }catch(e){ return null; } })() || 'en';
+  setLang(savedLang);
+
+  // ---------- Nav hide on scroll down ----------
+  var nav = document.getElementById('nav');
+  if(nav){
+    var lastY = window.scrollY;
+    window.addEventListener('scroll', function(){
+      var y = window.scrollY;
+      if(y > lastY && y > 140){ nav.classList.add('hide'); } else { nav.classList.remove('hide'); }
+      lastY = y;
+    }, { passive: true });
+  }
+
+  // ---------- Folio indicator ----------
+  var sections = document.querySelectorAll('[data-section]');
+  var folioText = document.getElementById('folio-text');
+  var activeFolioKey = sections.length ? sections[0].getAttribute('data-section') : null;
+  function renderFolio(){
+    if(folioText && activeFolioKey && folioLabels[currentLang]){
+      folioText.textContent = folioLabels[currentLang][activeFolioKey] || '';
+    }
+  }
+  if(folioText && sections.length){
+    var folioIO = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ activeFolioKey = e.target.getAttribute('data-section'); renderFolio(); } });
+    }, { threshold: 0, rootMargin: '-50% 0px -50% 0px' });
+    sections.forEach(function(s){ folioIO.observe(s); });
+    renderFolio();
+  }
+
+  // ---------- Path draw-in (works on any element with .draw-path) ----------
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(!reduced){
+    document.querySelectorAll('.draw-path').forEach(function(p, i){
+      try{
+        var len = p.getTotalLength();
+        p.style.strokeDasharray = len;
+        p.style.strokeDashoffset = len;
+        p.getBoundingClientRect();
+        p.style.transition = 'stroke-dashoffset 2.2s cubic-bezier(.22,.61,.16,1) ' + (i*0.15) + 's';
+        requestAnimationFrame(function(){ setTimeout(function(){ p.style.strokeDashoffset = 0; }, 180); });
+      }catch(e){}
+    });
+  }
+
+  // ---------- Spirograph / hypotrochoid path generator ----------
+  // Produces a single continuous-stroke loop path, echoing the wordmark's own line logic.
+  window.spiro = function(R, r, d, turns, steps, cx, cy, scale){
+    turns = turns || 1; steps = steps || 900; cx = cx || 0; cy = cy || 0; scale = scale || 1;
+    var pts = [];
+    var max = Math.PI * 2 * turns;
+    for(var i=0; i<=steps; i++){
+      var t = (i/steps) * max;
+      var x = (R-r)*Math.cos(t) + d*Math.cos(((R-r)/r)*t);
+      var y = (R-r)*Math.sin(t) - d*Math.sin(((R-r)/r)*t);
+      pts.push([cx + x*scale, cy + y*scale]);
+    }
+    var dstr = 'M ' + pts[0][0].toFixed(1) + ',' + pts[0][1].toFixed(1);
+    for(var j=1;j<pts.length;j++){ dstr += ' L ' + pts[j][0].toFixed(1) + ',' + pts[j][1].toFixed(1); }
+    return dstr;
+  };
+
+  // Logarithmic spiral (nautilus-style), returns a 'd' path of concentric arcs
+  window.logSpiral = function(turns, a, b, steps, cx, cy){
+    turns = turns || 4; a = a || 2; b = b || 0.28; steps = steps || 400; cx = cx || 0; cy = cy || 0;
+    var pts = [];
+    var max = Math.PI * 2 * turns;
+    for(var i=0;i<=steps;i++){
+      var t = (i/steps)*max;
+      var rad = a * Math.exp(b*t);
+      pts.push([cx + rad*Math.cos(t), cy + rad*Math.sin(t)]);
+    }
+    var dstr = 'M ' + pts[0][0].toFixed(1) + ',' + pts[0][1].toFixed(1);
+    for(var j=1;j<pts.length;j++){ dstr += ' L ' + pts[j][0].toFixed(1) + ',' + pts[j][1].toFixed(1); }
+    return dstr;
+  };
+
+  // Auto-populate any [data-spiro] svg path elements found on the page
+  document.querySelectorAll('[data-spiro]').forEach(function(el){
+    var cfg = el.getAttribute('data-spiro').split(',').map(Number);
+    var d = window.spiro(cfg[0], cfg[1], cfg[2], cfg[3], 700, cfg[4]||0, cfg[5]||0, cfg[6]||1);
+    el.setAttribute('d', d);
+  });
+  document.querySelectorAll('[data-logspiral]').forEach(function(el){
+    var cfg = el.getAttribute('data-logspiral').split(',').map(Number);
+    var d = window.logSpiral(cfg[0], cfg[1], cfg[2], 500, cfg[3]||0, cfg[4]||0);
+    el.setAttribute('d', d);
+  });
+})();
+
+</script>
+</body>
+</html>

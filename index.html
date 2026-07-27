@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Monserrat Molina Ramirez — Visual systems, brand language, design strategy</title>
+<meta name="description" content="Portfolio of Monserrat Molina Ramirez — visual systems, branding, storytelling, presentations and design strategy.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@300..700&family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+/* ============ TOKENS ============ */
+:root{
+  --paper: #FAFAF8;
+  --paper-shade: #F1EEE6;
+  --ink: #151417;
+  --ink-soft: #57544D;
+  --blue: #2C46D0;
+  --blue-deep: #1A2FBF;
+  --black: #0B0B0C;
+  --sky: #90D5FB;
+  --lime: #C3EE71;
+  --coral: #ED7463;
+  --mustard: #ECC651;
+  --sage: #779861;
+  --purple: #A450EE;
+  --cream: #F5F0DE;
+  --line: rgba(21,20,23,0.14);
+  --line-soft: rgba(21,20,23,0.08);
+  --on-dark: rgba(250,250,248,0.86);
+  --on-dark-soft: rgba(250,250,248,0.55);
+
+  --s1: 8px; --s2: 16px; --s3: 24px; --s4: 40px; --s5: 64px; --s6: 96px; --s7: 160px;
+
+  --margin: clamp(24px, 6vw, 120px);
+  --gutter: 24px;
+  --maxw: 1440px;
+
+  --serif: 'Instrument Serif', Georgia, serif;
+  --sans: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  --mono: 'IBM Plex Mono', ui-monospace, monospace;
+
+  --fs-hero: clamp(2.9rem, 6.6vw, 6.4rem);
+  --fs-h1: clamp(2.2rem, 4.4vw, 3.6rem);
+  --fs-h2: clamp(1.5rem, 2.6vw, 2.15rem);
+  --fs-lead: clamp(1.15rem, 1.6vw, 1.5rem);
+  --fs-body: 1.0625rem;
+  --fs-small: 0.9rem;
+  --fs-cap: 0.75rem;
+
+  --ease: cubic-bezier(.22,.61,.16,1);
+}
+
+@media (prefers-reduced-motion: reduce){
+  *{ animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
+}
+
+*{ box-sizing: border-box; margin:0; padding:0; }
+html{ scroll-behavior: smooth; }
+body{
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: var(--fs-body);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+img,svg{ display:block; max-width:100%; }
+a{ color: inherit; text-decoration: none; }
+p{ text-wrap: pretty; }
+.container{ max-width: var(--maxw); margin: 0 auto; padding-inline: var(--margin); }
+.grid{ display:grid; grid-template-columns: repeat(12, 1fr); column-gap: var(--gutter); }
+
+@media (max-width: 1024px){ .grid{ grid-template-columns: repeat(8, 1fr); } }
+@media (max-width: 640px){ .grid{ grid-template-columns: repeat(4, 1fr); } }
+
+section{ position: relative; }
+
+/* ============ TYPE HELPERS ============ */
+.eyebrow{
+  font-family: var(--mono); font-size: var(--fs-cap); letter-spacing: 0.09em; text-transform: uppercase;
+  color: var(--ink-soft); display:flex; align-items:center; gap: 10px;
+}
+.eyebrow::before{ content:''; width: 22px; height: 1px; background: var(--ink-soft); display:inline-block; }
+.eyebrow.on-dark{ color: var(--on-dark-soft); }
+.eyebrow.on-dark::before{ background: var(--on-dark-soft); }
+h1,h2,h3{ font-family: var(--serif); font-weight: 400; letter-spacing: -0.01em; text-wrap: balance; }
+.lead{ font-size: var(--fs-lead); line-height: 1.45; color: var(--ink-soft); font-weight: 400; }
+.rule{ height:1px; background: var(--line); border:none; width:100%; }
+.mono-cap{ font-family: var(--mono); font-size: var(--fs-cap); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-soft); }
+
+/* ============ REVEAL ============ */
+[data-reveal]{ opacity: 0; transform: translateY(22px); transition: opacity 0.9s var(--ease), transform 0.9s var(--ease); }
+[data-reveal].in-view{ opacity: 1; transform: translateY(0); }
+[data-reveal="fade"]{ transform: none; }
+
+/* ============ NAV ============ */
+.nav{ position: fixed; top:0; left:0; right:0; z-index: 100; background: var(--paper); border-bottom: 1px solid var(--line); transition: transform 0.5s var(--ease); }
+.nav.hide{ transform: translateY(-100%); }
+.nav-inner{ max-width: var(--maxw); margin: 0 auto; padding-inline: var(--margin); height: 72px; display:flex; align-items:center; justify-content: space-between; }
+.brand{ display:flex; align-items:center; gap: 12px; }
+.brand .mark{ width: 30px; height: auto; }
+.brand .mark path{ stroke: var(--blue); }
+.wordmark{ font-family: var(--serif); font-style: italic; font-size: 1.15rem; }
+.nav-links{ display:flex; gap: var(--s4); font-family: var(--mono); font-size: var(--fs-cap); letter-spacing: 0.06em; text-transform: uppercase; }
+.nav-links a{ position:relative; padding-bottom: 2px; }
+.nav-links a::after{ content:''; position:absolute; left:0; bottom:-2px; width:0; height:1px; background: var(--coral); transition: width 0.35s var(--ease); }
+.nav-links a:hover::after{ width:100%; }
+.nav-links a:hover{ color: var(--coral); }
+
+.nav-controls{ display:flex; align-items:center; gap: var(--s3); }
+.lang-switch{ position:relative; }
+.lang-btn{ display:flex; align-items:center; gap:4px; font-family: var(--mono); font-size: var(--fs-cap); letter-spacing:0.06em; text-transform:uppercase; background:none; border:none; cursor:pointer; color:var(--ink); padding:4px 2px; }
+.lang-btn:hover{ color:var(--blue); }
+.lang-chevron{ transition: transform 0.25s var(--ease); }
+.lang-switch.open .lang-chevron{ transform: rotate(180deg); }
+.lang-menu{ position:absolute; top: calc(100% + 10px); right:0; background:var(--paper); border:1px solid var(--line); min-width:130px; list-style:none; box-shadow: 0 8px 24px rgba(21,20,23,0.12); opacity:0; visibility:hidden; transform: translateY(-6px); transition: opacity 0.2s var(--ease), transform 0.2s var(--ease), visibility 0.2s; z-index:110; }
+.lang-switch.open .lang-menu{ opacity:1; visibility:visible; transform:translateY(0); }
+.lang-menu li{ font-family: var(--mono); font-size: var(--fs-cap); letter-spacing:0.06em; text-transform:uppercase; padding:10px 14px; cursor:pointer; }
+.lang-menu li:hover{ background: var(--paper-shade); color:var(--blue); }
+.lang-menu li[aria-selected="true"]{ color: var(--blue); }
+
+.menu-toggle{ display:none; flex-direction:column; justify-content:center; gap:5px; width:32px; height:32px; background:none; border:none; cursor:pointer; padding:0; flex-shrink:0; }
+.menu-toggle span{ display:block; width:100%; height:1.5px; background:var(--ink); transition: transform 0.3s var(--ease), opacity 0.3s var(--ease); }
+.menu-toggle.open span:nth-child(1){ transform: translateY(6.5px) rotate(45deg); }
+.menu-toggle.open span:nth-child(2){ opacity:0; }
+.menu-toggle.open span:nth-child(3){ transform: translateY(-6.5px) rotate(-45deg); }
+
+@media (max-width: 640px){
+  .menu-toggle{ display:flex; }
+  .nav-links{
+    display:flex; position:absolute; top:100%; left:0; right:0; flex-direction:column; gap:0;
+    background:var(--paper); border-bottom:1px solid var(--line);
+    max-height:0; overflow:hidden; opacity:0; pointer-events:none;
+    transition: max-height 0.35s var(--ease), opacity 0.25s var(--ease);
+  }
+  .nav-links.open{ max-height: 320px; opacity:1; pointer-events:auto; }
+  .nav-links a{ padding: var(--s3) var(--margin); border-top:1px solid var(--line); }
+  .nav-links a:first-child{ border-top:none; }
+}
+
+/* ============ FOLIO ============ */
+.folio{ position: fixed; right: var(--s3); bottom: var(--s3); z-index: 90; font-family: var(--mono); font-size: var(--fs-cap); color: var(--ink-soft); writing-mode: vertical-rl; letter-spacing: 0.08em; display:flex; align-items:center; gap: 10px; pointer-events:none; }
+@media (max-width: 640px){ .folio{ display:none; } }
+
+/* ============ LINE MOTIF / DIVIDERS ============ */
+.stroke-divider{ width:100%; display:flex; justify-content:center; padding: var(--s5) 0; }
+.stroke-divider svg{ width: min(300px, 55%); height:auto; }
+.stroke-divider path{ stroke: var(--ink); opacity: 0.28; }
+.stroke-divider.blue path{ stroke: var(--blue); opacity: 0.6; }
+.stroke-divider.flip svg{ transform: scaleY(-1) rotate(2deg); }
+
+/* ============ POSTER BLOCKS (signature richness) ============ */
+.poster-row{ display:grid; grid-template-columns: 1.1fr 0.9fr 1fr; gap: 1px; background: var(--ink); }
+.poster{ position:relative; aspect-ratio: 4/5; overflow:hidden; display:flex; flex-direction:column; justify-content:flex-end; padding: var(--s4); }
+.poster svg{ position:absolute; inset:0; width:100%; height:100%; }
+.poster .p-label{ position:relative; z-index:2; font-family: var(--mono); font-size: var(--fs-cap); letter-spacing:0.06em; text-transform:uppercase; }
+.poster-blue{ background: var(--blue); color: var(--cream); }
+.poster-black{ background: var(--black); color: var(--on-dark); }
+.poster-sky{ background: var(--sky); color: var(--black); }
+.poster-cream{ background: var(--cream); color: var(--ink); }
+.poster-stack{ position:relative; z-index:2; font-family: var(--serif); font-style: italic; font-size: clamp(2.2rem, 4vw, 3.6rem); line-height: 0.92; }
+@media (max-width: 900px){ .poster-row{ grid-template-columns: 1fr; } .poster{ aspect-ratio: 16/10; } }
+
+/* ============ SECTION HEADS ============ */
+.section-head{ grid-column: 1 / 13; margin-bottom: var(--s5); }
+.section-head h2{ font-size: var(--fs-h1); margin-top: var(--s2); max-width: 18ch; }
+.more-work-head h2{ max-width: 38ch; }
+.work-head h2{ max-width: 24ch; }
+@media (max-width: 640px){ .section-head{ grid-column: 1 / 5; } }
+
+/* ============ WORK ============ */
+.work{ padding-block: var(--s6); }
+.project{ grid-column: 1 / 13; margin-bottom: var(--s7); }
+.project:last-child{ margin-bottom: 0; }
+.project-row{ grid-column: 1 / 13; display:grid; grid-template-columns: repeat(12, 1fr); column-gap: var(--gutter); align-items: end; }
+.project-visual{ grid-column: 1 / 9; aspect-ratio: 760/470; position:relative; overflow:hidden; }
+.project-visual.growth-visual{ aspect-ratio: 1560/1720; }
+@media (min-width: 641px){ .project-visual.growth-visual{ aspect-ratio: 760/470; } }
+.project.alt .project-visual{ grid-column: 5 / 13; order:2; }
+.project-visual svg, .project-visual img{ width:100%; height:100%; object-fit:cover; }
+.project-text{ grid-column: 9 / 13; padding-bottom: var(--s4); }
+.project.alt .project-text{ grid-column: 1 / 5; order:1; align-self:end; }
+.project-text .num{ font-family: var(--mono); font-size: var(--fs-cap); color: var(--ink-soft); }
+.project-text h3{ font-size: var(--fs-h2); margin-top: var(--s2); font-style: italic; }
+.project-text p{ margin-top: var(--s2); color: var(--ink-soft); font-size: var(--fs-small); line-height:1.55; }
+.tags{ margin-top: var(--s3); display:flex; gap: var(--s2); flex-wrap:wrap; }
+.tags span{ font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.05em; text-transform: uppercase; border: 1px solid var(--line); padding: 5px 10px; color: var(--ink-soft); }
+.view-case{ display:inline-flex; align-items:center; gap: 8px; margin-top: var(--s3); font-family: var(--mono); font-size: var(--fs-cap); letter-spacing:0.05em; text-transform:uppercase; color: var(--blue); border-bottom: 1px solid var(--blue); padding-bottom: 3px; width: fit-content; }
+.view-case:hover{ color: var(--coral); border-color: var(--coral); }
+.view-case svg{ width: 14px; height:14px; }
+
+@media (max-width: 1024px){
+  .project-visual, .project.alt .project-visual{ grid-column: 1 / 9; order:1; }
+  .project-text, .project.alt .project-text{ grid-column: 1 / 9; order:2; margin-top: var(--s3); }
+}
+@media (max-width: 640px){
+  .project-row{ grid-template-columns: repeat(4,1fr); }
+  .project-visual, .project.alt .project-visual, .project-text, .project.alt .project-text{ grid-column: 1 / 5; }
+}
+
+/* ============ PHILOSOPHY ============ */
+.philosophy{ padding-block: var(--s6); background: var(--black); color: var(--paper); }
+.philosophy .grid{ align-items:start; }
+.philosophy-text{ grid-column: 3 / 10; }
+.philosophy h2{ font-size: var(--fs-h1); margin-top: var(--s3); }
+.philosophy p{ margin-top: var(--s4); font-size: var(--fs-lead); line-height: 1.6; color: rgba(250,250,248,0.82); max-width: 46ch; }
+.philosophy blockquote{ font-family: var(--serif); font-style: italic; font-size: clamp(1.6rem, 3vw, 2.4rem); color: #93A6FF; margin-block: var(--s5); line-height: 1.3; max-width: 22ch; }
+@media (max-width: 1024px){ .philosophy-text{ grid-column: 1 / 9; } }
+@media (max-width: 640px){ .philosophy-text{ grid-column: 1 / 5; } }
+
+.flow{ grid-column: 1 / 13; margin-top: var(--s6); display:flex; align-items:center; justify-content: space-between; gap: var(--s2); flex-wrap: wrap; }
+.flow-step{ display:flex; flex-direction:column; align-items:center; gap: var(--s2); text-align:center; width: 100px; }
+.flow-step .dot{ width: 46px; height:46px; border-radius:50%; border: 1px solid rgba(250,250,248,0.35); display:flex; align-items:center; justify-content:center; font-family: var(--mono); font-size: 0.7rem; }
+.flow-step .label{ font-family: var(--mono); font-size: 0.68rem; letter-spacing:0.05em; text-transform:uppercase; color: rgba(250,250,248,0.6); }
+.flow-connector{ flex:1; min-width: 30px; height: 30px; }
+.flow-connector path{ stroke: rgba(250,250,248,0.35); fill:none; stroke-width:1.5; }
+@media (max-width: 1061px){
+  .flow{ display:grid; grid-template-columns: repeat(3, 1fr); row-gap: var(--s5); column-gap: var(--s3); justify-items:center; }
+  .flow-connector{ display:none; }
+  .flow-step{ width:auto; }
+}
+@media (max-width: 640px){
+  .flow{ grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ============ EXPERIMENTS ============ */
+.more-work{ padding-block: var(--s6); background: var(--paper-shade); }
+.work-grid{ grid-column: 1/13; display:grid; grid-template-columns: repeat(3, 1fr); column-gap: var(--gutter); row-gap: var(--s5); }
+.work-card{ display:block; background: var(--paper); border: 1px solid var(--line); padding: var(--s3); transition: border-color 0.3s var(--ease); }
+a.work-card:hover{ border-color: var(--blue); }
+.work-thumb{ aspect-ratio: 4/3; margin-bottom: var(--s2); overflow:hidden; background: #E4E0D4; }
+.work-thumb img{ width:100%; height:100%; object-fit:cover; display:block; }
+.work-thumb-placeholder{ display:flex; align-items:center; justify-content:center; font-family: var(--mono); font-size: 0.7rem; letter-spacing:0.05em; color:#9A9484; }
+.work-card h4{ font-family: var(--serif); font-style: italic; font-size: 1.15rem; font-weight:400; margin-top: 4px; }
+.behance-link{ display:inline-flex; align-items:center; gap:6px; margin-top: var(--s2); font-family: var(--mono); font-size: 0.7rem; letter-spacing:0.05em; text-transform:uppercase; color: var(--blue); }
+.behance-link svg{ width:12px; height:12px; }
+@media (max-width: 1024px){ .work-grid{ grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 640px){ .work-grid{ grid-template-columns: repeat(1,1fr); } }
+
+/* ============ NOTES ============ */
+.notes{ padding-block: var(--s6); }
+.note{ grid-column: 1/13; display:grid; grid-template-columns: repeat(12,1fr); column-gap: var(--gutter); padding-block: var(--s4); border-top: 1px solid var(--line); }
+.notes-list .note:last-child{ border-bottom: 1px solid var(--line); }
+.note .date{ grid-column: 1/3; font-family: var(--mono); font-size: var(--fs-cap); color: var(--ink-soft); padding-top: 4px; }
+.note .title{ grid-column: 3/9; font-family: var(--serif); font-style: italic; font-size: 1.5rem; }
+.note .excerpt{ grid-column: 9/13; font-size: var(--fs-small); color: var(--ink-soft); line-height:1.55; }
+@media (max-width: 1024px){ .note{ grid-template-columns: repeat(8,1fr); row-gap: var(--s2); } .note .date{ grid-column: 1/4; } .note .title{ grid-column: 1/9; } .note .excerpt{ grid-column: 1/9; } }
+@media (max-width: 640px){ .note{ grid-template-columns: repeat(4,1fr); } .note .date, .note .title, .note .excerpt{ grid-column: 1/5; } }
+
+.reading{ grid-column: 1/13; margin-top: var(--s5); }
+.reading-list{ display:flex; flex-wrap:wrap; gap: var(--s2) var(--s5); margin-top: var(--s3); }
+.reading-list li{ list-style:none; font-family: var(--mono); font-size: var(--fs-small); }
+.reading-list li span{ display:block; color: var(--ink-soft); font-size: var(--fs-cap); margin-top: 2px; }
+
+/* ============ CONTACT ============ */
+.contact{ padding-block: var(--s7) var(--s6); }
+.contact-inner{ grid-column: 1/13; text-align:left; }
+.contact h2{ font-size: var(--fs-h1); max-width: 13ch; }
+.contact-email{ display:inline-block; margin-top: var(--s5); font-family: var(--serif); font-style: italic; font-size: clamp(1.8rem,3.4vw,2.8rem); color: var(--blue); border-bottom: 1.5px solid var(--blue); padding-bottom: 6px; transition: color 0.3s ease, border-color 0.3s ease; }
+.contact-email:hover{ color: var(--coral); border-color: var(--coral); }
+.contact-links{ margin-top: var(--s6); display:flex; gap: var(--s5); flex-wrap:wrap; font-family: var(--mono); font-size: var(--fs-small); }
+.contact-links a{ border-bottom: 1px solid var(--line); padding-bottom: 2px; }
+.contact-links a:hover{ color: var(--blue); border-color: var(--blue); }
+
+footer{ border-top: 1px solid var(--line); padding-block: var(--s3); }
+.footer-inner{ display:flex; justify-content: space-between; flex-wrap:wrap; gap: var(--s2); font-family: var(--mono); font-size: var(--fs-cap); color: var(--ink-soft); }
+
+:focus-visible{ outline: 2px solid var(--blue); outline-offset: 3px; }
+
+/* ============ CASE STUDY PAGES ============ */
+.cs-hero{ padding-top: calc(72px + var(--s5)); padding-bottom: var(--s5); position:relative; overflow:hidden; }
+.cs-hero.on-blue{ background: var(--blue); color: var(--cream); }
+.cs-hero.on-black{ background: var(--black); color: var(--on-dark); }
+.cs-hero.on-sky{ background: var(--sky); color: var(--black); }
+.cs-hero-bg{ position:absolute; inset:0; opacity:0.35; z-index:0; }
+.cs-hero-inner{ position:relative; z-index:1; }
+.back-link{ font-family: var(--mono); font-size: var(--fs-cap); letter-spacing:0.06em; text-transform:uppercase; display:inline-flex; align-items:center; gap:8px; opacity:0.8; }
+.back-link:hover{ opacity:1; }
+.cs-hero h1{ font-size: clamp(2.6rem, 5.6vw, 5.2rem); margin-top: var(--s3); max-width: 16ch; line-height:1.03; }
+.cs-hero .cs-sub{ margin-top: var(--s3); font-size: var(--fs-lead); max-width: 46ch; opacity:0.85; }
+.cs-meta-row{ margin-top: var(--s6); display:flex; flex-wrap:wrap; gap: var(--s5); font-family: var(--mono); font-size: var(--fs-cap); }
+.cs-meta-row .m{ opacity:0.65; display:block; margin-bottom:4px; }
+
+.cs-section{ padding-block: var(--s6); }
+.cs-section.shade{ background: var(--paper-shade); }
+.cs-label{ grid-column: 1/3; }
+.cs-label .n{ font-family: var(--mono); font-size: var(--fs-cap); color: var(--ink-soft); }
+.cs-label h3{ font-size: 1.6rem; font-style: italic; margin-top: var(--s2); }
+.cs-body{ grid-column: 4/11; }
+.cs-body p{ font-size: var(--fs-body); line-height: 1.7; color: var(--ink-soft); margin-bottom: var(--s3); max-width: 66ch; }
+.cs-body p:last-child{ margin-bottom:0; }
+.cs-body ul{ margin-top: var(--s3); padding-left: 1.1em; }
+.cs-body li{ color: var(--ink-soft); line-height:1.6; margin-bottom: var(--s2); max-width: 62ch; }
+.cs-body li b{ color: var(--ink); font-weight: 500; }
+.cs-body blockquote{ font-family: var(--serif); font-style: italic; font-size: clamp(1.35rem,2vw,1.8rem); color: var(--blue); margin-block: var(--s4); max-width: 24ch; line-height:1.35; }
+@media (max-width: 1024px){ .cs-label{ grid-column: 1/9; margin-bottom: var(--s2);} .cs-body{ grid-column: 1/9; } }
+@media (max-width: 640px){ .cs-label{ grid-column: 1/5; } .cs-body{ grid-column: 1/5; } }
+
+.cs-gallery{ grid-column: 1/13; display:grid; grid-template-columns: repeat(12,1fr); gap: var(--gutter); margin-top: var(--s5); }
+.cs-gallery .g1{ grid-column: 1/8; aspect-ratio: 16/10; }
+.cs-gallery .g2{ grid-column: 8/13; aspect-ratio: 3/4; transform: translateY(var(--s4)); }
+.cs-gallery .g3{ grid-column: 1/6; aspect-ratio: 4/3; }
+.cs-gallery .g4{ grid-column: 6/13; aspect-ratio: 16/9; }
+.cs-gallery svg{ width:100%; height:100%; }
+.cs-gallery figure{ overflow:hidden; position:relative; background: var(--paper-shade); }
+.cs-gallery figcaption{ position:absolute; left:12px; bottom:12px; z-index:2; font-family: var(--mono); font-size: 0.68rem; letter-spacing:0.04em; text-transform:uppercase; background: var(--paper); padding: 4px 8px; }
+@media (max-width: 1024px){ .cs-gallery .g1,.g2,.g3,.g4{ grid-column: 1/9; transform:none; } }
+@media (max-width: 640px){ .cs-gallery .g1,.g2,.g3,.g4{ grid-column: 1/5; } }
+
+.cs-next{ padding-block: var(--s7) var(--s6); }
+.cs-next a{ display:block; }
+.cs-next .eyebrow{ margin-bottom: var(--s2); }
+.cs-next h2{ font-size: var(--fs-h1); transition: color 0.3s ease; }
+.cs-next a:hover h2{ color: var(--blue); }
+
+</style>
+<style>
+  .hero{ position: relative; padding-top: calc(72px + var(--s6)); padding-bottom: var(--s5); min-height: 88vh; display:flex; flex-direction:column; justify-content:center; overflow: hidden; }
+  .hero-gradient-bg{
+    position:absolute; inset:0; z-index:0; pointer-events:none;
+    background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 1440 706' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none'><rect x='0' y='0' height='100%25' width='100%25' fill='url(%23grad)' opacity='0.6'/><defs><radialGradient id='grad' gradientUnits='userSpaceOnUse' cx='0' cy='0' r='10' gradientTransform='matrix(-82.05 35.15 -24.395 -56.946 1558.5 86)'><stop stop-color='rgba(195,238,113,1)' offset='0.39617'/><stop stop-color='rgba(170,226,182,0.725)' offset='0.54133'/><stop stop-color='rgba(144,213,251,0.45)' offset='0.68649'/><stop stop-color='rgba(144,213,251,0)' offset='0.98'/></radialGradient></defs></svg>");
+    background-size: 100% 100%; background-repeat: no-repeat;
+  }
+  .hero-line{ position: absolute; top: 8%; right: -2%; width: min(32vw, 430px); opacity: 0.9; z-index: 0; }
+  .hero-line path{ fill:none; }
+  .hero-line path.hero-loop-path.looping{ animation: hero-loop-draw 5s ease-in-out infinite alternate; animation-play-state: paused; }
+  .hero-line path.hero-loop-path.looping.in-view{ animation-play-state: running; }
+  @keyframes hero-loop-draw{ from{ stroke-dashoffset: var(--hlen); } to{ stroke-dashoffset: 0; } }
+  .hero-content{ position: relative; z-index: 1; grid-column: 1 / 9; }
+  @media (max-width: 1024px){ .hero-content{ grid-column: 1 / 9; } .hero-line{ opacity: 0.45; top: 42%; width: min(50vw, 340px); } }
+  @media (max-width: 640px){ .hero-content{ grid-column: 1 / 5; } }
+  .hero h1{ font-size: clamp(2.6rem, 5.6vw, 5.6rem); line-height: 1.02; max-width: 22ch; }
+  .hero h1 em{ font-style: italic; color: var(--blue); position: relative; }
+  .hero h1 em::after{
+    content:''; position:absolute; left:-3px; right:-3px; bottom:0.08em; height:0.3em;
+    background: var(--lime); opacity:0.5; z-index:-1; border-radius:2px;
+    transform: scaleX(0); transform-origin: left;
+  }
+  .hero h1 em.hl-in::after{ animation: hl-sweep 0.9s cubic-bezier(.22,.61,.16,1) forwards; }
+  @keyframes hl-sweep{ to{ transform: scaleX(1); } }
+  .hero .lead{ margin-top: var(--s4); max-width: 48ch; }
+  .hero-meta{ margin-top: var(--s6); display:flex; gap: var(--s6); flex-wrap: wrap; }
+  .hero-meta .item{ font-family: var(--mono); font-size: var(--fs-cap); color: var(--ink-soft); max-width: 22ch; }
+  .hero-meta .item b{ display:block; color: var(--ink); font-size: 1.5rem; font-family: var(--serif); font-style: italic; font-weight: 400; margin-bottom: 4px; }
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#top" class="brand">
+      <svg class="mark" viewBox="0 0 305 232" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M117.015 30.9328C143.392 30.9328 166.567 56.3497 166.567 87.5243C166.567 118.699 156.979 165.694 138.509 165.694C107.733 165.694 148.581 6 240.89 6C333.199 6 303.392 206.456 230.343 206.456C162.728 206.456 196.298 66.9054 230.343 66.9054C264.387 66.9054 199.627 216.528 123.885 216.528C48.1443 216.528 67.1412 88.4839 93.679 88.4839C129.168 88.4839 73.5357 225.64 28.4596 225.64C-26.7731 225.64 26.379 30.9413 117.015 30.9413V30.9328Z" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span class="wordmark">Monserrat Molina Ramirez</span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html" data-i18n="nav_home">Home</a>
+      <a href="#work" data-i18n="nav_work">Work</a>
+      <a href="about.html" data-i18n="nav_about">About</a>
+      <a href="#contact" data-i18n="nav_contact">Contact</a>
+    </div>
+    <div class="nav-controls">
+      <div class="lang-switch" id="langSwitch">
+        <button type="button" class="lang-btn" id="langBtn" aria-haspopup="listbox" aria-expanded="false">
+          <span id="langBtnLabel">EN</span>
+          <svg class="lang-chevron" viewBox="0 0 12 8" width="10" height="7" aria-hidden="true"><path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <ul class="lang-menu" id="langMenu" role="listbox">
+          <li role="option" data-lang="en" aria-selected="true">EN</li>
+          <li role="option" data-lang="es" aria-selected="false">ES</li>
+        </ul>
+      </div>
+      <button type="button" class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<div class="folio" id="folio"><span id="folio-text">01 / 05 — Hero</span></div>
+
+<main id="top">
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="hero" data-section="hero">
+  <div class="hero-gradient-bg" aria-hidden="true"></div>
+  <div class="container grid">
+    <svg class="hero-line" viewBox="0 0 430 636" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path class="hero-loop-path" d="M382.204 310.984C416.717 332.164 438.833 367.903 437.183 405.578L437.154 405.604C428.447 604.459 -3.86458 702.392 1.44182 581.206C3.01656 545.243 44.5255 507.958 96.5518 478.814M382.204 310.984C363.705 299.631 341.645 292.461 317.773 291.416C249.361 288.42 145.329 304.938 143.554 345.47C141.724 387.276 276.899 374.712 382.204 310.984ZM382.204 310.984C445.862 272.458 498.605 215.235 503.564 140.021M503.776 136.16C512.645 -66.3914 69.952 -20.2511 62.9331 140.043C60.9799 184.649 87.589 210.398 125.85 222.566M125.85 222.566C214.838 250.865 366.855 205.698 369.143 153.451C371.299 104.219 226.763 142.897 125.85 222.566ZM125.85 222.566C73.6261 263.795 33.085 316.002 30.603 372.683C28.2236 427.025 56.8502 460.459 96.5518 478.814M96.5518 478.814C178.281 516.598 306.944 490.477 308.659 451.289C310.829 401.743 187.589 427.816 96.5518 478.814Z" stroke="#90D5FB" stroke-width="2.78677"/>
+    </svg>
+    <div class="hero-content">
+      <p class="eyebrow" data-i18n="hero_eyebrow">Visual designer — systems, brand, strategy</p>
+      <h1 data-i18n="hero_title">Brand identity, websites, and presentation systems designed to <em>evolve.</em></h1>
+      <p class="lead" data-i18n="hero_lead">I create visual systems that help brands communicate consistently across every touchpoint. Whether designing an identity, building a website, or developing presentation frameworks, my focus is always the same: making ideas easier to understand and teams easier to support.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============ WORK ============ -->
+<section class="work" id="work" data-section="work">
+  <div class="container">
+    <div class="grid">
+      <div class="section-head work-head" data-reveal>
+        <p class="eyebrow" data-i18n="work_eyebrow">Selected work</p>
+        <h2 data-i18n="work_title">Three problems, one way of thinking about systems.</h2>
+      </div>
+    </div>
+
+    <!-- Project 1 -->
+    <div class="grid project alt" data-reveal>
+      <div class="project-row">
+        <div class="project-visual">
+          <img src="assets/images/webp/case_study_1.webp" alt="Tomorrow Problem — Prezi AI search bar mockup with butterfly reference photos" loading="lazy">
+        </div>
+        <div class="project-text">
+          <p class="num" data-i18n="p1_num">Case 01 — Campaign system, multi-format</p>
+          <h3 data-i18n="p1_title">Tomorrow Problem</h3>
+          <p data-i18n="p1_body">Prezi's AI needed to feel human, not intimidating — a message that had to hold across video, email and product templates without turning either too technical or too illustrative.</p>
+          <div class="tags"><span data-i18n="p1_tag1">Art direction</span><span data-i18n="p1_tag2">Campaign</span><span data-i18n="p1_tag3">Multi-format</span></div>
+          <a class="view-case" href="case-studies/tomorrow-problem.html"><span data-i18n="read_case">Read the case study</span> <svg viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.4"/></svg></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 2 -->
+    <div class="grid project" data-reveal>
+      <div class="project-row">
+        <div class="project-visual growth-visual">
+          <picture>
+            <source media="(max-width: 640px)" srcset="assets/images/webp/case_study_2_mobile.webp">
+            <img src="assets/images/webp/case_study_2.webp" data-img-en="assets/images/webp/case_study_2.webp" data-img-es="assets/images/webp/case_study_2_es.webp" alt="Growth Process Overhaul — 2023 to 2026 website evolution timeline" loading="lazy">
+          </picture>
+        </div>
+        <div class="project-text">
+          <p class="num" data-i18n="p2_num">Case 02 — Process &amp; systems design</p>
+          <h3 data-i18n="p2_title">Growth Process Overhaul</h3>
+          <p data-i18n="p2_body">An orphaned website, no process, no owner. Rebuilding it meant designing a repeatable pipeline — brief, copy, design, build — before redesigning a single page.</p>
+          <div class="tags"><span data-i18n="p2_tag1">Webflow</span><span data-i18n="p2_tag2">Design ops</span><span data-i18n="p2_tag3">Design system</span></div>
+          <a class="view-case" href="case-studies/growth-process.html"><span data-i18n="read_case">Read the case study</span> <svg viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.4"/></svg></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 3 -->
+    <div class="grid project alt" data-reveal>
+      <div class="project-row">
+        <div class="project-visual">
+          <img src="assets/images/webp/case_study_3.webp" alt="Evolution of Templates — grid of finished template covers" loading="lazy">
+        </div>
+        <div class="project-text">
+          <p class="num" data-i18n="p3_num">Case 03 — Template systems, three eras</p>
+          <h3 data-i18n="p3_title">Evolution of Templates</h3>
+          <p data-i18n="p3_body">From designing for a user who customizes everything, to a system that must look intentional without knowing the content, to an AI making those same calls on its own.</p>
+          <div class="tags"><span data-i18n="p3_tag1">Systems design</span><span data-i18n="p3_tag2">Templates</span><span data-i18n="p3_tag3">AI collaboration</span></div>
+          <a class="view-case" href="case-studies/template-evolution.html"><span data-i18n="read_case">Read the case study</span> <svg viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.4"/></svg></a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ PHILOSOPHY ============ -->
+<section class="more-work" id="more-work" data-section="morework">
+  <div class="container">
+    <div class="grid">
+      <div class="section-head more-work-head" data-reveal>
+        <p class="eyebrow" data-i18n="more_eyebrow">More work</p>
+        <h2 data-i18n="more_title">Selected projects from Behance, updated as new work ships.</h2>
+      </div>
+    </div>
+    <div class="work-grid">
+
+      <a class="work-card" href="https://www.behance.net/gallery/128465891/Influencer-Presentations-for-Prezi-Video" target="_blank" rel="noopener" data-reveal>
+        <div class="work-thumb"><img src="assets/images/behance/prezi_video.webp" alt="Influencer Presentations for Prezi Video"></div>
+        <p class="mono-cap" data-i18n="mw1_cat">01 — Presentation Design</p>
+        <h4 data-i18n="mw1_title">Influencer Presentations for Prezi Video</h4>
+        <span class="behance-link"><span data-i18n="view_behance">View on Behance</span> <svg viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H5M12 4V11" stroke="currentColor" stroke-width="1.3"/></svg></span>
+      </a>
+
+      <a class="work-card" href="https://www.behance.net/gallery/128462601/Design-Thinking-Template-Video-and-Present" target="_blank" rel="noopener" data-reveal>
+        <div class="work-thumb"><img src="assets/images/behance/design_thinking.webp" alt="Design Thinking Template"></div>
+        <p class="mono-cap" data-i18n="mw2_cat">03 — Template Design</p>
+        <h4 data-i18n="mw2_title">Design Thinking Template</h4>
+        <span class="behance-link"><span data-i18n="view_behance">View on Behance</span> <svg viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H5M12 4V11" stroke="currentColor" stroke-width="1.3"/></svg></span>
+      </a>
+
+      <a class="work-card" href="https://www.behance.net/gallery/128456805/Prezi-Templates-Built-for-Video" target="_blank" rel="noopener" data-reveal>
+        <div class="work-thumb"><img src="assets/images/behance/video_templates.webp" alt="Prezi Templates Built for Video"></div>
+        <p class="mono-cap" data-i18n="mw3_cat">04 — Template Design</p>
+        <h4 data-i18n="mw3_title">Prezi Templates Built for Video</h4>
+        <span class="behance-link"><span data-i18n="view_behance">View on Behance</span> <svg viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H5M12 4V11" stroke="currentColor" stroke-width="1.3"/></svg></span>
+      </a>
+
+      <a class="work-card" href="https://www.behance.net/gallery/75545709/Zendesk-Conference-for-Jeffrey-Theobald" target="_blank" rel="noopener" data-reveal>
+        <div class="work-thumb"><img src="assets/images/behance/zendesk.webp" alt="Zendesk Conference for Jeffrey Theobald"></div>
+        <p class="mono-cap" data-i18n="mw4_cat">02 — Presentation Design</p>
+        <h4 data-i18n="mw4_title">Zendesk Conference for Jeffrey Theobald</h4>
+        <span class="behance-link"><span data-i18n="view_behance">View on Behance</span> <svg viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H5M12 4V11" stroke="currentColor" stroke-width="1.3"/></svg></span>
+      </a>
+
+      <a class="work-card" href="https://www.behance.net/gallery/80875185/TEDx-Caleidoscopio" target="_blank" rel="noopener" data-reveal>
+        <div class="work-thumb"><img src="assets/images/behance/caleidoscopio.webp" alt="TEDx Caleidoscopio"></div>
+        <p class="mono-cap" data-i18n="mw5_cat">05 — Event Materials</p>
+        <h4 data-i18n="mw5_title">TEDx Caleidoscopio</h4>
+        <span class="behance-link"><span data-i18n="view_behance">View on Behance</span> <svg viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H5M12 4V11" stroke="currentColor" stroke-width="1.3"/></svg></span>
+      </a>
+
+      <a class="work-card" href="https://www.behance.net/gallery/23938365/Cachito-Mio" target="_blank" rel="noopener" data-reveal>
+        <div class="work-thumb"><img src="assets/images/behance/cachito_mio.webp" alt="Cachito Mío"></div>
+        <p class="mono-cap" data-i18n="mw6_cat">06 — Branding &amp; Illustration</p>
+        <h4 data-i18n="mw6_title">Cachito Mío</h4>
+        <span class="behance-link"><span data-i18n="view_behance">View on Behance</span> <svg viewBox="0 0 16 16" fill="none"><path d="M4 12L12 4M12 4H5M12 4V11" stroke="currentColor" stroke-width="1.3"/></svg></span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<section class="philosophy" id="philosophy" data-section="philosophy">
+  <div class="container">
+    <div class="grid">
+      <div class="philosophy-text" data-reveal>
+        <p class="eyebrow on-dark" data-i18n="philosophy_eyebrow">Philosophy</p>
+        <h2 data-i18n="philosophy_title">A template doesn't limit. It reduces the noise so someone can decide better.</h2>
+        <p data-i18n="philosophy_body">Most of my work starts with the same challenge: making structured systems feel human, practical, and easy to use. When a system becomes too technical, it stops helping the people it was built for. Make it too dependent on craft, and it stops being scalable. The work is finding that balance — and giving people the confidence to use these tools independently. The goal isn't the template itself. It's creating an environment where people can focus on their ideas instead of the mechanics.</p>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="flow" data-reveal>
+        <div class="flow-step"><div class="dot">01</div><div class="label" data-i18n="flow1">Problem</div></div>
+        <svg class="flow-connector" viewBox="0 0 100 30"><path d="M0,15 C25,0 40,30 65,15 C80,7 90,20 100,15"/></svg>
+        <div class="flow-step"><div class="dot">02</div><div class="label" data-i18n="flow2">Context</div></div>
+        <svg class="flow-connector" viewBox="0 0 100 30"><path d="M0,15 C25,0 40,30 65,15 C80,7 90,20 100,15"/></svg>
+        <div class="flow-step"><div class="dot">03</div><div class="label" data-i18n="flow3">Thinking</div></div>
+        <svg class="flow-connector" viewBox="0 0 100 30"><path d="M0,15 C25,0 40,30 65,15 C80,7 90,20 100,15"/></svg>
+        <div class="flow-step"><div class="dot">04</div><div class="label" data-i18n="flow4">System</div></div>
+        <svg class="flow-connector" viewBox="0 0 100 30"><path d="M0,15 C25,0 40,30 65,15 C80,7 90,20 100,15"/></svg>
+        <div class="flow-step"><div class="dot">05</div><div class="label" data-i18n="flow5">Execution</div></div>
+        <svg class="flow-connector" viewBox="0 0 100 30"><path d="M0,15 C25,0 40,30 65,15 C80,7 90,20 100,15"/></svg>
+        <div class="flow-step"><div class="dot">06</div><div class="label" data-i18n="flow6">Outcome</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EXPERIMENTS ============ -->
+
+
+<!-- ============ CONTACT ============ -->
+<section class="contact" id="contact" data-section="contact">
+  <div class="container grid">
+    <div class="contact-inner" data-reveal>
+      <p class="eyebrow" data-i18n="contact_eyebrow">Contact</p>
+      <h2 data-i18n="contact_title">Say hello, or send a brief.</h2>
+      <a class="contact-email" href="mailto:molserram@gmail.com">molserram@gmail.com</a>
+      <div class="contact-links">
+        <a href="https://www.behance.net/tarresnom" target="_blank" rel="noopener">Behance</a>
+        <a href="https://www.linkedin.com/in/monserrat-molina-ramirez/?locale=en-US" target="_blank" rel="noopener" data-linkedin>LinkedIn</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container footer-inner">
+    <span data-i18n="footer1">© 2026 Monserrat Molina Ramirez — Visual systems &amp; design strategy</span>
+    <span data-i18n="footer2">One continuous stroke. Infinite possibilities.</span>
+  </div>
+</footer>
+
+</main>
+
+<script>
+(function(){
+  // ---------- i18n dictionary ----------
+  var i18n = {
+    en: {
+      nav_home: "Home", nav_work: "Work", nav_about: "About", nav_contact: "Contact",
+      hero_eyebrow: "Visual designer — systems, brand, strategy",
+      hero_title: "Brand identity, websites, and presentation systems designed to <em>evolve.</em>",
+      hero_lead: "I create visual systems that help brands communicate consistently across every touchpoint. Whether designing an identity, building a website, or developing presentation frameworks, my focus is always the same: making ideas easier to understand and teams easier to support.",
+      work_eyebrow: "Selected work",
+      work_title: "Three problems, one way of thinking about systems.",
+      p1_num: "Case 01 — Campaign system, multi-format",
+      p1_title: "Tomorrow Problem",
+      p1_body: "Prezi's AI needed to feel human, not intimidating — a message that had to hold across video, email and product templates without turning either too technical or too illustrative.",
+      p1_tag1: "Art direction", p1_tag2: "Campaign", p1_tag3: "Multi-format",
+      p2_num: "Case 02 — Process &amp; systems design",
+      p2_title: "Growth Process Overhaul",
+      p2_body: "An orphaned website, no process, no owner. Rebuilding it meant designing a repeatable pipeline — brief, copy, design, build — before redesigning a single page.",
+      p2_tag1: "Webflow", p2_tag2: "Design ops", p2_tag3: "Design system",
+      p3_num: "Case 03 — Template systems, three eras",
+      p3_title: "Evolution of Templates",
+      p3_body: "From designing for a user who customizes everything, to a system that must look intentional without knowing the content, to an AI making those same calls on its own.",
+      p3_tag1: "Systems design", p3_tag2: "Templates", p3_tag3: "AI collaboration",
+      read_case: "Read the case study",
+      more_eyebrow: "More work",
+      more_title: "Selected projects from Behance, updated as new work ships.",
+      mw1_cat: "01 — Presentation Design", mw2_cat: "03 — Template Design", mw3_cat: "04 — Template Design",
+      mw4_cat: "02 — Presentation Design", mw5_cat: "05 — Event Materials", mw6_cat: "06 — Branding &amp; Illustration",
+      mw1_title: "Influencer Presentations for Prezi Video", mw2_title: "Design Thinking Template",
+      mw3_title: "Prezi Templates Built for Video", mw4_title: "Zendesk Conference for Jeffrey Theobald",
+      mw5_title: "TEDx Caleidoscopio", mw6_title: "Cachito Mío",
+      view_behance: "View on Behance",
+      philosophy_eyebrow: "Philosophy",
+      philosophy_title: "A template doesn't limit. It reduces the noise so someone can decide better.",
+      philosophy_body: "Most of my work starts with the same challenge: making structured systems feel human, practical, and easy to use. When a system becomes too technical, it stops helping the people it was built for. Make it too dependent on craft, and it stops being scalable. The work is finding that balance — and giving people the confidence to use these tools independently. The goal isn't the template itself. It's creating an environment where people can focus on their ideas instead of the mechanics.",
+      flow1: "Problem", flow2: "Context", flow3: "Thinking", flow4: "System", flow5: "Execution", flow6: "Outcome",
+      contact_eyebrow: "Contact",
+      contact_title: "Say hello, or send a brief.",
+      footer1: "© 2026 Monserrat Molina Ramirez — Visual systems &amp; design strategy",
+      footer2: "One continuous stroke. Infinite possibilities."
+    },
+    es: {
+      nav_home: "Inicio", nav_work: "Trabajo", nav_about: "Acerca de", nav_contact: "Contacto",
+      hero_eyebrow: "Diseñadora visual — sistemas, marca, estrategia",
+      hero_title: "Identidad de marca, sitios web y sistemas de presentación diseñados para <em>evolucionar.</em>",
+      hero_lead: "Creo sistemas visuales que ayudan a las marcas a comunicarse de forma consistente en cada punto de contacto. Ya sea diseñando una identidad, construyendo un sitio web o desarrollando sistemas de presentación, mi enfoque siempre es el mismo: hacer que las ideas sean más fáciles de entender y los equipos más fáciles de apoyar.",
+      work_eyebrow: "Trabajo seleccionado",
+      work_title: "Tres problemas, una misma forma de pensar en sistemas.",
+      p1_num: "Caso 01 — Sistema de campaña, multiformato",
+      p1_title: "Tomorrow Problem",
+      p1_body: "La IA de Prezi necesitaba sentirse humana, no intimidante — un mensaje que debía mantenerse consistente en video, correo electrónico y plantillas de producto sin volverse demasiado técnico ni demasiado ilustrativo.",
+      p1_tag1: "Dirección de arte", p1_tag2: "Campaña", p1_tag3: "Multiformato",
+      p2_num: "Caso 02 — Proceso y diseño de sistemas",
+      p2_title: "Diseñando un mejor flujo de trabajo",
+      p2_body: "Un sitio web huérfano, sin proceso ni responsable. Reconstruirlo significó diseñar un flujo repetible — brief, copy, diseño, construcción — antes de rediseñar una sola página.",
+      p2_tag1: "Webflow", p2_tag2: "Operaciones de diseño", p2_tag3: "Sistema de diseño",
+      p3_num: "Caso 03 — Sistemas de plantillas, tres eras",
+      p3_title: "Evolución de plantillas",
+      p3_body: "De diseñar alta personalización para un usuario, a un sistema que debe verse intencional sin conocer el contenido, hasta una IA que toma esas mismas decisiones por sí sola.",
+      p3_tag1: "Diseño de sistemas", p3_tag2: "Plantillas", p3_tag3: "Colaboración con IA",
+      read_case: "Leer el caso de estudio",
+      more_eyebrow: "Más trabajo",
+      more_title: "Proyectos seleccionados de Behance, actualizados conforme se publica nuevo trabajo.",
+      mw1_cat: "01 — Diseño de presentaciones", mw2_cat: "03 — Diseño de plantillas", mw3_cat: "04 — Diseño de plantillas",
+      mw4_cat: "02 — Diseño de presentaciones", mw5_cat: "05 — Materiales de evento", mw6_cat: "06 — Marca e ilustración",
+      mw1_title: "Presentaciones para influencers de Prezi Video", mw2_title: "Plantilla de Design Thinking",
+      mw3_title: "Plantillas de Prezi creadas para video", mw4_title: "Conferencia de Zendesk para Jeffrey Theobald",
+      mw5_title: "TEDx Caleidoscopio", mw6_title: "Cachito Mío",
+      view_behance: "Ver en Behance",
+      philosophy_eyebrow: "Filosofía",
+      philosophy_title: "Una plantilla no limita. Reduce el ruido para que alguien pueda decidir mejor.",
+      philosophy_body: "La mayor parte de mi trabajo comienza con el mismo reto: hacer que los sistemas estructurados se sientan humanos, prácticos y fáciles de usar. Cuando un sistema se vuelve demasiado técnico, deja de ayudar a las personas para las que fue creado. Si depende demasiado del oficio, deja de ser escalable. El trabajo consiste en encontrar ese equilibrio — y dar a las personas la confianza para usar estas herramientas de forma independiente. El objetivo no es la plantilla en sí. Es crear un entorno donde las personas puedan concentrarse en sus ideas en lugar de en la mecánica.",
+      flow1: "Problema", flow2: "Contexto", flow3: "Pensamiento", flow4: "Sistema", flow5: "Ejecución", flow6: "Resultado",
+      contact_eyebrow: "Contacto",
+      contact_title: "Saluda, o envía un brief.",
+      footer1: "© 2026 Monserrat Molina Ramirez — Sistemas visuales y estrategia de diseño",
+      footer2: "Un solo trazo continuo. Infinitas posibilidades."
+    }
+  };
+
+  var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var currentLang = 'en';
+  var folioLabels = {
+    en: { hero: "01 / 05 — Hero", work: "02 / 05 — Selected work", morework: "03 / 05 — More work", philosophy: "04 / 05 — Philosophy", contact: "05 / 05 — Contact" },
+    es: { hero: "01 / 05 — Portada", work: "02 / 05 — Trabajo seleccionado", morework: "03 / 05 — Más trabajo", philosophy: "04 / 05 — Filosofía", contact: "05 / 05 — Contacto" }
+  };
+
+  // ---------- Reveal on scroll ----------
+  var revealEls = document.querySelectorAll('[data-reveal]');
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('in-view'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.14, rootMargin: '0px 0px -40px 0px' });
+  revealEls.forEach(function(el){ io.observe(el); });
+
+  // ---------- Mobile menu toggle ----------
+  var menuToggle = document.getElementById('menuToggle');
+  var navLinksEl = document.getElementById('navLinks');
+  if(menuToggle && navLinksEl){
+    menuToggle.addEventListener('click', function(){
+      var isOpen = navLinksEl.classList.toggle('open');
+      menuToggle.classList.toggle('open', isOpen);
+      menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+    navLinksEl.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){
+        navLinksEl.classList.remove('open');
+        menuToggle.classList.remove('open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+
+  // ---------- Language switcher ----------
+  var langSwitch = document.getElementById('langSwitch');
+  var langBtn = document.getElementById('langBtn');
+  var langMenu = document.getElementById('langMenu');
+  var langBtnLabel = document.getElementById('langBtnLabel');
+  function setLang(lang){
+    currentLang = lang;
+    document.documentElement.setAttribute('lang', lang);
+    document.querySelectorAll('[data-i18n]').forEach(function(el){
+      var key = el.getAttribute('data-i18n');
+      if(i18n[lang] && i18n[lang][key] != null) el.innerHTML = i18n[lang][key];
+    });
+    if(langBtnLabel) langBtnLabel.textContent = lang.toUpperCase();
+    if(langMenu){
+      langMenu.querySelectorAll('li').forEach(function(li){
+        li.setAttribute('aria-selected', li.getAttribute('data-lang') === lang ? 'true' : 'false');
+      });
+    }
+    document.querySelectorAll('[data-img-en]').forEach(function(el){
+      var url = el.getAttribute(lang === 'es' ? 'data-img-es' : 'data-img-en');
+      if(!url) return;
+      if(el.tagName === 'SOURCE') el.srcset = url; else el.src = url;
+    });
+    var linkedinEl = document.querySelector('[data-linkedin]');
+    if(linkedinEl){
+      linkedinEl.href = lang === 'es'
+        ? 'https://www.linkedin.com/in/monserrat-molina-ramirez/?locale=es-ES'
+        : 'https://www.linkedin.com/in/monserrat-molina-ramirez/?locale=en-US';
+    }
+    try{ localStorage.setItem('lang', lang); }catch(e){}
+    triggerHeroHighlight();
+    renderFolio();
+  }
+  function triggerHeroHighlight(){
+    var em = document.querySelector('.hero h1 em');
+    if(!em || reducedMotion) return;
+    em.classList.remove('hl-in');
+    void em.offsetWidth;
+    em.classList.add('hl-in');
+  }
+  if(langBtn && langSwitch && langMenu){
+    langBtn.addEventListener('click', function(e){
+      e.stopPropagation();
+      var isOpen = langSwitch.classList.toggle('open');
+      langBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+    langMenu.querySelectorAll('li').forEach(function(li){
+      li.addEventListener('click', function(){
+        setLang(li.getAttribute('data-lang'));
+        langSwitch.classList.remove('open');
+        langBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
+    document.addEventListener('click', function(e){
+      if(!langSwitch.contains(e.target)) langSwitch.classList.remove('open');
+    });
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape') langSwitch.classList.remove('open');
+    });
+  }
+  var savedLang = (function(){ try{ return localStorage.getItem('lang'); }catch(e){ return null; } })() || 'en';
+  setLang(savedLang);
+
+  // ---------- Nav hide on scroll down ----------
+  var nav = document.getElementById('nav');
+  if(nav){
+    var lastY = window.scrollY;
+    window.addEventListener('scroll', function(){
+      var y = window.scrollY;
+      if(y > lastY && y > 140){ nav.classList.add('hide'); } else { nav.classList.remove('hide'); }
+      lastY = y;
+    }, { passive: true });
+  }
+
+  // ---------- Folio indicator ----------
+  var sections = document.querySelectorAll('[data-section]');
+  var folioText = document.getElementById('folio-text');
+  var activeFolioKey = sections.length ? sections[0].getAttribute('data-section') : null;
+  function renderFolio(){
+    if(folioText && activeFolioKey && folioLabels[currentLang]){
+      folioText.textContent = folioLabels[currentLang][activeFolioKey] || '';
+    }
+  }
+  if(folioText && sections.length){
+    var folioIO = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ activeFolioKey = e.target.getAttribute('data-section'); renderFolio(); } });
+    }, { threshold: 0, rootMargin: '-50% 0px -50% 0px' });
+    sections.forEach(function(s){ folioIO.observe(s); });
+    renderFolio();
+  }
+
+  // ---------- Path draw-in (works on any element with .draw-path) ----------
+  if(!reducedMotion){
+    document.querySelectorAll('.draw-path').forEach(function(p, i){
+      try{
+        var len = p.getTotalLength();
+        p.style.strokeDasharray = len;
+        p.style.strokeDashoffset = len;
+        p.getBoundingClientRect();
+        p.style.transition = 'stroke-dashoffset 2.2s cubic-bezier(.22,.61,.16,1) ' + (i*0.15) + 's';
+        requestAnimationFrame(function(){ setTimeout(function(){ p.style.strokeDashoffset = 0; }, 180); });
+      }catch(e){}
+    });
+  }
+
+  // ---------- Hero line: seamless draw-in/draw-out loop, running only while scrolled into view ----------
+  document.querySelectorAll('.hero-loop-path').forEach(function(p){
+    try{
+      var len = p.getTotalLength();
+      p.style.strokeDasharray = len;
+      p.style.setProperty('--hlen', len);
+      if(!reducedMotion){
+        p.style.strokeDashoffset = len;
+        p.classList.add('looping');
+        var heroLineEl = p.closest('.hero-line');
+        if(heroLineEl){
+          var heroLineIO = new IntersectionObserver(function(entries){
+            entries.forEach(function(e){ p.classList.toggle('in-view', e.isIntersecting); });
+          }, { threshold: 0 });
+          heroLineIO.observe(heroLineEl);
+        }
+      } else {
+        p.style.strokeDashoffset = 0;
+      }
+    }catch(e){}
+  });
+
+  // ---------- Spirograph / hypotrochoid path generator ----------
+  // Produces a single continuous-stroke loop path, echoing the wordmark's own line logic.
+  window.spiro = function(R, r, d, turns, steps, cx, cy, scale){
+    turns = turns || 1; steps = steps || 900; cx = cx || 0; cy = cy || 0; scale = scale || 1;
+    var pts = [];
+    var max = Math.PI * 2 * turns;
+    for(var i=0; i<=steps; i++){
+      var t = (i/steps) * max;
+      var x = (R-r)*Math.cos(t) + d*Math.cos(((R-r)/r)*t);
+      var y = (R-r)*Math.sin(t) - d*Math.sin(((R-r)/r)*t);
+      pts.push([cx + x*scale, cy + y*scale]);
+    }
+    var dstr = 'M ' + pts[0][0].toFixed(1) + ',' + pts[0][1].toFixed(1);
+    for(var j=1;j<pts.length;j++){ dstr += ' L ' + pts[j][0].toFixed(1) + ',' + pts[j][1].toFixed(1); }
+    return dstr;
+  };
+
+  // Logarithmic spiral (nautilus-style), returns a 'd' path of concentric arcs
+  window.logSpiral = function(turns, a, b, steps, cx, cy){
+    turns = turns || 4; a = a || 2; b = b || 0.28; steps = steps || 400; cx = cx || 0; cy = cy || 0;
+    var pts = [];
+    var max = Math.PI * 2 * turns;
+    for(var i=0;i<=steps;i++){
+      var t = (i/steps)*max;
+      var rad = a * Math.exp(b*t);
+      pts.push([cx + rad*Math.cos(t), cy + rad*Math.sin(t)]);
+    }
+    var dstr = 'M ' + pts[0][0].toFixed(1) + ',' + pts[0][1].toFixed(1);
+    for(var j=1;j<pts.length;j++){ dstr += ' L ' + pts[j][0].toFixed(1) + ',' + pts[j][1].toFixed(1); }
+    return dstr;
+  };
+
+  // Auto-populate any [data-spiro] svg path elements found on the page
+  document.querySelectorAll('[data-spiro]').forEach(function(el){
+    var cfg = el.getAttribute('data-spiro').split(',').map(Number);
+    var d = window.spiro(cfg[0], cfg[1], cfg[2], cfg[3], 700, cfg[4]||0, cfg[5]||0, cfg[6]||1);
+    el.setAttribute('d', d);
+  });
+  document.querySelectorAll('[data-logspiral]').forEach(function(el){
+    var cfg = el.getAttribute('data-logspiral').split(',').map(Number);
+    var d = window.logSpiral(cfg[0], cfg[1], cfg[2], 500, cfg[3]||0, cfg[4]||0);
+    el.setAttribute('d', d);
+  });
+})();
+
+</script>
+</body>
+</html>
