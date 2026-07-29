@@ -600,7 +600,8 @@ footer{ border-top: 1px solid var(--line); padding-block: var(--s3); }
     <div class="contact-inner" data-reveal="">
       <p class="eyebrow" data-i18n="contact_eyebrow">Contacto</p>
       <h2 data-i18n="contact_title">Saluda, o envía un brief.</h2>
-      <a class="contact-email" href="mailto:molserram@gmail.com">molserram@gmail.com</a>
+      <a class="contact-email" id="contact-email-link" href="#" rel="nofollow"></a>
+      <script>(function(){var l=document.getElementById('contact-email-link');var u='molserram',d='gmail.com';var addr=u+'@'+d;l.textContent=addr;l.href='mailto:'+addr;})();</script>
       <div class="contact-links">
         <a href="https://www.behance.net/tarresnom" target="_blank" rel="noopener">Behance</a>
         <a href="https://www.linkedin.com/in/monserrat-molina-ramirez/?locale=es-ES" target="_blank" rel="noopener" data-linkedin="">LinkedIn</a>

@@ -1,0 +1,22 @@
+# Monserrat Molina Ramirez
+
+> Portfolio of Monserrat Molina Ramirez, a visual designer based in Mexico City specializing in brand identity, website design, and presentation systems for growing teams.
+
+## Pages
+
+- [Home](https://monmolina.com/): Overview of Monserrat's work as a visual designer across brand, web, and presentation systems.
+- [About](https://monmolina.com/about.html): Background, experience, and design approach.
+
+## Case Studies
+
+- [Tomorrow Problem](https://monmolina.com/case-studies/tomorrow-problem.html): Brand campaign design for Prezi's AI feature, spanning video, email, and product templates.
+- [Growth Process](https://monmolina.com/case-studies/growth-process.html): Redesigning an internal growth and workflow process.
+- [Evolution of Templates](https://monmolina.com/case-studies/template-evolution.html): Building a reusable, evolving presentation template system.
+
+## Spanish (Español)
+
+- [Inicio](https://monmolina.com/es/): Versión en español del sitio.
+- [Acerca de](https://monmolina.com/es/about.html)
+- [Tomorrow Problem](https://monmolina.com/es/case-studies/tomorrow-problem.html)
+- [Renovación del proceso de crecimiento](https://monmolina.com/es/case-studies/growth-process.html)
+- [Evolución de plantillas](https://monmolina.com/es/case-studies/template-evolution.html)
