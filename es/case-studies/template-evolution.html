@@ -1,29 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="es"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tomorrow Problem — Monserrat Molina Ramirez</title>
-<meta name="description" content="Every new technology needs a new visual language. A case study on teaching Prezi's AI feature to feel human, not intimidating, across video, email and product templates.">
-<link rel="canonical" href="https://monmolina.com/case-studies/tomorrow-problem.html">
-<link rel="alternate" hreflang="en" href="https://monmolina.com/case-studies/tomorrow-problem.html">
-<link rel="alternate" hreflang="es" href="https://monmolina.com/es/case-studies/tomorrow-problem.html">
-<link rel="alternate" hreflang="x-default" href="https://monmolina.com/case-studies/tomorrow-problem.html">
+<title>Evolución de plantillas — Monserrat Molina Ramirez</title>
+<meta name="description" content="De diseñar para usuarios, a diseñar sistemas, a diseñar para IA — un caso de estudio sobre el mismo reto, con nuevas restricciones cada vez.">
+<link rel="canonical" href="https://monmolina.com/es/case-studies/template-evolution.html">
+<link rel="alternate" hreflang="en" href="https://monmolina.com/case-studies/template-evolution.html">
+<link rel="alternate" hreflang="es" href="https://monmolina.com/es/case-studies/template-evolution.html">
+<link rel="alternate" hreflang="x-default" href="https://monmolina.com/case-studies/template-evolution.html">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Tomorrow Problem — Monserrat Molina Ramirez">
-<meta property="og:description" content="Every new technology needs a new visual language. A case study on teaching Prezi's AI feature to feel human, not intimidating.">
+<meta property="og:title" content="Evolución de plantillas — Monserrat Molina Ramirez">
+<meta property="og:description" content="De diseñar para usuarios, a diseñar sistemas, a diseñar para IA — el mismo reto, con nuevas restricciones cada vez.">
 <meta property="og:image" content="https://monmolina.com/assets/images/Open%20Graph.png">
-<meta property="og:url" content="https://monmolina.com/case-studies/tomorrow-problem.html">
+<meta property="og:url" content="https://monmolina.com/es/case-studies/template-evolution.html">
+<meta property="og:locale" content="es_ES">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Tomorrow Problem — Monserrat Molina Ramirez">
-<meta name="twitter:description" content="Every new technology needs a new visual language. A case study on teaching Prezi's AI feature to feel human, not intimidating.">
+<meta name="twitter:title" content="Evolución de plantillas — Monserrat Molina Ramirez">
+<meta name="twitter:description" content="De diseñar para usuarios, a diseñar sistemas, a diseñar para IA — el mismo reto, con nuevas restricciones cada vez.">
 <meta name="twitter:image" content="https://monmolina.com/assets/images/Open%20Graph.png">
-<link rel="icon" type="image/svg+xml" href="../assets/favicons/favicon_light.svg">
-<link rel="icon" type="image/svg+xml" href="../assets/favicons/favicon_light.svg" media="(prefers-color-scheme: light)">
-<link rel="icon" type="image/svg+xml" href="../assets/favicons/favicon_dark.svg" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicons/favicon_light.svg">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicons/favicon_light.svg" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicons/favicon_dark.svg" media="(prefers-color-scheme: dark)">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@300..700&family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Space+Grotesk:wght@300..700&amp;family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400&amp;display=swap" rel="stylesheet">
 <style>
 /* ============ TOKENS ============ */
 :root{
@@ -282,7 +282,7 @@ footer{ border-top: 1px solid var(--line); padding-block: var(--s3); }
 .cs-hero.on-blue{ background: var(--blue); color: var(--cream); }
 .cs-hero.on-black{ background: var(--black); color: var(--on-dark); }
 .cs-hero.on-sky{ background: var(--sky); color: var(--black); }
-.cs-hero-bg{ position:absolute; top:2%; right:-9%; width:min(40vw, 440px); height:auto; opacity:0.5; z-index:0; pointer-events:none; }
+.cs-hero-bg{ position:absolute; top:8%; right:-13%; width:min(50vw, 600px); height:auto; opacity:0.45; z-index:0; pointer-events:none; }
 .cs-hero-inner{ position:relative; z-index:1; }
 .back-link{ font-family: var(--mono); font-size: var(--fs-cap); letter-spacing:0.06em; text-transform:uppercase; display:inline-flex; align-items:center; gap:8px; opacity:0.8; }
 .back-link:hover{ opacity:1; }
@@ -324,19 +324,16 @@ footer{ border-top: 1px solid var(--line); padding-block: var(--s3); }
 .process-step .step-visual{ grid-column: 4/13; aspect-ratio: 16/9; overflow:hidden; background: var(--paper-shade); position:relative; }
 .process-step .step-visual.carousel{ background:none; }
 .process-step .step-visual svg, .process-step .step-visual img, .process-step .step-visual video{ width:100%; height:100%; object-fit:cover; }
-.process-step .step-visual.auto{ aspect-ratio:auto; overflow:visible; background:none; }
-.process-step .step-visual.auto img{ height:auto; }
-@media (max-width: 1024px){ .process-step{ grid-column:1/9; grid-template-columns: repeat(8,1fr); } .process-step .step-text{ grid-column:1/9; margin-bottom: var(--s3);} .process-step .step-visual{ grid-column:1/9; } }
-@media (max-width: 640px){ .process-step{ grid-column:1/5; grid-template-columns: repeat(4,1fr); } .process-step .step-text{ grid-column:1/5; } .process-step .step-visual{ grid-column:1/5; } }
-
-/* ============ VISUAL LANGUAGE STACK (Step 04) ============ */
-.visual-stack{ display:flex; flex-direction:column; gap:2px; }
-.visual-stack img{ width:100%; height:auto; display:block; }
+.process-step.sub .step-text{ grid-column: 4/8; }
+.process-step.sub .step-visual{ grid-column: 8/13; }
+@media (max-width: 1024px){ .process-step{ grid-column:1/9; grid-template-columns: repeat(8,1fr); } .process-step .step-text, .process-step.sub .step-text{ grid-column:1/9; margin-bottom: var(--s3);} .process-step .step-visual, .process-step.sub .step-visual{ grid-column:1/9; } }
+@media (max-width: 640px){ .process-step{ grid-column:1/5; grid-template-columns: repeat(4,1fr); } .process-step .step-text, .process-step.sub .step-text{ grid-column:1/5; } .process-step .step-visual, .process-step.sub .step-visual{ grid-column:1/5; } }
 
 /* ============ CAROUSEL ============ */
 .carousel-track{ display:flex; gap: var(--s2); height:100%; overflow-x:auto; scroll-snap-type:x mandatory; scroll-behavior:smooth; scrollbar-width:none; -ms-overflow-style:none; }
 .carousel-track::-webkit-scrollbar{ display:none; }
 .process-step .step-visual .carousel-track img{ scroll-snap-align:start; flex:0 0 auto; height:100%; width:auto; max-width:none; object-fit:cover; }
+.process-step .step-visual.carousel.single .carousel-track img{ flex:0 0 100%; width:100%; }
 .carousel-track:focus-visible{ outline:2px solid var(--blue); outline-offset:-2px; }
 .carousel-nav{ position:absolute; top:12px; right:12px; z-index:2; display:flex; gap:6px; }
 .carousel-btn{ width:32px; height:32px; border:1px solid var(--line); background:rgba(250,250,248,0.9); display:flex; align-items:center; justify-content:center; cursor:pointer; font-family:var(--mono); font-size:0.95rem; color:var(--ink); transition:border-color 0.2s ease, color 0.2s ease; }
@@ -357,25 +354,25 @@ footer{ border-top: 1px solid var(--line); padding-block: var(--s3); }
   <div class="nav-inner">
     <a href="../index.html" class="brand">
       <svg class="mark" viewBox="0 0 305 232" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M117.015 30.9328C143.392 30.9328 166.567 56.3497 166.567 87.5243C166.567 118.699 156.979 165.694 138.509 165.694C107.733 165.694 148.581 6 240.89 6C333.199 6 303.392 206.456 230.343 206.456C162.728 206.456 196.298 66.9054 230.343 66.9054C264.387 66.9054 199.627 216.528 123.885 216.528C48.1443 216.528 67.1412 88.4839 93.679 88.4839C129.168 88.4839 73.5357 225.64 28.4596 225.64C-26.7731 225.64 26.379 30.9413 117.015 30.9413V30.9328Z" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M117.015 30.9328C143.392 30.9328 166.567 56.3497 166.567 87.5243C166.567 118.699 156.979 165.694 138.509 165.694C107.733 165.694 148.581 6 240.89 6C333.199 6 303.392 206.456 230.343 206.456C162.728 206.456 196.298 66.9054 230.343 66.9054C264.387 66.9054 199.627 216.528 123.885 216.528C48.1443 216.528 67.1412 88.4839 93.679 88.4839C129.168 88.4839 73.5357 225.64 28.4596 225.64C-26.7731 225.64 26.379 30.9413 117.015 30.9413V30.9328Z" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"></path>
       </svg>
       <span class="wordmark">Monserrat Molina Ramirez</span>
     </a>
     <div class="nav-links" id="navLinks">
-      <a href="../index.html" data-i18n="nav_home">Home</a>
-      <a href="../index.html#work" data-i18n="nav_work">Work</a>
-      <a href="../about.html" data-i18n="nav_about">About</a>
-      <a href="../index.html#contact" data-i18n="nav_contact">Contact</a>
+      <a href="../index.html" data-i18n="nav_home">Inicio</a>
+      <a href="../index.html#work" data-i18n="nav_work">Trabajo</a>
+      <a href="../about.html" data-i18n="nav_about">Acerca de</a>
+      <a href="../index.html#contact" data-i18n="nav_contact">Contacto</a>
     </div>
     <div class="nav-controls">
       <div class="lang-switch" id="langSwitch">
         <button type="button" class="lang-btn" id="langBtn" aria-haspopup="listbox" aria-expanded="false">
-          <span id="langBtnLabel">EN</span>
-          <svg class="lang-chevron" viewBox="0 0 12 8" width="10" height="7" aria-hidden="true"><path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span id="langBtnLabel">ES</span>
+          <svg class="lang-chevron" viewBox="0 0 12 8" width="10" height="7" aria-hidden="true"><path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg>
         </button>
         <ul class="lang-menu" id="langMenu" role="listbox">
-          <li role="option" data-lang="en" data-href="tomorrow-problem.html" aria-selected="true">EN</li>
-          <li role="option" data-lang="es" data-href="../es/case-studies/tomorrow-problem.html" aria-selected="false">ES</li>
+          <li role="option" data-lang="en" data-href="../../case-studies/template-evolution.html" aria-selected="false">EN</li>
+          <li role="option" data-lang="es" data-href="template-evolution.html" aria-selected="true">ES</li>
         </ul>
       </div>
       <button type="button" class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Menu">
@@ -388,19 +385,19 @@ footer{ border-top: 1px solid var(--line); padding-block: var(--s3); }
 <main>
 
 <!-- HERO -->
-<section class="cs-hero on-blue">
-  <svg class="cs-hero-bg" viewBox="0 0 616 591" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <path class="draw-path" d="M450.879 3.75147C366.372 -37.1295 234.169 593.897 339.478 588.975C421.258 585.133 164.659 2.38818 94.2101 68.9238C30.7906 128.82 589.881 433.064 613.11 351.656C642.855 247.391 -34.3286 332.216 3.36544 418.652C39.0766 500.485 546.929 50.2273 450.879 3.75147Z" fill="none" stroke="#F5F0DE" stroke-width="3.7"/>
+<section class="cs-hero on-sky">
+  <svg class="cs-hero-bg" viewBox="0 0 1008 814" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path class="draw-path" d="M369.436 319.261V321.374L368.908 322.958L369.436 325.071V327.184L369.964 329.296L370.492 331.409L371.021 332.993L371.549 335.106L372.605 337.218L373.661 338.803L374.718 340.387L376.302 342.5L377.358 344.084L378.943 345.669L381.055 347.253L382.64 348.309L384.752 349.366L386.337 350.95L388.449 351.478L390.562 352.534L393.203 353.063L395.315 353.591L397.956 354.119L400.068 354.647H402.709L405.35 354.119H407.463L410.103 353.591L412.744 353.063L414.857 352.006L417.497 351.478L419.61 349.894L422.25 348.837L424.363 347.253L426.476 345.669L428.588 343.556L430.173 341.972L432.285 339.859L433.87 337.218L435.454 335.106L437.039 332.465L438.095 329.824L439.151 327.184L439.679 324.543L440.735 321.374V318.205L441.264 315.564V312.396V309.227L440.735 306.058L440.207 302.889L439.151 299.72L438.095 297.079L437.039 293.911L435.454 290.742L433.87 288.101L431.757 285.46L430.173 282.82L427.532 280.179L424.891 278.066L422.25 275.426L419.61 273.313L416.441 271.729L413.272 270.144L410.103 268.56L406.934 267.503L403.237 266.447L399.54 265.391L395.843 264.863H392.146H388.449H384.224L380.527 265.391L376.83 265.919L372.605 266.975L368.908 268.56L365.211 270.144L361.514 271.729L358.345 274.369L354.648 276.482L351.479 279.123L348.31 282.291L345.142 285.46L342.501 288.629L339.86 292.326L337.748 296.023L335.635 299.72L334.051 303.945L332.466 308.17L331.41 312.924L330.354 317.149L329.825 321.902L329.297 326.655V331.409L329.825 336.162L330.354 340.915L331.41 345.669L332.994 350.422L334.579 355.175L336.691 359.928L338.804 364.682L341.445 368.907L344.613 373.132L347.782 377.357L351.479 381.054L355.704 384.751L359.93 387.92L364.155 391.089L368.908 393.73L374.189 396.37L378.943 398.483L384.752 400.595L390.034 402.18L395.843 403.236L401.653 403.764L407.463 404.292H413.272L419.61 403.764L425.419 402.708L431.229 401.124L437.567 399.539L443.376 397.427L449.186 394.786L454.467 391.617L459.749 388.448L465.03 384.223L470.312 379.998L475.065 375.773L479.29 370.491L483.515 365.21L487.74 359.928L490.909 353.591L494.078 347.781L496.719 340.915L498.831 334.578L500.944 327.184L502 320.318L503.056 312.924V305.53V298.136L502.528 290.742L500.944 283.348L499.359 275.954L497.247 268.56L494.078 261.166L490.909 254.3L487.212 246.906L482.987 240.568L477.706 233.702L472.424 227.893L466.615 221.555L460.805 216.274L453.939 210.992L446.545 206.239L439.151 202.014L431.757 198.317L423.307 195.148L414.857 192.507L406.406 190.394L397.428 188.81L388.449 187.754H378.943H369.964L360.458 188.81L351.479 190.394L341.973 192.507L332.994 195.676L324.016 198.845L315.037 203.07L306.059 208.351L298.137 213.633L289.687 219.97L282.293 226.836L274.899 233.702L268.033 241.624L261.695 250.075L255.885 259.053L250.604 268.56L246.379 278.066L242.154 288.629L238.985 299.192L236.344 309.755L234.76 320.846L233.703 331.937L233.175 343.556L233.703 355.175L235.288 366.794L237.4 378.413L240.041 390.033L243.738 401.124L248.491 412.743L253.773 423.834L260.111 434.397L266.976 444.96L274.899 454.466L283.349 463.973L292.327 472.951L302.362 481.401L312.925 489.323L324.016 496.189L335.635 502.527L348.31 508.337L360.986 513.09L374.189 517.315L387.393 519.956L401.653 522.596L415.385 523.653H429.644L444.432 523.125L458.692 521.012L472.952 518.371L487.74 514.674L501.472 509.921L515.732 504.112L529.464 497.246L542.667 489.323L555.343 480.345L568.018 470.838L579.637 459.747L590.728 448.128L601.291 435.981L610.798 422.777L619.248 408.518L627.17 393.73L634.036 378.413L639.845 362.569L644.599 346.197L648.296 329.296L650.936 311.867L651.993 294.439V276.482L650.936 258.525L648.824 240.568L645.127 222.083L640.374 204.654L634.036 186.698L626.642 169.269L617.663 152.368L607.629 135.996L596.538 120.151L584.39 104.835L570.659 90.0473L556.399 76.3156L540.555 63.6401L523.654 52.021L506.225 41.4581L487.74 31.9516L468.199 23.5013L448.658 16.1073L428.06 10.8258L406.406 6.07255L384.752 3.43184L363.098 1.84741H340.917L318.206 3.43184L296.024 6.60069L273.314 11.354L251.132 17.6917L229.478 25.6139L207.824 35.1204L186.699 46.2114L166.101 58.8869L146.56 73.1467L127.547 88.991L109.59 105.892L92.6892 124.377L76.8449 143.918L62.5851 165.044L49.3815 186.698L37.7623 209.936L27.1994 234.23L18.7491 259.053L11.8833 284.932L6.60187 311.339L3.43298 338.803L1.84863 366.266L2.37671 393.73L4.48932 421.721L8.71442 449.713L15.0522 477.704L22.9744 505.168L33.5372 532.631L45.6844 559.567L59.4162 585.445L75.7886 610.796L93.2173 635.619L113.287 658.857L134.412 681.039L157.651 701.637L182.474 721.178L208.881 739.135L236.344 754.98L265.92 769.767L296.024 781.915L327.185 792.478L359.401 800.4L392.674 806.737L426.476 810.435L460.805 812.019L495.134 811.491L529.992 808.322L564.849 802.512L599.707 794.59L634.036 784.027L668.365 770.824L701.638 755.508L733.855 737.551L765.544 717.481L795.648 694.771L824.696 669.948L852.159 642.485L877.51 613.437L901.804 582.277L923.458 549.532L943.528 514.674L960.956 478.233L975.744 440.206L988.42 401.124L998.455 360.457L1005.85 319.261" fill="none" stroke="#0B0B0C" stroke-width="3.7" style=""></path>
   </svg>
   <div class="container cs-hero-inner">
-    <a class="back-link" href="../index.html" data-i18n="back_link">&larr; Back to work</a>
-    <h1>Tomorrow Problem</h1>
-    <p class="cs-sub" data-i18n="hero_sub">Every new technology needs a new visual language. From a perception challenge to a multi-format visual system — teaching an AI feature to feel human, not intimidating.</p>
+    <a class="back-link" href="../index.html" data-i18n="back_link">← Regresar a Trabajo</a>
+    <h1 data-i18n="hero_h1">Evolución de plantillas</h1>
+    <p class="cs-sub" data-i18n="hero_sub">De diseñar para usuarios, a diseñar sistemas, a diseñar para IA — el mismo reto, con nuevas restricciones cada vez.</p>
     <div class="cs-meta-row">
-      <div><span class="m" data-i18n="meta_client">Client</span>Prezi</div>
-      <div><span class="m" data-i18n="meta_role">Role</span><span data-i18n="meta_role_val">Visual designer</span></div>
-      <div><span class="m" data-i18n="meta_formats">Formats</span><span data-i18n="meta_formats_val">Video, email, product templates</span></div>
-      <div><span class="m" data-i18n="meta_year">Year</span>2024</div>
+      <div><span class="m" data-i18n="meta_client">Cliente</span>Prezi</div>
+      <div><span class="m" data-i18n="meta_role">Rol</span><span data-i18n="meta_role_val">Diseñadora visual</span></div>
+      <div><span class="m" data-i18n="meta_phases">Fases</span><span data-i18n="meta_phases_val">Storyblocks, Open Canvas, generación por IA</span></div>
+      <div><span class="m" data-i18n="meta_years">Años</span>2022–2026</div>
     </div>
   </div>
 </section>
@@ -408,9 +405,9 @@ footer{ border-top: 1px solid var(--line); padding-block: var(--s3); }
 <!-- CONTEXT -->
 <section class="cs-section">
   <div class="container grid">
-    <div class="cs-label" data-reveal><p class="n">01</p><h2 data-i18n="context_title">Context</h2></div>
-    <div class="cs-body" data-reveal>
-      <p data-i18n="context_body">Prezi already had an established brand. The launch of its AI features introduced a new challenge: helping people see AI as approachable rather than intimidating. Marketing defined the campaign strategy, and my role was to translate that message into a visual system that could scale across templates, videos, emails, and product experiences.</p>
+    <div class="cs-label" data-reveal=""><p class="n">01</p><h2 data-i18n="context_title">Contexto</h2></div>
+    <div class="cs-body" data-reveal="">
+      <p data-i18n="context_body">Cada nueva evolución del producto cambiaba cómo debían funcionar las plantillas. No fue un solo proyecto — fue un patrón que se repitió tres veces, cada vez con restricciones más estrictas: primero diseñando para un usuario que personaliza todo, luego para un sistema que debe verse bien sin conocer el contenido que un usuario agregará, y finalmente para una IA que debe tomar esas mismas decisiones de diseño por sí sola.</p>
     </div>
   </div>
 </section>
@@ -418,10 +415,10 @@ footer{ border-top: 1px solid var(--line); padding-block: var(--s3); }
 <!-- ROLE + CHALLENGE -->
 <section class="cs-section shade">
   <div class="container grid">
-    <div class="cs-label" data-reveal><p class="n">02</p><h2 data-i18n="challenge_title">The challenge</h2></div>
-    <div class="cs-body" data-reveal>
-      <p data-i18n="challenge_body1">The challenge wasn't designing for AI — it was making a new technology feel approachable. The visual language needed to reduce complexity without losing credibility, working consistently across marketing and product touchpoints while staying true to the existing brand.</p>
-      <p data-i18n="challenge_body2">As the visual designer, I developed and applied the visual system across videos, email campaigns, product templates, and launch assets.</p>
+    <div class="cs-label" data-reveal=""><p class="n">02</p><h2 data-i18n="challenge_title">Rol y reto</h2></div>
+    <div class="cs-body" data-reveal="">
+      <p data-i18n="challenge_body1"><b style="color:var(--ink)">Mi rol</b> — diseñé plantillas a lo largo de las tres evoluciones del producto — Storyblocks, Open Canvas y la capa de generación por IA — llevando lo aprendido en cada fase a la siguiente.</p>
+      <p data-i18n="challenge_body2">Cada etapa introdujo una restricción de diseño distinta. En lugar de rediseñar desde cero, adaptamos el sistema para apoyar cómo el producto generaba presentaciones.</p>
     </div>
   </div>
 </section>
@@ -429,66 +426,89 @@ footer{ border-top: 1px solid var(--line); padding-block: var(--s3); }
 <!-- PROCESS -->
 <section class="cs-section">
   <div class="container grid">
-    <div class="cs-label" data-reveal><p class="n">03</p><h2 data-i18n="process_title">Process</h2></div>
-    <div class="cs-body" data-reveal>
-      <p data-i18n="process_intro">The marketing message — <i>AI as something human, not a barrier</i> — became the filter for every visual decision that followed.</p>
+    <div class="cs-label" data-reveal=""><p class="n">03</p><h2 data-i18n="process_title">Cuatro fases</h2></div>
+    <div class="cs-body" data-reveal="">
+      <p data-i18n="process_intro">Cada fase repitió el mismo reto central con restricciones más estrictas — diseñar sin saber qué contenido colocará el usuario.</p>
     </div>
 
-    <div class="process-step" data-reveal>
+    <div class="process-step" data-reveal="">
       <div class="step-text">
-        <span class="mono-cap" data-i18n="step1_label">Step 01 — References</span>
-        <h3 data-i18n="step1_title">Human, not machine</h3>
-        <p data-i18n="step1_body">We prioritized real people and real presentations over abstract AI iconography — the most direct way to say "this is for you."</p>
-      </div>
-      <div class="step-visual carousel">
-        <div class="carousel-track" tabindex="0" role="group" aria-label="Reference photos — teachers using Prezi AI">
-          <img src="../assets/images/webp/teacher 1.webp" alt="Teacher reference photo 1">
-          <img src="../assets/images/webp/teacher 2.webp" alt="Teacher reference photo 2">
-          <img src="../assets/images/webp/teacher 3.webp" alt="Teacher reference photo 3">
-        </div>
-        <div class="carousel-nav" data-carousel>
-          <button type="button" class="carousel-btn prev" aria-label="Previous image">&larr;</button>
-          <button type="button" class="carousel-btn next" aria-label="Next image">&rarr;</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="process-step" data-reveal>
-      <div class="step-text">
-        <span class="mono-cap" data-i18n="step2_label">Step 02 — Video</span>
-        <h3 data-i18n="step2_title">A fast, direct contrast</h3>
-        <p data-i18n="step2_body">A quick before/after — from the friction of the learning curve to the fluency of using AI — condensed into a few seconds.</p>
+        <span class="mono-cap" data-i18n="phase1_label">Fase 01 — Storyblocks</span>
+        <h3 data-i18n="phase1_title">De la personalización a la repetición</h3>
+        <p data-i18n="phase1_body">Diseñando presentaciones altamente personalizables, empecé a notar qué estructuras se repetían en proyectos no relacionados.</p>
       </div>
       <div class="step-visual">
-        <video src="../assets/videos/video_tomorrow.mp4" autoplay muted loop playsinline aria-hidden="true"></video>
+        <video src="../../assets/videos/storyblocks_final.mp4" autoplay="" muted="" loop="" playsinline="" aria-hidden="true"></video>
       </div>
     </div>
 
-    <div class="process-step" data-reveal>
+    <div class="process-step" data-reveal="">
       <div class="step-text">
-        <span class="mono-cap" data-i18n="step3_label">Step 03 — Email &amp; templates</span>
-        <h3 data-i18n="step3_title">Simple, everywhere</h3>
-        <p data-i18n="step3_body">The idea reduced to its simplest form: as fast as making a cup of tea. Templates carried that simplicity alone, consistent across segments. Every asset was built from the same three elements — a base template, the user's own content, and a short AI prompt.</p>
+        <span class="mono-cap" data-i18n="phase2_label">Fase 02 — Open Canvas</span>
+        <h3 data-i18n="phase2_title">De la plantilla a la organización</h3>
+        <p data-i18n="phase2_body">El reto ya no era solo ofrecer estructura — era agrupar contenido sin que se sintiera saturado.</p>
       </div>
-      <div class="step-visual auto">
-        <picture>
-          <source media="(max-width: 640px)" srcset="../assets/images/webp/composition_mobile.webp">
-          <img src="../assets/images/webp/composition.webp" alt="Composition of email, template and product assets carrying the same simple message">
-        </picture>
+      <div class="step-visual carousel">
+        <div class="carousel-track" tabindex="0" role="group" aria-label="Open Canvas content groupings — open book, folders, conference, infographic">
+          <img src="../../assets/images/webp/example 1.webp" alt="Open Canvas example — open book layout">
+          <img src="../../assets/images/webp/example 2.webp" alt="Open Canvas example — folders layout">
+          <img src="../../assets/images/webp/example 3.webp" alt="Open Canvas example — conference layout">
+          <img src="../../assets/images/webp/example 4.webp" alt="Open Canvas example — infographic layout">
+        </div>
+        <div class="carousel-nav" data-carousel="">
+          <button type="button" class="carousel-btn prev" aria-label="Previous image">←</button>
+          <button type="button" class="carousel-btn next" aria-label="Next image">→</button>
+        </div>
       </div>
     </div>
 
-    <div class="process-step" data-reveal>
+    <div class="process-step sub" data-reveal="">
       <div class="step-text">
-        <span class="mono-cap" data-i18n="step4_label">Step 04 — Website</span>
-        <h3 data-i18n="step4_title">Visual language</h3>
-        <p data-i18n="step4_body">These sections explained the new workflow in a simple, step-by-step way. Breaking the process into smaller steps made it easier for users to understand how the product worked and discover its new features.</p>
+        <h3 data-i18n="sub1_title">Mantener el contenido junto</h3>
+        <p data-i18n="sub1_body">Mantener los elementos de open canvas cerca unos de otros para evitar que la animación salte de un lado a otro.</p>
       </div>
-      <div class="step-visual auto">
-        <div class="visual-stack">
-          <img src="../assets/images/webp/visual language 1.webp" alt="Visual language — step one">
-          <img src="../assets/images/webp/visual language 2.webp" alt="Visual language — step two">
-          <img src="../assets/images/webp/visual language 3.webp" alt="Visual language — step three">
+      <div class="step-visual">
+        <video src="../../assets/videos/video_organic.mp4" autoplay="" muted="" loop="" playsinline="" aria-hidden="true"></video>
+      </div>
+    </div>
+
+    <div class="process-step sub" data-reveal="">
+      <div class="step-text">
+        <h3 data-i18n="sub2_title">Construido una vez, reutilizado en todas partes</h3>
+        <p data-i18n="sub2_body">Creando marcos reutilizables para agrupar contenido de forma escalable y reutilizable.</p>
+      </div>
+      <div class="step-visual">
+        <video src="../../assets/videos/video_posits.mp4" autoplay="" muted="" loop="" playsinline="" aria-hidden="true"></video>
+      </div>
+    </div>
+
+    <div class="process-step" data-reveal="">
+      <div class="step-text">
+        <span class="mono-cap" data-i18n="phase3_label">Fase 03 — Generación por IA</span>
+        <h3 data-i18n="phase3_title">De organizar a enseñar</h3>
+        <p data-i18n="phase3_body">A medida que el producto evolucionaba, el objetivo ya no era construir plantillas, sino generar activos y layouts para que la IA pudiera analizar el contenido y elegir los visuales correctos por sí sola.</p>
+      </div>
+      <div class="step-visual">
+        <video src="../../assets/videos/Prezi The AI presentation maker for engaging presentations (2).mp4" autoplay="" muted="" loop="" playsinline="" aria-hidden="true"></video>
+      </div>
+    </div>
+
+    <div class="process-step" data-reveal="">
+      <div class="step-text">
+        <span class="mono-cap" data-i18n="phase4_label">Fase 04 — Prompting con Claude</span>
+        <h3 data-i18n="phase4_title">Del layout a la instrucción</h3>
+        <p data-i18n="phase4_body">El trabajo de diseño se concentró en definir un estilo visual limpio y original — no el layout en sí. En lugar de construir la plantilla, construimos el estilo del prompt.</p>
+      </div>
+      <div class="step-visual carousel single">
+        <div class="carousel-track" tabindex="0" role="group" aria-label="Claude-prompted visual styles — templates, canvas, bento, terracota">
+          <img src="../../assets/images/webp/templates.webp" alt="Prompted style — pick a designer and style picker">
+          <img src="../../assets/images/webp/canvas.webp" alt="Prompted style — Canvas theme">
+          <img src="../../assets/images/webp/bento.webp" alt="Prompted style — Bento Grid theme">
+          <img src="../../assets/images/webp/terracota.webp" alt="Prompted style — Terracotta File theme">
+        </div>
+        <div class="carousel-nav" data-carousel="">
+          <button type="button" class="carousel-btn prev" aria-label="Previous image">←</button>
+          <button type="button" class="carousel-btn next" aria-label="Next image">→</button>
         </div>
       </div>
     </div>
@@ -498,9 +518,9 @@ footer{ border-top: 1px solid var(--line); padding-block: var(--s3); }
 <!-- RESULT -->
 <section class="cs-section shade">
   <div class="container grid">
-    <div class="cs-label" data-reveal><p class="n">04</p><h2 data-i18n="result_title">Result</h2></div>
-    <div class="cs-body" data-reveal>
-      <p data-i18n="result_body">Beyond the campaign itself, the system held up well enough that the resulting templates became some of the best examples produced by real users.</p>
+    <div class="cs-label" data-reveal=""><p class="n">04</p><h2 data-i18n="result_title">Resultado</h2></div>
+    <div class="cs-body" data-reveal="">
+      <p data-i18n="result_body">Los videos de producto a lo largo de las tres fases muestran claramente la progresión — de Storyblocks, a Open Canvas, a la generación asistida por IA — cada fase heredando la lógica organizativa de la anterior, traducida para un tipo distinto de "usuario".</p>
     </div>
   </div>
 </section>
@@ -508,10 +528,10 @@ footer{ border-top: 1px solid var(--line); padding-block: var(--s3); }
 <!-- REFLECTION -->
 <section class="cs-section">
   <div class="container grid">
-    <div class="cs-label" data-reveal><p class="n">05</p><h2 data-i18n="reflection_title">Reflection</h2></div>
-    <div class="cs-body" data-reveal>
-      <p data-i18n="reflection_body">This campaign marked the shift of the brand's visual language toward AI, inside and outside the product. It was the first time I had to design not just to communicate a feature, but to change how a technology is perceived — finding the point where simple didn't feel empty, and human didn't feel decorative.</p>
-      <blockquote data-i18n="reflection_quote">"Simple didn't feel empty, and human didn't feel decorative."</blockquote>
+    <div class="cs-label" data-reveal=""><p class="n">05</p><h2 data-i18n="reflection_title">Reflexión</h2></div>
+    <div class="cs-body" data-reveal="">
+      <p data-i18n="reflection_body">Este proceso me enseñó a adaptarme a la tecnología según las necesidades reales de los usuarios. Una plantilla no limita — reduce el ruido mental para que alguien pueda decidir mejor. Prefiero que alguien construya su propia presentación y lleve su propia voz a través de ella, a que el sistema lo haga todo por ellos: eso es lo que genera confianza al presentar, y orgullo por lo que hicieron.</p>
+      <blockquote data-i18n="reflection_quote">"Una plantilla no limita. Reduce el ruido para que alguien pueda decidir mejor."</blockquote>
     </div>
   </div>
 </section>
@@ -520,17 +540,17 @@ footer{ border-top: 1px solid var(--line); padding-block: var(--s3); }
 
 <section class="cs-next">
   <div class="container">
-    <a href="growth-process.html" data-reveal>
-      <p class="eyebrow" data-i18n="next_label">Next case study</p>
-      <h2 data-i18n="next_title">Designing a Better Website Workflow &rarr;</h2>
+    <a href="tomorrow-problem.html" data-reveal="">
+      <p class="eyebrow" data-i18n="next_label">Siguiente caso de estudio</p>
+      <h2 data-i18n="next_title">Tomorrow Problem →</h2>
     </a>
   </div>
 </section>
 
 <footer>
   <div class="container footer-inner">
-    <span data-i18n="footer1">© 2026 Monserrat Molina Ramirez — Visual systems &amp; design strategy</span>
-    <span data-i18n="footer2">One continuous stroke. Infinite possibilities.</span>
+    <span data-i18n="footer1">© 2026 Monserrat Molina Ramirez — Sistemas visuales y estrategia de diseño</span>
+    <span data-i18n="footer2">Un solo trazo continuo. Infinitas posibilidades.</span>
   </div>
 </footer>
 
@@ -540,63 +560,71 @@ footer{ border-top: 1px solid var(--line); padding-block: var(--s3); }
   var i18n = {
     en: {
       nav_home: "Home", nav_work: "Work", nav_about: "About", nav_contact: "Contact",
+      hero_h1: "Evolution of Templates",
       back_link: "&larr; Back to work",
-      hero_sub: "Every new technology needs a new visual language. From a perception challenge to a multi-format visual system — teaching an AI feature to feel human, not intimidating.",
+      hero_sub: "From designing for users, to designing systems, to designing for AI — the same challenge, with new constraints each time.",
       meta_client: "Client", meta_role: "Role", meta_role_val: "Visual designer",
-      meta_formats: "Formats", meta_formats_val: "Video, email, product templates", meta_year: "Year",
+      meta_phases: "Phases", meta_phases_val: "Storyblocks, Open Canvas, AI generation", meta_years: "Years",
       context_title: "Context",
-      context_body: "Prezi already had an established brand. The launch of its AI features introduced a new challenge: helping people see AI as approachable rather than intimidating. Marketing defined the campaign strategy, and my role was to translate that message into a visual system that could scale across templates, videos, emails, and product experiences.",
-      challenge_title: "The challenge",
-      challenge_body1: "The challenge wasn't designing for AI — it was making a new technology feel approachable. The visual language needed to reduce complexity without losing credibility, working consistently across marketing and product touchpoints while staying true to the existing brand.",
-      challenge_body2: "As the visual designer, I developed and applied the visual system across videos, email campaigns, product templates, and launch assets.",
-      process_title: "Process",
-      process_intro: "The marketing message — <i>AI as something human, not a barrier</i> — became the filter for every visual decision that followed.",
-      step1_label: "Step 01 — References", step1_title: "Human, not machine",
-      step1_body: "We prioritized real people and real presentations over abstract AI iconography — the most direct way to say \"this is for you.\"",
-      step2_label: "Step 02 — Video", step2_title: "A fast, direct contrast",
-      step2_body: "A quick before/after — from the friction of the learning curve to the fluency of using AI — condensed into a few seconds.",
-      step3_label: "Step 03 — Email &amp; templates", step3_title: "Simple, everywhere",
-      step3_body: "The idea reduced to its simplest form: as fast as making a cup of tea. Templates carried that simplicity alone, consistent across segments. Every asset was built from the same three elements — a base template, the user's own content, and a short AI prompt.",
-      step4_label: "Step 04 — Website", step4_title: "Visual language",
-      step4_body: "These sections explained the new workflow in a simple, step-by-step way. Breaking the process into smaller steps made it easier for users to understand how the product worked and discover its new features.",
+      context_body: "Each new product evolution changed how templates needed to work. It wasn't a single project — it was a pattern that repeated three times, each time with tighter constraints: first designing for a user who customizes everything, then for a system that has to look good without knowing what content a user will add, and finally for an AI that has to make those same design decisions on its own.",
+      challenge_title: "Role &amp; challenge",
+      challenge_body1: "<b style=\"color:var(--ink)\">My role</b> — I designed templates across all three evolutions of the product — Storyblocks, Open Canvas, and the AI generation layer — carrying what I learned in each phase into the next.",
+      challenge_body2: "Each stage introduced a different design constraint. Rather than redesigning from scratch, we adapted the system to support how the product generated presentations.",
+      process_title: "Four phases",
+      process_intro: "Every phase repeated the same core challenge with tighter constraints — designing without knowing what content the user will place.",
+      phase1_label: "Phase 01 — Storyblocks", phase1_title: "From customization to repetition",
+      phase1_body: "Designing highly customizable presentations, I started noticing which structures repeated across unrelated projects.",
+      phase2_label: "Phase 02 — Open Canvas", phase2_title: "From template to organization",
+      phase2_body: "The challenge was no longer just offering structure — it was grouping content without it feeling crowded.",
+      sub1_title: "Keeping content together",
+      sub1_body: "Keep open canvas elements next to each other to avoid the animation jumping to one side to the other.",
+      sub2_title: "Built once, reused everywhere",
+      sub2_body: "Creating reusable frames to group content in a scalable, reusable way.",
+      phase3_label: "Phase 03 — AI generation", phase3_title: "From organizing to teaching",
+      phase3_body: "As the product evolved, the goal was no longer to build templates, but to generate assets and layouts so the AI could analyze the content and choose the right visuals on its own.",
+      phase4_label: "Phase 04 — Prompting with Claude", phase4_title: "From layout to instruction",
+      phase4_body: "The design work concentrated on defining a clean, original visual style — not the layout itself. Rather than building the template, we built the prompt style.",
       result_title: "Result",
-      result_body: "Beyond the campaign itself, the system held up well enough that the resulting templates became some of the best examples produced by real users.",
+      result_body: "Product videos across the three phases show the progression clearly — from Storyblocks, to Open Canvas, to AI-assisted generation — each phase inheriting the organizing logic of the one before it, translated for a different kind of \"user.\"",
       reflection_title: "Reflection",
-      reflection_body: "This campaign marked the shift of the brand's visual language toward AI, inside and outside the product. It was the first time I had to design not just to communicate a feature, but to change how a technology is perceived — finding the point where simple didn't feel empty, and human didn't feel decorative.",
-      reflection_quote: "\"Simple didn't feel empty, and human didn't feel decorative.\"",
-      next_label: "Next case study",
-      next_title: "Designing a Better Website Workflow &rarr;",
+      reflection_body: "This process taught me to adapt to technology based on real user needs. A template doesn't limit — it reduces mental noise so someone can decide better. I'd rather someone build their own presentation and carry their own voice through it, than have the system do everything for them: that's what builds confidence when they present it, and pride in what they made.",
+      reflection_quote: "\"A template doesn't limit. It reduces the noise so someone can decide better.\"",
+      next_label: "Next case study", next_title: "Tomorrow Problem &rarr;",
       footer1: "© 2026 Monserrat Molina Ramirez — Visual systems &amp; design strategy",
       footer2: "One continuous stroke. Infinite possibilities."
     },
     es: {
       nav_home: "Inicio", nav_work: "Trabajo", nav_about: "Acerca de", nav_contact: "Contacto",
+      hero_h1: "Evolución de plantillas",
       back_link: "&larr; Regresar a Trabajo",
-      hero_sub: "Cada nueva tecnología necesita un nuevo lenguaje visual. De un reto de percepción a un sistema visual multiformato — enseñando a una función de IA a sentirse humana, no intimidante.",
+      hero_sub: "De diseñar para usuarios, a diseñar sistemas, a diseñar para IA — el mismo reto, con nuevas restricciones cada vez.",
       meta_client: "Cliente", meta_role: "Rol", meta_role_val: "Diseñadora visual",
-      meta_formats: "Formatos", meta_formats_val: "Video, correo electrónico, plantillas de producto", meta_year: "Año",
+      meta_phases: "Fases", meta_phases_val: "Storyblocks, Open Canvas, generación por IA", meta_years: "Años",
       context_title: "Contexto",
-      context_body: "Prezi ya tenía una marca establecida. El lanzamiento de sus funciones de IA presentó un nuevo reto: ayudar a las personas a ver la IA como algo accesible en lugar de intimidante. Marketing definió la estrategia de campaña, y mi papel fue traducir ese mensaje en un sistema visual que pudiera escalar entre plantillas, videos, correos y experiencias de producto.",
-      challenge_title: "El reto",
-      challenge_body1: "El reto no era diseñar para la IA — era hacer que una nueva tecnología se sintiera accesible. El lenguaje visual necesitaba reducir la complejidad sin perder credibilidad, funcionando de forma consistente en puntos de contacto de marketing y producto, manteniéndose fiel a la marca existente.",
-      challenge_body2: "Como diseñadora visual, desarrollé y apliqué el sistema visual en videos, campañas de correo, plantillas de producto y activos de lanzamiento.",
-      process_title: "Proceso",
-      process_intro: "El mensaje de marketing — <i>la IA como algo humano, no una barrera</i> — se convirtió en el filtro para cada decisión visual que siguió.",
-      step1_label: "Paso 01 — Referencias", step1_title: "Humano, no máquina",
-      step1_body: "Priorizamos personas y presentaciones reales por encima de la iconografía abstracta de IA — la forma más directa de decir \"esto es para ti\".",
-      step2_label: "Paso 02 — Video", step2_title: "Un contraste rápido y directo",
-      step2_body: "Un antes/después rápido — de la fricción de la curva de aprendizaje a la fluidez de usar IA — condensado en unos segundos.",
-      step3_label: "Paso 03 — Correo y plantillas", step3_title: "Simple, en todas partes",
-      step3_body: "La idea reducida a su forma más simple: tan rápido como preparar una taza de té. Las plantillas llevaban esa simplicidad por sí solas, de forma consistente en todos los segmentos. Cada activo se construyó a partir de los mismos tres elementos — una plantilla base, el contenido propio del usuario y un prompt corto de IA.",
-      step4_label: "Paso 04 — Sitio web", step4_title: "Lenguaje visual",
-      step4_body: "Estas secciones explicaban el nuevo flujo de trabajo de forma simple, paso a paso. Dividir el proceso en pasos más pequeños facilitó que los usuarios entendieran cómo funcionaba el producto y descubrieran sus nuevas funciones.",
+      context_body: "Cada nueva evolución del producto cambiaba cómo debían funcionar las plantillas. No fue un solo proyecto — fue un patrón que se repitió tres veces, cada vez con restricciones más estrictas: primero diseñando para un usuario que personaliza todo, luego para un sistema que debe verse bien sin conocer el contenido que un usuario agregará, y finalmente para una IA que debe tomar esas mismas decisiones de diseño por sí sola.",
+      challenge_title: "Rol y reto",
+      challenge_body1: "<b style=\"color:var(--ink)\">Mi rol</b> — diseñé plantillas a lo largo de las tres evoluciones del producto — Storyblocks, Open Canvas y la capa de generación por IA — llevando lo aprendido en cada fase a la siguiente.",
+      challenge_body2: "Cada etapa introdujo una restricción de diseño distinta. En lugar de rediseñar desde cero, adaptamos el sistema para apoyar cómo el producto generaba presentaciones.",
+      process_title: "Cuatro fases",
+      process_intro: "Cada fase repitió el mismo reto central con restricciones más estrictas — diseñar sin saber qué contenido colocará el usuario.",
+      phase1_label: "Fase 01 — Storyblocks", phase1_title: "De la personalización a la repetición",
+      phase1_body: "Diseñando presentaciones altamente personalizables, empecé a notar qué estructuras se repetían en proyectos no relacionados.",
+      phase2_label: "Fase 02 — Open Canvas", phase2_title: "De la plantilla a la organización",
+      phase2_body: "El reto ya no era solo ofrecer estructura — era agrupar contenido sin que se sintiera saturado.",
+      sub1_title: "Mantener el contenido junto",
+      sub1_body: "Mantener los elementos de open canvas cerca unos de otros para evitar que la animación salte de un lado a otro.",
+      sub2_title: "Construido una vez, reutilizado en todas partes",
+      sub2_body: "Creando marcos reutilizables para agrupar contenido de forma escalable y reutilizable.",
+      phase3_label: "Fase 03 — Generación por IA", phase3_title: "De organizar a enseñar",
+      phase3_body: "A medida que el producto evolucionaba, el objetivo ya no era construir plantillas, sino generar activos y layouts para que la IA pudiera analizar el contenido y elegir los visuales correctos por sí sola.",
+      phase4_label: "Fase 04 — Prompting con Claude", phase4_title: "Del layout a la instrucción",
+      phase4_body: "El trabajo de diseño se concentró en definir un estilo visual limpio y original — no el layout en sí. En lugar de construir la plantilla, construimos el estilo del prompt.",
       result_title: "Resultado",
-      result_body: "Más allá de la campaña en sí, el sistema se sostuvo lo suficientemente bien como para que las plantillas resultantes se convirtieran en algunos de los mejores ejemplos producidos por usuarios reales.",
+      result_body: "Los videos de producto a lo largo de las tres fases muestran claramente la progresión — de Storyblocks, a Open Canvas, a la generación asistida por IA — cada fase heredando la lógica organizativa de la anterior, traducida para un tipo distinto de \"usuario\".",
       reflection_title: "Reflexión",
-      reflection_body: "Esta campaña marcó el giro del lenguaje visual de la marca hacia la IA, dentro y fuera del producto. Fue la primera vez que tuve que diseñar no solo para comunicar una función, sino para cambiar cómo se percibe una tecnología — encontrando el punto donde lo simple no se sintiera vacío, y lo humano no se sintiera decorativo.",
-      reflection_quote: "\"Lo simple no se sintió vacío, y lo humano no se sintió decorativo.\"",
-      next_label: "Siguiente caso de estudio",
-      next_title: "Diseñando un mejor flujo de trabajo para el sitio &rarr;",
+      reflection_body: "Este proceso me enseñó a adaptarme a la tecnología según las necesidades reales de los usuarios. Una plantilla no limita — reduce el ruido mental para que alguien pueda decidir mejor. Prefiero que alguien construya su propia presentación y lleve su propia voz a través de ella, a que el sistema lo haga todo por ellos: eso es lo que genera confianza al presentar, y orgullo por lo que hicieron.",
+      reflection_quote: "\"Una plantilla no limita. Reduce el ruido para que alguien pueda decidir mejor.\"",
+      next_label: "Siguiente caso de estudio", next_title: "Tomorrow Problem &rarr;",
       footer1: "© 2026 Monserrat Molina Ramirez — Sistemas visuales y estrategia de diseño",
       footer2: "Un solo trazo continuo. Infinitas posibilidades."
     }
@@ -678,7 +706,7 @@ footer{ border-top: 1px solid var(--line); padding-block: var(--s3); }
       if(e.key === 'Escape') langSwitch.classList.remove('open');
     });
   }
-  var savedLang = 'en';
+  var savedLang = 'es';
   setLang(savedLang);
 
   // ---------- Carousels ----------
@@ -785,5 +813,6 @@ footer{ border-top: 1px solid var(--line); padding-block: var(--s3); }
 })();
 
 </script>
-</body>
-</html>
+
+
+</body></html>

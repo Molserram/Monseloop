@@ -6,6 +6,9 @@
 <title>Evolution of Templates — Monserrat Molina Ramirez</title>
 <meta name="description" content="From designing for users, to designing systems, to designing for AI — a case study on the same challenge with new constraints each time.">
 <link rel="canonical" href="https://monmolina.com/case-studies/template-evolution.html">
+<link rel="alternate" hreflang="en" href="https://monmolina.com/case-studies/template-evolution.html">
+<link rel="alternate" hreflang="es" href="https://monmolina.com/es/case-studies/template-evolution.html">
+<link rel="alternate" hreflang="x-default" href="https://monmolina.com/case-studies/template-evolution.html">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Evolution of Templates — Monserrat Molina Ramirez">
 <meta property="og:description" content="From designing for users, to designing systems, to designing for AI — the same challenge, with new constraints each time.">
@@ -368,8 +371,8 @@ footer{ border-top: 1px solid var(--line); padding-block: var(--s3); }
           <svg class="lang-chevron" viewBox="0 0 12 8" width="10" height="7" aria-hidden="true"><path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
         <ul class="lang-menu" id="langMenu" role="listbox">
-          <li role="option" data-lang="en" aria-selected="true">EN</li>
-          <li role="option" data-lang="es" aria-selected="false">ES</li>
+          <li role="option" data-lang="en" data-href="template-evolution.html" aria-selected="true">EN</li>
+          <li role="option" data-lang="es" data-href="../es/case-studies/template-evolution.html" aria-selected="false">ES</li>
         </ul>
       </div>
       <button type="button" class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Menu">
@@ -687,7 +690,11 @@ footer{ border-top: 1px solid var(--line); padding-block: var(--s3); }
     });
     langMenu.querySelectorAll('li').forEach(function(li){
       li.addEventListener('click', function(){
-        setLang(li.getAttribute('data-lang'));
+        var href = li.getAttribute('data-href');
+        if(href && li.getAttribute('data-lang') !== document.documentElement.getAttribute('lang')){
+          window.location.href = href;
+          return;
+        }
         langSwitch.classList.remove('open');
         langBtn.setAttribute('aria-expanded', 'false');
       });
@@ -699,7 +706,7 @@ footer{ border-top: 1px solid var(--line); padding-block: var(--s3); }
       if(e.key === 'Escape') langSwitch.classList.remove('open');
     });
   }
-  var savedLang = (function(){ try{ return localStorage.getItem('lang'); }catch(e){ return null; } })() || 'en';
+  var savedLang = 'en';
   setLang(savedLang);
 
   // ---------- Carousels ----------

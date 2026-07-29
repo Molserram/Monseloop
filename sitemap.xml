@@ -1,23 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://monmolina.com/index.html</loc>
     <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://monmolina.com/index.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://monmolina.com/es/index.html"/>
+  </url>
+  <url>
+    <loc>https://monmolina.com/es/index.html</loc>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://monmolina.com/index.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://monmolina.com/es/index.html"/>
   </url>
   <url>
     <loc>https://monmolina.com/about.html</loc>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://monmolina.com/about.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://monmolina.com/es/about.html"/>
+  </url>
+  <url>
+    <loc>https://monmolina.com/es/about.html</loc>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://monmolina.com/about.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://monmolina.com/es/about.html"/>
   </url>
   <url>
     <loc>https://monmolina.com/case-studies/tomorrow-problem.html</loc>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://monmolina.com/case-studies/tomorrow-problem.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://monmolina.com/es/case-studies/tomorrow-problem.html"/>
+  </url>
+  <url>
+    <loc>https://monmolina.com/es/case-studies/tomorrow-problem.html</loc>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://monmolina.com/case-studies/tomorrow-problem.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://monmolina.com/es/case-studies/tomorrow-problem.html"/>
   </url>
   <url>
     <loc>https://monmolina.com/case-studies/growth-process.html</loc>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://monmolina.com/case-studies/growth-process.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://monmolina.com/es/case-studies/growth-process.html"/>
+  </url>
+  <url>
+    <loc>https://monmolina.com/es/case-studies/growth-process.html</loc>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://monmolina.com/case-studies/growth-process.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://monmolina.com/es/case-studies/growth-process.html"/>
   </url>
   <url>
     <loc>https://monmolina.com/case-studies/template-evolution.html</loc>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://monmolina.com/case-studies/template-evolution.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://monmolina.com/es/case-studies/template-evolution.html"/>
+  </url>
+  <url>
+    <loc>https://monmolina.com/es/case-studies/template-evolution.html</loc>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://monmolina.com/case-studies/template-evolution.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://monmolina.com/es/case-studies/template-evolution.html"/>
   </url>
 </urlset>
