@@ -2,16 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://monmolina.com/index.html</loc>
+    <loc>https://monmolina.com/</loc>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://monmolina.com/index.html"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://monmolina.com/es/index.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://monmolina.com/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://monmolina.com/es/"/>
   </url>
   <url>
-    <loc>https://monmolina.com/es/index.html</loc>
+    <loc>https://monmolina.com/es/</loc>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://monmolina.com/index.html"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://monmolina.com/es/index.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://monmolina.com/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://monmolina.com/es/"/>
   </url>
   <url>
     <loc>https://monmolina.com/about.html</loc>
