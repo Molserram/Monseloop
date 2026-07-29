@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="es"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tomorrow Problem — Monserrat Molina Ramirez</title>
+<meta name="description" content="Cada nueva tecnología necesita un nuevo lenguaje visual. Un caso de estudio sobre enseñar a la función de IA de Prezi a sentirse humana, no intimidante, en video, correo y plantillas de producto.">
+<link rel="canonical" href="https://monmolina.com/es/case-studies/tomorrow-problem.html">
+<link rel="alternate" hreflang="en" href="https://monmolina.com/case-studies/tomorrow-problem.html">
+<link rel="alternate" hreflang="es" href="https://monmolina.com/es/case-studies/tomorrow-problem.html">
+<link rel="alternate" hreflang="x-default" href="https://monmolina.com/case-studies/tomorrow-problem.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tomorrow Problem — Monserrat Molina Ramirez">
+<meta property="og:description" content="Cada nueva tecnología necesita un nuevo lenguaje visual. Un caso de estudio sobre enseñar a la función de IA de Prezi a sentirse humana, no intimidante.">
+<meta property="og:image" content="https://monmolina.com/assets/images/Open%20Graph.png">
+<meta property="og:url" content="https://monmolina.com/es/case-studies/tomorrow-problem.html">
+<meta property="og:locale" content="es_ES">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Tomorrow Problem — Monserrat Molina Ramirez">
+<meta name="twitter:description" content="Cada nueva tecnología necesita un nuevo lenguaje visual. Un caso de estudio sobre enseñar a la función de IA de Prezi a sentirse humana, no intimidante.">
+<meta name="twitter:image" content="https://monmolina.com/assets/images/Open%20Graph.png">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicons/favicon_light.svg">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicons/favicon_light.svg" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/svg+xml" href="../../assets/favicons/favicon_dark.svg" media="(prefers-color-scheme: dark)">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Space+Grotesk:wght@300..700&amp;family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400&amp;display=swap" rel="stylesheet">
+<style>
+/* ============ TOKENS ============ */
+:root{
+  --paper: #FAFAF8;
+  --paper-shade: #F1EEE6;
+  --ink: #151417;
+  --ink-soft: #57544D;
+  --blue: #2C46D0;
+  --blue-deep: #1A2FBF;
+  --black: #0B0B0C;
+  --sky: #90D5FB;
+  --lime: #C3EE71;
+  --coral: #ED7463;
+  --mustard: #ECC651;
+  --sage: #779861;
+  --purple: #A450EE;
+  --cream: #F5F0DE;
+  --line: rgba(21,20,23,0.14);
+  --line-soft: rgba(21,20,23,0.08);
+  --on-dark: rgba(250,250,248,0.86);
+  --on-dark-soft: rgba(250,250,248,0.55);
+
+  --s1: 8px; --s2: 16px; --s3: 24px; --s4: 40px; --s5: 64px; --s6: 96px; --s7: 160px;
+
+  --margin: clamp(24px, 6vw, 120px);
+  --gutter: 24px;
+  --maxw: 1280px;
+
+  --serif: 'Instrument Serif', Georgia, serif;
+  --sans: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  --mono: 'IBM Plex Mono', ui-monospace, monospace;
+
+  --fs-hero: clamp(2.9rem, 6.6vw, 6.4rem);
+  --fs-h1: clamp(2.2rem, 4.4vw, 3.6rem);
+  --fs-h2: clamp(1.5rem, 2.6vw, 2.15rem);
+  --fs-lead: clamp(1.15rem, 1.6vw, 1.5rem);
+  --fs-body: 1.0625rem;
+  --fs-small: 0.9rem;
+  --fs-cap: 0.75rem;
+
+  --ease: cubic-bezier(.22,.61,.16,1);
+}
+
+@media (prefers-reduced-motion: reduce){
+  *{ animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
+}
+
+*{ box-sizing: border-box; margin:0; padding:0; }
+html{ scroll-behavior: smooth; }
+body{
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: var(--fs-body);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+img,svg{ display:block; max-width:100%; }
+a{ color: inherit; text-decoration: none; }
+p{ text-wrap: pretty; }
+.container{ max-width: var(--maxw); margin: 0 auto; padding-inline: var(--margin); }
+.grid{ display:grid; grid-template-columns: repeat(12, 1fr); column-gap: var(--gutter); }
+
+@media (max-width: 1024px){ .grid{ grid-template-columns: repeat(8, 1fr); } }
+@media (max-width: 640px){ .grid{ grid-template-columns: repeat(4, 1fr); } }
+
+section{ position: relative; }
+
+/* ============ TYPE HELPERS ============ */
+.eyebrow{
+  font-family: var(--mono); font-size: var(--fs-cap); letter-spacing: 0.09em; text-transform: uppercase;
+  color: var(--ink-soft); display:flex; align-items:center; gap: 10px;
+}
+.eyebrow::before{ content:''; width: 22px; height: 1px; background: var(--ink-soft); display:inline-block; }
+.eyebrow.on-dark{ color: var(--on-dark-soft); }
+.eyebrow.on-dark::before{ background: var(--on-dark-soft); }
+h1,h2,h3{ font-family: var(--serif); font-weight: 400; letter-spacing: -0.01em; text-wrap: balance; }
+.lead{ font-size: var(--fs-lead); line-height: 1.45; color: var(--ink-soft); font-weight: 400; }
+.rule{ height:1px; background: var(--line); border:none; width:100%; }
+.mono-cap{ font-family: var(--mono); font-size: var(--fs-cap); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-soft); }
+
+/* ============ REVEAL ============ */
+[data-reveal]{ opacity: 0; transform: translateY(22px); transition: opacity 0.9s var(--ease), transform 0.9s var(--ease); }
+[data-reveal].in-view{ opacity: 1; transform: translateY(0); }
+[data-reveal="fade"]{ transform: none; }
+
+/* ============ NAV ============ */
+.nav{ position: fixed; top:0; left:0; right:0; z-index: 100; background: var(--paper); border-bottom: 1px solid var(--line); transition: transform 0.5s var(--ease); }
+.nav.hide{ transform: translateY(-100%); }
+.nav-inner{ max-width: var(--maxw); margin: 0 auto; padding-inline: var(--margin); height: 72px; display:flex; align-items:center; justify-content: space-between; }
+.brand{ display:flex; align-items:center; gap: 12px; }
+.brand .mark{ width: 30px; height: auto; }
+.brand .mark path{ stroke: var(--blue); }
+.wordmark{ font-family: var(--serif); font-style: italic; font-size: 1.15rem; }
+.nav-links{ display:flex; gap: var(--s4); font-family: var(--mono); font-size: var(--fs-cap); letter-spacing: 0.06em; text-transform: uppercase; }
+.nav-links a{ position:relative; padding-bottom: 2px; }
+.nav-links a::after{ content:''; position:absolute; left:0; bottom:-2px; width:0; height:1px; background: var(--coral); transition: width 0.35s var(--ease); }
+.nav-links a:hover::after{ width:100%; }
+.nav-links a:hover{ color: var(--coral); }
+
+.nav-controls{ display:flex; align-items:center; gap: var(--s3); }
+.lang-switch{ position:relative; }
+.lang-btn{ display:flex; align-items:center; gap:4px; font-family: var(--mono); font-size: var(--fs-cap); letter-spacing:0.06em; text-transform:uppercase; background:none; border:none; cursor:pointer; color:var(--ink); padding:4px 2px; }
+.lang-btn:hover{ color:var(--blue); }
+.lang-chevron{ transition: transform 0.25s var(--ease); }
+.lang-switch.open .lang-chevron{ transform: rotate(180deg); }
+.lang-menu{ position:absolute; top: calc(100% + 10px); right:0; background:var(--paper); border:1px solid var(--line); min-width:130px; list-style:none; box-shadow: 0 8px 24px rgba(21,20,23,0.12); opacity:0; visibility:hidden; transform: translateY(-6px); transition: opacity 0.2s var(--ease), transform 0.2s var(--ease), visibility 0.2s; z-index:110; }
+.lang-switch.open .lang-menu{ opacity:1; visibility:visible; transform:translateY(0); }
+.lang-menu li{ font-family: var(--mono); font-size: var(--fs-cap); letter-spacing:0.06em; text-transform:uppercase; padding:10px 14px; cursor:pointer; }
+.lang-menu li:hover{ background: var(--paper-shade); color:var(--blue); }
+.lang-menu li[aria-selected="true"]{ color: var(--blue); }
+
+.menu-toggle{ display:none; flex-direction:column; justify-content:center; gap:5px; width:32px; height:32px; background:none; border:none; cursor:pointer; padding:0; flex-shrink:0; }
+.menu-toggle span{ display:block; width:100%; height:1.5px; background:var(--ink); transition: transform 0.3s var(--ease), opacity 0.3s var(--ease); }
+.menu-toggle.open span:nth-child(1){ transform: translateY(6.5px) rotate(45deg); }
+.menu-toggle.open span:nth-child(2){ opacity:0; }
+.menu-toggle.open span:nth-child(3){ transform: translateY(-6.5px) rotate(-45deg); }
+
+@media (max-width: 640px){
+  .menu-toggle{ display:flex; }
+  .nav-links{
+    display:flex; position:absolute; top:100%; left:0; right:0; flex-direction:column; gap:0;
+    background:var(--paper); border-bottom:1px solid var(--line);
+    max-height:0; overflow:hidden; opacity:0; pointer-events:none;
+    transition: max-height 0.35s var(--ease), opacity 0.25s var(--ease);
+  }
+  .nav-links.open{ max-height: 320px; opacity:1; pointer-events:auto; }
+  .nav-links a{ padding: var(--s3) var(--margin); border-top:1px solid var(--line); }
+  .nav-links a:first-child{ border-top:none; }
+}
+
+/* ============ FOLIO ============ */
+
+/* ============ LINE MOTIF / DIVIDERS ============ */
+.stroke-divider{ width:100%; display:flex; justify-content:center; padding: var(--s5) 0; }
+.stroke-divider svg{ width: min(300px, 55%); height:auto; }
+.stroke-divider path{ stroke: var(--ink); opacity: 0.28; }
+.stroke-divider.blue path{ stroke: var(--blue); opacity: 0.6; }
+.stroke-divider.flip svg{ transform: scaleY(-1) rotate(2deg); }
+
+/* ============ POSTER BLOCKS (signature richness) ============ */
+.poster-row{ display:grid; grid-template-columns: 1.1fr 0.9fr 1fr; gap: 1px; background: var(--ink); }
+.poster{ position:relative; aspect-ratio: 4/5; overflow:hidden; display:flex; flex-direction:column; justify-content:flex-end; padding: var(--s4); }
+.poster svg{ position:absolute; inset:0; width:100%; height:100%; }
+.poster .p-label{ position:relative; z-index:2; font-family: var(--mono); font-size: var(--fs-cap); letter-spacing:0.06em; text-transform:uppercase; }
+.poster-blue{ background: var(--blue); color: var(--cream); }
+.poster-black{ background: var(--black); color: var(--on-dark); }
+.poster-sky{ background: var(--sky); color: var(--black); }
+.poster-cream{ background: var(--cream); color: var(--ink); }
+.poster-stack{ position:relative; z-index:2; font-family: var(--serif); font-style: italic; font-size: clamp(2.2rem, 4vw, 3.6rem); line-height: 0.92; }
+@media (max-width: 900px){ .poster-row{ grid-template-columns: 1fr; } .poster{ aspect-ratio: 16/10; } }
+
+/* ============ SECTION HEADS ============ */
+.section-head{ grid-column: 1 / 13; margin-bottom: var(--s5); }
+.section-head h2{ font-size: var(--fs-h1); margin-top: var(--s2); max-width: 18ch; }
+@media (max-width: 640px){ .section-head{ grid-column: 1 / 5; } }
+
+/* ============ WORK ============ */
+.work{ padding-block: var(--s6); }
+.project{ grid-column: 1 / 13; margin-bottom: var(--s7); }
+.project:last-child{ margin-bottom: 0; }
+.project-row{ display:grid; grid-template-columns: repeat(12, 1fr); column-gap: var(--gutter); align-items: end; }
+.project-visual{ grid-column: 1 / 9; aspect-ratio: 16/10.5; position:relative; overflow:hidden; }
+.project.alt .project-visual{ grid-column: 5 / 13; order:2; }
+.project-visual svg{ width:100%; height:100%; }
+.grain{ position:absolute; inset:0; opacity: 0.4; mix-blend-mode: multiply; pointer-events:none; }
+.project-text{ grid-column: 9 / 13; padding-bottom: var(--s4); }
+.project.alt .project-text{ grid-column: 1 / 5; order:1; align-self:end; }
+.project-text .num{ font-family: var(--mono); font-size: var(--fs-cap); color: var(--ink-soft); }
+.project-text h3{ font-size: var(--fs-h2); margin-top: var(--s2); font-style: italic; }
+.project-text p{ margin-top: var(--s2); color: var(--ink-soft); font-size: var(--fs-small); line-height:1.55; }
+.tags{ margin-top: var(--s3); display:flex; gap: var(--s2); flex-wrap:wrap; }
+.tags span{ font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.05em; text-transform: uppercase; border: 1px solid var(--line); padding: 5px 10px; color: var(--ink-soft); }
+.view-case{ display:inline-flex; align-items:center; gap: 8px; margin-top: var(--s3); font-family: var(--mono); font-size: var(--fs-cap); letter-spacing:0.05em; text-transform:uppercase; color: var(--blue); border-bottom: 1px solid var(--blue); padding-bottom: 3px; width: fit-content; }
+.view-case:hover{ color: var(--coral); border-color: var(--coral); }
+.view-case svg{ width: 14px; height:14px; }
+
+@media (max-width: 1024px){
+  .project-visual, .project.alt .project-visual{ grid-column: 1 / 9; order:1; }
+  .project-text, .project.alt .project-text{ grid-column: 1 / 9; order:2; margin-top: var(--s3); }
+}
+@media (max-width: 640px){
+  .project-row{ grid-template-columns: repeat(4,1fr); }
+  .project-visual, .project.alt .project-visual, .project-text, .project.alt .project-text{ grid-column: 1 / 5; }
+}
+
+/* ============ PHILOSOPHY ============ */
+.philosophy{ padding-block: var(--s6); background: var(--black); color: var(--paper); }
+.philosophy .grid{ align-items:start; }
+.philosophy-text{ grid-column: 3 / 10; }
+.philosophy h2{ font-size: var(--fs-h1); margin-top: var(--s3); }
+.philosophy p{ margin-top: var(--s4); font-size: var(--fs-lead); line-height: 1.6; color: rgba(250,250,248,0.82); max-width: 46ch; }
+.philosophy blockquote{ font-family: var(--serif); font-style: italic; font-size: clamp(1.6rem, 3vw, 2.4rem); color: #93A6FF; margin-block: var(--s5); line-height: 1.3; max-width: 22ch; }
+@media (max-width: 1024px){ .philosophy-text{ grid-column: 1 / 9; } }
+@media (max-width: 640px){ .philosophy-text{ grid-column: 1 / 5; } }
+
+.flow{ grid-column: 1 / 13; margin-top: var(--s6); display:flex; align-items:center; justify-content: space-between; gap: var(--s2); flex-wrap: wrap; }
+.flow-step{ display:flex; flex-direction:column; align-items:center; gap: var(--s2); text-align:center; width: 100px; }
+.flow-step .dot{ width: 46px; height:46px; border-radius:50%; border: 1px solid rgba(250,250,248,0.35); display:flex; align-items:center; justify-content:center; font-family: var(--mono); font-size: 0.7rem; }
+.flow-step .label{ font-family: var(--mono); font-size: 0.68rem; letter-spacing:0.05em; text-transform:uppercase; color: rgba(250,250,248,0.6); }
+.flow-connector{ flex:1; min-width: 30px; height: 30px; }
+.flow-connector path{ stroke: rgba(250,250,248,0.35); fill:none; stroke-width:1.5; }
+@media (max-width: 780px){ .flow{ display:none; } }
+
+/* ============ EXPERIMENTS ============ */
+.experiments{ padding-block: var(--s6); background: var(--paper-shade); }
+.exp-grid{ grid-column: 1/13; display:grid; grid-template-columns: repeat(12, 1fr); column-gap: var(--gutter); row-gap: var(--s5); }
+.exp-card{ background: var(--paper); border: 1px solid var(--line); padding: var(--s3); }
+.exp-card .exp-visual{ aspect-ratio: 4/3; margin-bottom: var(--s2); overflow:hidden; }
+.exp-card .exp-visual svg{ width:100%; height:100%; }
+.exp-card h4{ font-family: var(--serif); font-style: italic; font-size: 1.15rem; font-weight:400; margin-top: 4px; }
+.exp1{ grid-column: 1/6; }
+.exp2{ grid-column: 6/9; transform: translateY(var(--s5)); }
+.exp3{ grid-column: 9/13; transform: translateY(calc(var(--s2) * -1)); }
+.exp4{ grid-column: 1/4; }
+.exp5{ grid-column: 4/9; transform: translateY(var(--s3)); }
+.exp6{ grid-column: 9/13; transform: translateY(var(--s3)); }
+@media (max-width: 1024px){ .exp1,.exp2,.exp3,.exp4,.exp5,.exp6{ grid-column: span 4; transform:none; } }
+@media (max-width: 640px){ .exp-grid{ grid-template-columns: repeat(4,1fr); } .exp1,.exp2,.exp3,.exp4,.exp5,.exp6{ grid-column: 1/5; transform:none; } }
+
+/* ============ NOTES ============ */
+.notes{ padding-block: var(--s6); }
+.note{ grid-column: 1/13; display:grid; grid-template-columns: repeat(12,1fr); column-gap: var(--gutter); padding-block: var(--s4); border-top: 1px solid var(--line); }
+.notes-list .note:last-child{ border-bottom: 1px solid var(--line); }
+.note .date{ grid-column: 1/3; font-family: var(--mono); font-size: var(--fs-cap); color: var(--ink-soft); padding-top: 4px; }
+.note .title{ grid-column: 3/9; font-family: var(--serif); font-style: italic; font-size: 1.5rem; }
+.note .excerpt{ grid-column: 9/13; font-size: var(--fs-small); color: var(--ink-soft); line-height:1.55; }
+@media (max-width: 1024px){ .note{ grid-template-columns: repeat(8,1fr); row-gap: var(--s2); } .note .date{ grid-column: 1/4; } .note .title{ grid-column: 1/9; } .note .excerpt{ grid-column: 1/9; } }
+@media (max-width: 640px){ .note{ grid-template-columns: repeat(4,1fr); } .note .date, .note .title, .note .excerpt{ grid-column: 1/5; } }
+
+.reading{ grid-column: 1/13; margin-top: var(--s5); }
+.reading-list{ display:flex; flex-wrap:wrap; gap: var(--s2) var(--s5); margin-top: var(--s3); }
+.reading-list li{ list-style:none; font-family: var(--mono); font-size: var(--fs-small); }
+.reading-list li span{ display:block; color: var(--ink-soft); font-size: var(--fs-cap); margin-top: 2px; }
+
+/* ============ CONTACT ============ */
+.contact{ padding-block: var(--s7) var(--s6); }
+.contact-inner{ grid-column: 1/13; text-align:left; }
+.contact h2{ font-size: var(--fs-h1); max-width: 13ch; }
+.contact-email{ display:inline-block; margin-top: var(--s5); font-family: var(--serif); font-style: italic; font-size: clamp(1.8rem,3.4vw,2.8rem); color: var(--blue); border-bottom: 1.5px solid var(--blue); padding-bottom: 6px; transition: color 0.3s ease, border-color 0.3s ease; }
+.contact-email:hover{ color: var(--coral); border-color: var(--coral); }
+.contact-links{ margin-top: var(--s6); display:flex; gap: var(--s5); flex-wrap:wrap; font-family: var(--mono); font-size: var(--fs-small); }
+.contact-links a{ border-bottom: 1px solid var(--line); padding-bottom: 2px; }
+.contact-links a:hover{ color: var(--blue); border-color: var(--blue); }
+
+footer{ border-top: 1px solid var(--line); padding-block: var(--s3); }
+.footer-inner{ display:flex; justify-content: space-between; flex-wrap:wrap; gap: var(--s2); font-family: var(--mono); font-size: var(--fs-cap); color: var(--ink-soft); }
+
+:focus-visible{ outline: 2px solid var(--blue); outline-offset: 3px; }
+
+/* ============ CASE STUDY PAGES ============ */
+.cs-hero{ padding-top: calc(72px + var(--s5)); padding-bottom: var(--s5); position:relative; overflow:hidden; }
+.cs-hero.on-blue{ background: var(--blue); color: var(--cream); }
+.cs-hero.on-black{ background: var(--black); color: var(--on-dark); }
+.cs-hero.on-sky{ background: var(--sky); color: var(--black); }
+.cs-hero-bg{ position:absolute; top:2%; right:-9%; width:min(40vw, 440px); height:auto; opacity:0.5; z-index:0; pointer-events:none; }
+.cs-hero-inner{ position:relative; z-index:1; }
+.back-link{ font-family: var(--mono); font-size: var(--fs-cap); letter-spacing:0.06em; text-transform:uppercase; display:inline-flex; align-items:center; gap:8px; opacity:0.8; }
+.back-link:hover{ opacity:1; }
+.cs-hero h1{ font-size: clamp(2.6rem, 5.6vw, 5.2rem); margin-top: var(--s3); max-width: 16ch; line-height:1.03; }
+.cs-hero .cs-sub{ margin-top: var(--s3); font-size: var(--fs-lead); max-width: 46ch; opacity:0.85; }
+.cs-meta-row{ margin-top: var(--s6); display:flex; flex-wrap:wrap; gap: var(--s5); font-family: var(--mono); font-size: var(--fs-cap); }
+.cs-meta-row .m{ opacity:0.65; display:block; margin-bottom:4px; }
+
+.cs-section{ padding-block: var(--s6); }
+.cs-section.shade{ background: var(--paper-shade); }
+.cs-label{ grid-column: 1/3; }
+.cs-label .n{ font-family: var(--mono); font-size: var(--fs-cap); color: var(--ink-soft); }
+.cs-label h2{ font-size: 1.6rem; font-style: italic; margin-top: var(--s2); }
+.cs-body{ grid-column: 4/11; }
+.cs-body p{ font-size: var(--fs-body); line-height: 1.7; color: var(--ink-soft); margin-bottom: var(--s3); max-width: 66ch; }
+.cs-body p:last-child{ margin-bottom:0; }
+.cs-body ul{ margin-top: var(--s3); padding-left: 1.1em; }
+.cs-body li{ color: var(--ink-soft); line-height:1.6; margin-bottom: var(--s2); max-width: 62ch; }
+.cs-body li b{ color: var(--ink); font-weight: 500; }
+.cs-body blockquote{ font-family: var(--serif); font-style: italic; font-size: clamp(1.35rem,2vw,1.8rem); color: var(--blue); margin-block: var(--s4); max-width: 24ch; line-height:1.35; }
+@media (max-width: 1024px){ .cs-label{ grid-column: 1/9; margin-bottom: var(--s2);} .cs-body{ grid-column: 1/9; } }
+@media (max-width: 640px){ .cs-label{ grid-column: 1/5; } .cs-body{ grid-column: 1/5; } }
+
+.cs-gallery{ grid-column: 1/13; display:grid; grid-template-columns: repeat(12,1fr); gap: var(--gutter); margin-top: var(--s5); }
+.cs-gallery .g1{ grid-column: 1/8; aspect-ratio: 16/10; }
+.cs-gallery .g2{ grid-column: 8/13; aspect-ratio: 3/4; transform: translateY(var(--s4)); }
+.cs-gallery .g3{ grid-column: 1/6; aspect-ratio: 4/3; }
+.cs-gallery .g4{ grid-column: 6/13; aspect-ratio: 16/9; }
+.cs-gallery svg{ width:100%; height:100%; }
+.cs-gallery figure{ overflow:hidden; position:relative; background: var(--paper-shade); }
+.cs-gallery figcaption{ position:absolute; left:12px; bottom:12px; z-index:2; font-family: var(--mono); font-size: 0.68rem; letter-spacing:0.04em; text-transform:uppercase; background: var(--paper); padding: 4px 8px; }
+@media (max-width: 1024px){ .cs-gallery .g1,.g2,.g3,.g4{ grid-column: 1/9; transform:none; } }
+@media (max-width: 640px){ .cs-gallery .g1,.g2,.g3,.g4{ grid-column: 1/5; } }
+.process-step{ grid-column: 1/13; display:grid; grid-template-columns: repeat(12,1fr); column-gap: var(--gutter); margin-top: var(--s6); align-items:start; }
+.process-step .step-text{ grid-column: 1/4; }
+.process-step .step-text .mono-cap{ display:block; margin-bottom: var(--s2); }
+.process-step .step-text h3{ font-family: var(--serif); font-style: italic; font-size: 1.5rem; font-weight:400; }
+.process-step .step-text p{ margin-top: var(--s2); font-size: var(--fs-small); color: var(--ink-soft); line-height:1.6; }
+.process-step .step-visual{ grid-column: 4/13; aspect-ratio: 16/9; overflow:hidden; background: var(--paper-shade); position:relative; }
+.process-step .step-visual.carousel{ background:none; }
+.process-step .step-visual svg, .process-step .step-visual img, .process-step .step-visual video{ width:100%; height:100%; object-fit:cover; }
+.process-step .step-visual.auto{ aspect-ratio:auto; overflow:visible; background:none; }
+.process-step .step-visual.auto img{ height:auto; }
+@media (max-width: 1024px){ .process-step{ grid-column:1/9; grid-template-columns: repeat(8,1fr); } .process-step .step-text{ grid-column:1/9; margin-bottom: var(--s3);} .process-step .step-visual{ grid-column:1/9; } }
+@media (max-width: 640px){ .process-step{ grid-column:1/5; grid-template-columns: repeat(4,1fr); } .process-step .step-text{ grid-column:1/5; } .process-step .step-visual{ grid-column:1/5; } }
+
+/* ============ VISUAL LANGUAGE STACK (Step 04) ============ */
+.visual-stack{ display:flex; flex-direction:column; gap:2px; }
+.visual-stack img{ width:100%; height:auto; display:block; }
+
+/* ============ CAROUSEL ============ */
+.carousel-track{ display:flex; gap: var(--s2); height:100%; overflow-x:auto; scroll-snap-type:x mandatory; scroll-behavior:smooth; scrollbar-width:none; -ms-overflow-style:none; }
+.carousel-track::-webkit-scrollbar{ display:none; }
+.process-step .step-visual .carousel-track img{ scroll-snap-align:start; flex:0 0 auto; height:100%; width:auto; max-width:none; object-fit:cover; }
+.carousel-track:focus-visible{ outline:2px solid var(--blue); outline-offset:-2px; }
+.carousel-nav{ position:absolute; top:12px; right:12px; z-index:2; display:flex; gap:6px; }
+.carousel-btn{ width:32px; height:32px; border:1px solid var(--line); background:rgba(250,250,248,0.9); display:flex; align-items:center; justify-content:center; cursor:pointer; font-family:var(--mono); font-size:0.95rem; color:var(--ink); transition:border-color 0.2s ease, color 0.2s ease; }
+.carousel-btn:hover{ border-color:var(--blue); color:var(--blue); }
+.carousel-btn:focus-visible{ outline:2px solid var(--blue); outline-offset:2px; }
+
+.cs-next{ padding-block: var(--s7) var(--s6); }
+.cs-next a{ display:block; }
+.cs-next .eyebrow{ margin-bottom: var(--s2); }
+.cs-next h2{ font-size: var(--fs-h1); transition: color 0.3s ease; }
+.cs-next a:hover h2{ color: var(--blue); }
+
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="brand">
+      <svg class="mark" viewBox="0 0 305 232" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M117.015 30.9328C143.392 30.9328 166.567 56.3497 166.567 87.5243C166.567 118.699 156.979 165.694 138.509 165.694C107.733 165.694 148.581 6 240.89 6C333.199 6 303.392 206.456 230.343 206.456C162.728 206.456 196.298 66.9054 230.343 66.9054C264.387 66.9054 199.627 216.528 123.885 216.528C48.1443 216.528 67.1412 88.4839 93.679 88.4839C129.168 88.4839 73.5357 225.64 28.4596 225.64C-26.7731 225.64 26.379 30.9413 117.015 30.9413V30.9328Z" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+      <span class="wordmark">Monserrat Molina Ramirez</span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="../index.html" data-i18n="nav_home">Inicio</a>
+      <a href="../index.html#work" data-i18n="nav_work">Trabajo</a>
+      <a href="../about.html" data-i18n="nav_about">Acerca de</a>
+      <a href="../index.html#contact" data-i18n="nav_contact">Contacto</a>
+    </div>
+    <div class="nav-controls">
+      <div class="lang-switch" id="langSwitch">
+        <button type="button" class="lang-btn" id="langBtn" aria-haspopup="listbox" aria-expanded="false">
+          <span id="langBtnLabel">ES</span>
+          <svg class="lang-chevron" viewBox="0 0 12 8" width="10" height="7" aria-hidden="true"><path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </button>
+        <ul class="lang-menu" id="langMenu" role="listbox">
+          <li role="option" data-lang="en" data-href="../../case-studies/tomorrow-problem.html" aria-selected="false">EN</li>
+          <li role="option" data-lang="es" data-href="tomorrow-problem.html" aria-selected="true">ES</li>
+        </ul>
+      </div>
+      <button type="button" class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+<!-- HERO -->
+<section class="cs-hero on-blue">
+  <svg class="cs-hero-bg" viewBox="0 0 616 591" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path class="draw-path" d="M450.879 3.75147C366.372 -37.1295 234.169 593.897 339.478 588.975C421.258 585.133 164.659 2.38818 94.2101 68.9238C30.7906 128.82 589.881 433.064 613.11 351.656C642.855 247.391 -34.3286 332.216 3.36544 418.652C39.0766 500.485 546.929 50.2273 450.879 3.75147Z" fill="none" stroke="#F5F0DE" stroke-width="3.7"></path>
+  </svg>
+  <div class="container cs-hero-inner">
+    <a class="back-link" href="../index.html" data-i18n="back_link">← Regresar a Trabajo</a>
+    <h1>Tomorrow Problem</h1>
+    <p class="cs-sub" data-i18n="hero_sub">Cada nueva tecnología necesita un nuevo lenguaje visual. De un reto de percepción a un sistema visual multiformato — enseñando a una función de IA a sentirse humana, no intimidante.</p>
+    <div class="cs-meta-row">
+      <div><span class="m" data-i18n="meta_client">Cliente</span>Prezi</div>
+      <div><span class="m" data-i18n="meta_role">Rol</span><span data-i18n="meta_role_val">Diseñadora visual</span></div>
+      <div><span class="m" data-i18n="meta_formats">Formatos</span><span data-i18n="meta_formats_val">Video, correo electrónico, plantillas de producto</span></div>
+      <div><span class="m" data-i18n="meta_year">Año</span>2024</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTEXT -->
+<section class="cs-section">
+  <div class="container grid">
+    <div class="cs-label" data-reveal=""><p class="n">01</p><h2 data-i18n="context_title">Contexto</h2></div>
+    <div class="cs-body" data-reveal="">
+      <p data-i18n="context_body">Prezi ya tenía una marca establecida. El lanzamiento de sus funciones de IA presentó un nuevo reto: ayudar a las personas a ver la IA como algo accesible en lugar de intimidante. Marketing definió la estrategia de campaña, y mi papel fue traducir ese mensaje en un sistema visual que pudiera escalar entre plantillas, videos, correos y experiencias de producto.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ROLE + CHALLENGE -->
+<section class="cs-section shade">
+  <div class="container grid">
+    <div class="cs-label" data-reveal=""><p class="n">02</p><h2 data-i18n="challenge_title">El reto</h2></div>
+    <div class="cs-body" data-reveal="">
+      <p data-i18n="challenge_body1">El reto no era diseñar para la IA — era hacer que una nueva tecnología se sintiera accesible. El lenguaje visual necesitaba reducir la complejidad sin perder credibilidad, funcionando de forma consistente en puntos de contacto de marketing y producto, manteniéndose fiel a la marca existente.</p>
+      <p data-i18n="challenge_body2">Como diseñadora visual, desarrollé y apliqué el sistema visual en videos, campañas de correo, plantillas de producto y activos de lanzamiento.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="cs-section">
+  <div class="container grid">
+    <div class="cs-label" data-reveal=""><p class="n">03</p><h2 data-i18n="process_title">Proceso</h2></div>
+    <div class="cs-body" data-reveal="">
+      <p data-i18n="process_intro">El mensaje de marketing — <i>la IA como algo humano, no una barrera</i> — se convirtió en el filtro para cada decisión visual que siguió.</p>
+    </div>
+
+    <div class="process-step" data-reveal="">
+      <div class="step-text">
+        <span class="mono-cap" data-i18n="step1_label">Paso 01 — Referencias</span>
+        <h3 data-i18n="step1_title">Humano, no máquina</h3>
+        <p data-i18n="step1_body">Priorizamos personas y presentaciones reales por encima de la iconografía abstracta de IA — la forma más directa de decir "esto es para ti".</p>
+      </div>
+      <div class="step-visual carousel">
+        <div class="carousel-track" tabindex="0" role="group" aria-label="Reference photos — teachers using Prezi AI">
+          <img src="../../assets/images/webp/teacher 1.webp" alt="Teacher reference photo 1">
+          <img src="../../assets/images/webp/teacher 2.webp" alt="Teacher reference photo 2">
+          <img src="../../assets/images/webp/teacher 3.webp" alt="Teacher reference photo 3">
+        </div>
+        <div class="carousel-nav" data-carousel="">
+          <button type="button" class="carousel-btn prev" aria-label="Previous image">←</button>
+          <button type="button" class="carousel-btn next" aria-label="Next image">→</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="process-step" data-reveal="">
+      <div class="step-text">
+        <span class="mono-cap" data-i18n="step2_label">Paso 02 — Video</span>
+        <h3 data-i18n="step2_title">Un contraste rápido y directo</h3>
+        <p data-i18n="step2_body">Un antes/después rápido — de la fricción de la curva de aprendizaje a la fluidez de usar IA — condensado en unos segundos.</p>
+      </div>
+      <div class="step-visual">
+        <video src="../../assets/videos/video_tomorrow.mp4" autoplay="" muted="" loop="" playsinline="" aria-hidden="true"></video>
+      </div>
+    </div>
+
+    <div class="process-step" data-reveal="">
+      <div class="step-text">
+        <span class="mono-cap" data-i18n="step3_label">Paso 03 — Correo y plantillas</span>
+        <h3 data-i18n="step3_title">Simple, en todas partes</h3>
+        <p data-i18n="step3_body">La idea reducida a su forma más simple: tan rápido como preparar una taza de té. Las plantillas llevaban esa simplicidad por sí solas, de forma consistente en todos los segmentos. Cada activo se construyó a partir de los mismos tres elementos — una plantilla base, el contenido propio del usuario y un prompt corto de IA.</p>
+      </div>
+      <div class="step-visual auto">
+        <picture>
+          <source media="(max-width: 640px)" srcset="../../assets/images/webp/composition_mobile.webp">
+          <img src="../../assets/images/webp/composition.webp" alt="Composition of email, template and product assets carrying the same simple message">
+        </picture>
+      </div>
+    </div>
+
+    <div class="process-step" data-reveal="">
+      <div class="step-text">
+        <span class="mono-cap" data-i18n="step4_label">Paso 04 — Sitio web</span>
+        <h3 data-i18n="step4_title">Lenguaje visual</h3>
+        <p data-i18n="step4_body">Estas secciones explicaban el nuevo flujo de trabajo de forma simple, paso a paso. Dividir el proceso en pasos más pequeños facilitó que los usuarios entendieran cómo funcionaba el producto y descubrieran sus nuevas funciones.</p>
+      </div>
+      <div class="step-visual auto">
+        <div class="visual-stack">
+          <img src="../../assets/images/webp/visual language 1.webp" alt="Visual language — step one">
+          <img src="../../assets/images/webp/visual language 2.webp" alt="Visual language — step two">
+          <img src="../../assets/images/webp/visual language 3.webp" alt="Visual language — step three">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULT -->
+<section class="cs-section shade">
+  <div class="container grid">
+    <div class="cs-label" data-reveal=""><p class="n">04</p><h2 data-i18n="result_title">Resultado</h2></div>
+    <div class="cs-body" data-reveal="">
+      <p data-i18n="result_body">Más allá de la campaña en sí, el sistema se sostuvo lo suficientemente bien como para que las plantillas resultantes se convirtieran en algunos de los mejores ejemplos producidos por usuarios reales.</p>
+    </div>
+  </div>
+</section>
+
+<!-- REFLECTION -->
+<section class="cs-section">
+  <div class="container grid">
+    <div class="cs-label" data-reveal=""><p class="n">05</p><h2 data-i18n="reflection_title">Reflexión</h2></div>
+    <div class="cs-body" data-reveal="">
+      <p data-i18n="reflection_body">Esta campaña marcó el giro del lenguaje visual de la marca hacia la IA, dentro y fuera del producto. Fue la primera vez que tuve que diseñar no solo para comunicar una función, sino para cambiar cómo se percibe una tecnología — encontrando el punto donde lo simple no se sintiera vacío, y lo humano no se sintiera decorativo.</p>
+      <blockquote data-i18n="reflection_quote">"Lo simple no se sintió vacío, y lo humano no se sintió decorativo."</blockquote>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<section class="cs-next">
+  <div class="container">
+    <a href="growth-process.html" data-reveal="">
+      <p class="eyebrow" data-i18n="next_label">Siguiente caso de estudio</p>
+      <h2 data-i18n="next_title">Diseñando un mejor flujo de trabajo para el sitio →</h2>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div class="container footer-inner">
+    <span data-i18n="footer1">© 2026 Monserrat Molina Ramirez — Sistemas visuales y estrategia de diseño</span>
+    <span data-i18n="footer2">Un solo trazo continuo. Infinitas posibilidades.</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // ---------- i18n dictionary ----------
+  var i18n = {
+    en: {
+      nav_home: "Home", nav_work: "Work", nav_about: "About", nav_contact: "Contact",
+      back_link: "&larr; Back to work",
+      hero_sub: "Every new technology needs a new visual language. From a perception challenge to a multi-format visual system — teaching an AI feature to feel human, not intimidating.",
+      meta_client: "Client", meta_role: "Role", meta_role_val: "Visual designer",
+      meta_formats: "Formats", meta_formats_val: "Video, email, product templates", meta_year: "Year",
+      context_title: "Context",
+      context_body: "Prezi already had an established brand. The launch of its AI features introduced a new challenge: helping people see AI as approachable rather than intimidating. Marketing defined the campaign strategy, and my role was to translate that message into a visual system that could scale across templates, videos, emails, and product experiences.",
+      challenge_title: "The challenge",
+      challenge_body1: "The challenge wasn't designing for AI — it was making a new technology feel approachable. The visual language needed to reduce complexity without losing credibility, working consistently across marketing and product touchpoints while staying true to the existing brand.",
+      challenge_body2: "As the visual designer, I developed and applied the visual system across videos, email campaigns, product templates, and launch assets.",
+      process_title: "Process",
+      process_intro: "The marketing message — <i>AI as something human, not a barrier</i> — became the filter for every visual decision that followed.",
+      step1_label: "Step 01 — References", step1_title: "Human, not machine",
+      step1_body: "We prioritized real people and real presentations over abstract AI iconography — the most direct way to say \"this is for you.\"",
+      step2_label: "Step 02 — Video", step2_title: "A fast, direct contrast",
+      step2_body: "A quick before/after — from the friction of the learning curve to the fluency of using AI — condensed into a few seconds.",
+      step3_label: "Step 03 — Email &amp; templates", step3_title: "Simple, everywhere",
+      step3_body: "The idea reduced to its simplest form: as fast as making a cup of tea. Templates carried that simplicity alone, consistent across segments. Every asset was built from the same three elements — a base template, the user's own content, and a short AI prompt.",
+      step4_label: "Step 04 — Website", step4_title: "Visual language",
+      step4_body: "These sections explained the new workflow in a simple, step-by-step way. Breaking the process into smaller steps made it easier for users to understand how the product worked and discover its new features.",
+      result_title: "Result",
+      result_body: "Beyond the campaign itself, the system held up well enough that the resulting templates became some of the best examples produced by real users.",
+      reflection_title: "Reflection",
+      reflection_body: "This campaign marked the shift of the brand's visual language toward AI, inside and outside the product. It was the first time I had to design not just to communicate a feature, but to change how a technology is perceived — finding the point where simple didn't feel empty, and human didn't feel decorative.",
+      reflection_quote: "\"Simple didn't feel empty, and human didn't feel decorative.\"",
+      next_label: "Next case study",
+      next_title: "Designing a Better Website Workflow &rarr;",
+      footer1: "© 2026 Monserrat Molina Ramirez — Visual systems &amp; design strategy",
+      footer2: "One continuous stroke. Infinite possibilities."
+    },
+    es: {
+      nav_home: "Inicio", nav_work: "Trabajo", nav_about: "Acerca de", nav_contact: "Contacto",
+      back_link: "&larr; Regresar a Trabajo",
+      hero_sub: "Cada nueva tecnología necesita un nuevo lenguaje visual. De un reto de percepción a un sistema visual multiformato — enseñando a una función de IA a sentirse humana, no intimidante.",
+      meta_client: "Cliente", meta_role: "Rol", meta_role_val: "Diseñadora visual",
+      meta_formats: "Formatos", meta_formats_val: "Video, correo electrónico, plantillas de producto", meta_year: "Año",
+      context_title: "Contexto",
+      context_body: "Prezi ya tenía una marca establecida. El lanzamiento de sus funciones de IA presentó un nuevo reto: ayudar a las personas a ver la IA como algo accesible en lugar de intimidante. Marketing definió la estrategia de campaña, y mi papel fue traducir ese mensaje en un sistema visual que pudiera escalar entre plantillas, videos, correos y experiencias de producto.",
+      challenge_title: "El reto",
+      challenge_body1: "El reto no era diseñar para la IA — era hacer que una nueva tecnología se sintiera accesible. El lenguaje visual necesitaba reducir la complejidad sin perder credibilidad, funcionando de forma consistente en puntos de contacto de marketing y producto, manteniéndose fiel a la marca existente.",
+      challenge_body2: "Como diseñadora visual, desarrollé y apliqué el sistema visual en videos, campañas de correo, plantillas de producto y activos de lanzamiento.",
+      process_title: "Proceso",
+      process_intro: "El mensaje de marketing — <i>la IA como algo humano, no una barrera</i> — se convirtió en el filtro para cada decisión visual que siguió.",
+      step1_label: "Paso 01 — Referencias", step1_title: "Humano, no máquina",
+      step1_body: "Priorizamos personas y presentaciones reales por encima de la iconografía abstracta de IA — la forma más directa de decir \"esto es para ti\".",
+      step2_label: "Paso 02 — Video", step2_title: "Un contraste rápido y directo",
+      step2_body: "Un antes/después rápido — de la fricción de la curva de aprendizaje a la fluidez de usar IA — condensado en unos segundos.",
+      step3_label: "Paso 03 — Correo y plantillas", step3_title: "Simple, en todas partes",
+      step3_body: "La idea reducida a su forma más simple: tan rápido como preparar una taza de té. Las plantillas llevaban esa simplicidad por sí solas, de forma consistente en todos los segmentos. Cada activo se construyó a partir de los mismos tres elementos — una plantilla base, el contenido propio del usuario y un prompt corto de IA.",
+      step4_label: "Paso 04 — Sitio web", step4_title: "Lenguaje visual",
+      step4_body: "Estas secciones explicaban el nuevo flujo de trabajo de forma simple, paso a paso. Dividir el proceso en pasos más pequeños facilitó que los usuarios entendieran cómo funcionaba el producto y descubrieran sus nuevas funciones.",
+      result_title: "Resultado",
+      result_body: "Más allá de la campaña en sí, el sistema se sostuvo lo suficientemente bien como para que las plantillas resultantes se convirtieran en algunos de los mejores ejemplos producidos por usuarios reales.",
+      reflection_title: "Reflexión",
+      reflection_body: "Esta campaña marcó el giro del lenguaje visual de la marca hacia la IA, dentro y fuera del producto. Fue la primera vez que tuve que diseñar no solo para comunicar una función, sino para cambiar cómo se percibe una tecnología — encontrando el punto donde lo simple no se sintiera vacío, y lo humano no se sintiera decorativo.",
+      reflection_quote: "\"Lo simple no se sintió vacío, y lo humano no se sintió decorativo.\"",
+      next_label: "Siguiente caso de estudio",
+      next_title: "Diseñando un mejor flujo de trabajo para el sitio &rarr;",
+      footer1: "© 2026 Monserrat Molina Ramirez — Sistemas visuales y estrategia de diseño",
+      footer2: "Un solo trazo continuo. Infinitas posibilidades."
+    }
+  };
+
+  // ---------- Reveal on scroll ----------
+  var revealEls = document.querySelectorAll('[data-reveal]');
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('in-view'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.14, rootMargin: '0px 0px -40px 0px' });
+  revealEls.forEach(function(el){ io.observe(el); });
+
+  // ---------- Mobile menu toggle ----------
+  var menuToggle = document.getElementById('menuToggle');
+  var navLinksEl = document.getElementById('navLinks');
+  if(menuToggle && navLinksEl){
+    menuToggle.addEventListener('click', function(){
+      var isOpen = navLinksEl.classList.toggle('open');
+      menuToggle.classList.toggle('open', isOpen);
+      menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+    navLinksEl.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){
+        navLinksEl.classList.remove('open');
+        menuToggle.classList.remove('open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+
+  // ---------- Language switcher ----------
+  var langSwitch = document.getElementById('langSwitch');
+  var langBtn = document.getElementById('langBtn');
+  var langMenu = document.getElementById('langMenu');
+  var langBtnLabel = document.getElementById('langBtnLabel');
+  function setLang(lang){
+    document.documentElement.setAttribute('lang', lang);
+    document.querySelectorAll('[data-i18n]').forEach(function(el){
+      var key = el.getAttribute('data-i18n');
+      if(i18n[lang] && i18n[lang][key] != null) el.innerHTML = i18n[lang][key];
+    });
+    if(langBtnLabel) langBtnLabel.textContent = lang.toUpperCase();
+    if(langMenu){
+      langMenu.querySelectorAll('li').forEach(function(li){
+        li.setAttribute('aria-selected', li.getAttribute('data-lang') === lang ? 'true' : 'false');
+      });
+    }
+    var linkedinEl = document.querySelector('[data-linkedin]');
+    if(linkedinEl){
+      linkedinEl.href = lang === 'es'
+        ? 'https://www.linkedin.com/in/monserrat-molina-ramirez/?locale=es-ES'
+        : 'https://www.linkedin.com/in/monserrat-molina-ramirez/?locale=en-US';
+    }
+    try{ localStorage.setItem('lang', lang); }catch(e){}
+  }
+  if(langBtn && langSwitch && langMenu){
+    langBtn.addEventListener('click', function(e){
+      e.stopPropagation();
+      var isOpen = langSwitch.classList.toggle('open');
+      langBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+    langMenu.querySelectorAll('li').forEach(function(li){
+      li.addEventListener('click', function(){
+        var href = li.getAttribute('data-href');
+        if(href && li.getAttribute('data-lang') !== document.documentElement.getAttribute('lang')){
+          window.location.href = href;
+          return;
+        }
+        langSwitch.classList.remove('open');
+        langBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
+    document.addEventListener('click', function(e){
+      if(!langSwitch.contains(e.target)) langSwitch.classList.remove('open');
+    });
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape') langSwitch.classList.remove('open');
+    });
+  }
+  var savedLang = 'es';
+  setLang(savedLang);
+
+  // ---------- Carousels ----------
+  document.querySelectorAll('[data-carousel]').forEach(function(nav){
+    var track = nav.previousElementSibling;
+    var prev = nav.querySelector('.prev');
+    var next = nav.querySelector('.next');
+    function step(dir){
+      var img = track.querySelector('img');
+      if(!img) return;
+      var gap = parseFloat(getComputedStyle(track).gap) || 0;
+      track.scrollLeft += dir * (img.getBoundingClientRect().width + gap);
+    }
+    if(prev) prev.addEventListener('click', function(){ step(-1); });
+    if(next) next.addEventListener('click', function(){ step(1); });
+    track.addEventListener('keydown', function(e){
+      if(e.key === 'ArrowRight'){ step(1); e.preventDefault(); }
+      else if(e.key === 'ArrowLeft'){ step(-1); e.preventDefault(); }
+    });
+  });
+
+  // ---------- Nav hide on scroll down ----------
+  var nav = document.getElementById('nav');
+  if(nav){
+    var lastY = window.scrollY;
+    window.addEventListener('scroll', function(){
+      var y = window.scrollY;
+      if(y > lastY && y > 140){ nav.classList.add('hide'); } else { nav.classList.remove('hide'); }
+      lastY = y;
+    }, { passive: true });
+  }
+
+  // ---------- Path draw-in (works on any element with .draw-path) ----------
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduced){
+    document.querySelectorAll('video[autoplay]').forEach(function(v){ v.pause(); v.removeAttribute('autoplay'); });
+  }
+  if(!reduced){
+    document.querySelectorAll('.draw-path').forEach(function(p, i){
+      try{
+        var len = p.getTotalLength();
+        p.style.strokeDasharray = len;
+        p.style.strokeDashoffset = len;
+        p.getBoundingClientRect();
+        p.style.transition = 'stroke-dashoffset 2.2s cubic-bezier(.22,.61,.16,1) ' + (i*0.15) + 's';
+        requestAnimationFrame(function(){ setTimeout(function(){ p.style.strokeDashoffset = 0; }, 180); });
+      }catch(e){}
+    });
+  }
+
+  // ---------- Spirograph / hypotrochoid path generator ----------
+  // Produces a single continuous-stroke loop path, echoing the wordmark's own line logic.
+  window.spiro = function(R, r, d, turns, steps, cx, cy, scale){
+    turns = turns || 1; steps = steps || 900; cx = cx || 0; cy = cy || 0; scale = scale || 1;
+    var pts = [];
+    var max = Math.PI * 2 * turns;
+    for(var i=0; i<=steps; i++){
+      var t = (i/steps) * max;
+      var x = (R-r)*Math.cos(t) + d*Math.cos(((R-r)/r)*t);
+      var y = (R-r)*Math.sin(t) - d*Math.sin(((R-r)/r)*t);
+      pts.push([cx + x*scale, cy + y*scale]);
+    }
+    var dstr = 'M ' + pts[0][0].toFixed(1) + ',' + pts[0][1].toFixed(1);
+    for(var j=1;j<pts.length;j++){ dstr += ' L ' + pts[j][0].toFixed(1) + ',' + pts[j][1].toFixed(1); }
+    return dstr;
+  };
+
+  // Logarithmic spiral (nautilus-style), returns a 'd' path of concentric arcs
+  window.logSpiral = function(turns, a, b, steps, cx, cy){
+    turns = turns || 4; a = a || 2; b = b || 0.28; steps = steps || 400; cx = cx || 0; cy = cy || 0;
+    var pts = [];
+    var max = Math.PI * 2 * turns;
+    for(var i=0;i<=steps;i++){
+      var t = (i/steps)*max;
+      var rad = a * Math.exp(b*t);
+      pts.push([cx + rad*Math.cos(t), cy + rad*Math.sin(t)]);
+    }
+    var dstr = 'M ' + pts[0][0].toFixed(1) + ',' + pts[0][1].toFixed(1);
+    for(var j=1;j<pts.length;j++){ dstr += ' L ' + pts[j][0].toFixed(1) + ',' + pts[j][1].toFixed(1); }
+    return dstr;
+  };
+
+  // Auto-populate any [data-spiro] svg path elements found on the page
+  document.querySelectorAll('[data-spiro]').forEach(function(el){
+    var cfg = el.getAttribute('data-spiro').split(',').map(Number);
+    var d = window.spiro(cfg[0], cfg[1], cfg[2], cfg[3], 700, cfg[4]||0, cfg[5]||0, cfg[6]||1);
+    el.setAttribute('d', d);
+  });
+  document.querySelectorAll('[data-logspiral]').forEach(function(el){
+    var cfg = el.getAttribute('data-logspiral').split(',').map(Number);
+    var d = window.logSpiral(cfg[0], cfg[1], cfg[2], 500, cfg[3]||0, cfg[4]||0);
+    el.setAttribute('d', d);
+  });
+})();
+
+</script>
+
+
+</body></html>

@@ -5,14 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Evolution of Templates — Monserrat Molina Ramirez</title>
 <meta name="description" content="From designing for users, to designing systems, to designing for AI — a case study on the same challenge with new constraints each time.">
+<link rel="canonical" href="https://monmolina.com/case-studies/template-evolution.html">
+<link rel="alternate" hreflang="en" href="https://monmolina.com/case-studies/template-evolution.html">
+<link rel="alternate" hreflang="es" href="https://monmolina.com/es/case-studies/template-evolution.html">
+<link rel="alternate" hreflang="x-default" href="https://monmolina.com/case-studies/template-evolution.html">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Evolution of Templates — Monserrat Molina Ramirez">
 <meta property="og:description" content="From designing for users, to designing systems, to designing for AI — the same challenge, with new constraints each time.">
-<meta property="og:image" content="../assets/images/Open Graph.png">
+<meta property="og:image" content="https://monmolina.com/assets/images/Open%20Graph.png">
+<meta property="og:url" content="https://monmolina.com/case-studies/template-evolution.html">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Evolution of Templates — Monserrat Molina Ramirez">
 <meta name="twitter:description" content="From designing for users, to designing systems, to designing for AI — the same challenge, with new constraints each time.">
-<meta name="twitter:image" content="../assets/images/Open Graph.png">
+<meta name="twitter:image" content="https://monmolina.com/assets/images/Open%20Graph.png">
 <link rel="icon" type="image/svg+xml" href="../assets/favicons/favicon_light.svg">
 <link rel="icon" type="image/svg+xml" href="../assets/favicons/favicon_light.svg" media="(prefers-color-scheme: light)">
 <link rel="icon" type="image/svg+xml" href="../assets/favicons/favicon_dark.svg" media="(prefers-color-scheme: dark)">
@@ -152,8 +157,6 @@ h1,h2,h3{ font-family: var(--serif); font-weight: 400; letter-spacing: -0.01em; 
 }
 
 /* ============ FOLIO ============ */
-.folio{ position: fixed; right: var(--s3); bottom: var(--s3); z-index: 90; font-family: var(--mono); font-size: var(--fs-cap); color: var(--ink-soft); writing-mode: vertical-rl; letter-spacing: 0.08em; display:flex; align-items:center; gap: 10px; pointer-events:none; }
-@media (max-width: 640px){ .folio{ display:none; } }
 
 /* ============ LINE MOTIF / DIVIDERS ============ */
 .stroke-divider{ width:100%; display:flex; justify-content:center; padding: var(--s5) 0; }
@@ -366,8 +369,8 @@ footer{ border-top: 1px solid var(--line); padding-block: var(--s3); }
           <svg class="lang-chevron" viewBox="0 0 12 8" width="10" height="7" aria-hidden="true"><path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
         <ul class="lang-menu" id="langMenu" role="listbox">
-          <li role="option" data-lang="en" aria-selected="true">EN</li>
-          <li role="option" data-lang="es" aria-selected="false">ES</li>
+          <li role="option" data-lang="en" data-href="template-evolution.html" aria-selected="true">EN</li>
+          <li role="option" data-lang="es" data-href="../es/case-studies/template-evolution.html" aria-selected="false">ES</li>
         </ul>
       </div>
       <button type="button" class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Menu">
@@ -386,7 +389,7 @@ footer{ border-top: 1px solid var(--line); padding-block: var(--s3); }
   </svg>
   <div class="container cs-hero-inner">
     <a class="back-link" href="../index.html" data-i18n="back_link">&larr; Back to work</a>
-    <h1>Evolution of Templates</h1>
+    <h1 data-i18n="hero_h1">Evolution of Templates</h1>
     <p class="cs-sub" data-i18n="hero_sub">From designing for users, to designing systems, to designing for AI — the same challenge, with new constraints each time.</p>
     <div class="cs-meta-row">
       <div><span class="m" data-i18n="meta_client">Client</span>Prezi</div>
@@ -555,6 +558,7 @@ footer{ border-top: 1px solid var(--line); padding-block: var(--s3); }
   var i18n = {
     en: {
       nav_home: "Home", nav_work: "Work", nav_about: "About", nav_contact: "Contact",
+      hero_h1: "Evolution of Templates",
       back_link: "&larr; Back to work",
       hero_sub: "From designing for users, to designing systems, to designing for AI — the same challenge, with new constraints each time.",
       meta_client: "Client", meta_role: "Role", meta_role_val: "Visual designer",
@@ -589,6 +593,7 @@ footer{ border-top: 1px solid var(--line); padding-block: var(--s3); }
     },
     es: {
       nav_home: "Inicio", nav_work: "Trabajo", nav_about: "Acerca de", nav_contact: "Contacto",
+      hero_h1: "Evolución de plantillas",
       back_link: "&larr; Regresar a Trabajo",
       hero_sub: "De diseñar para usuarios, a diseñar sistemas, a diseñar para IA — el mismo reto, con nuevas restricciones cada vez.",
       meta_client: "Cliente", meta_role: "Rol", meta_role_val: "Diseñadora visual",
@@ -683,7 +688,11 @@ footer{ border-top: 1px solid var(--line); padding-block: var(--s3); }
     });
     langMenu.querySelectorAll('li').forEach(function(li){
       li.addEventListener('click', function(){
-        setLang(li.getAttribute('data-lang'));
+        var href = li.getAttribute('data-href');
+        if(href && li.getAttribute('data-lang') !== document.documentElement.getAttribute('lang')){
+          window.location.href = href;
+          return;
+        }
         langSwitch.classList.remove('open');
         langBtn.setAttribute('aria-expanded', 'false');
       });
@@ -695,7 +704,7 @@ footer{ border-top: 1px solid var(--line); padding-block: var(--s3); }
       if(e.key === 'Escape') langSwitch.classList.remove('open');
     });
   }
-  var savedLang = (function(){ try{ return localStorage.getItem('lang'); }catch(e){ return null; } })() || 'en';
+  var savedLang = 'en';
   setLang(savedLang);
 
   // ---------- Carousels ----------
@@ -726,16 +735,6 @@ footer{ border-top: 1px solid var(--line); padding-block: var(--s3); }
       if(y > lastY && y > 140){ nav.classList.add('hide'); } else { nav.classList.remove('hide'); }
       lastY = y;
     }, { passive: true });
-  }
-
-  // ---------- Folio indicator ----------
-  var sections = document.querySelectorAll('[data-section]');
-  var folioText = document.getElementById('folio-text');
-  if(folioText && sections.length){
-    var folioIO = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){ if(e.isIntersecting){ folioText.textContent = e.target.getAttribute('data-section'); } });
-    }, { threshold: 0, rootMargin: '-50% 0px -50% 0px' });
-    sections.forEach(function(s){ folioIO.observe(s); });
   }
 
   // ---------- Path draw-in (works on any element with .draw-path) ----------
