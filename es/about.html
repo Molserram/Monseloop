@@ -157,8 +157,6 @@ h1,h2,h3{ font-family: var(--serif); font-weight: 400; letter-spacing: -0.01em; 
 }
 
 /* ============ FOLIO ============ */
-.folio{ position: fixed; right: var(--s3); bottom: var(--s3); z-index: 90; font-family: var(--mono); font-size: var(--fs-cap); color: var(--ink-soft); writing-mode: vertical-rl; letter-spacing: 0.08em; display:flex; align-items:center; gap: 10px; pointer-events:none; }
-@media (max-width: 640px){ .folio{ display:none; } }
 
 /* ============ LINE MOTIF / DIVIDERS ============ */
 .stroke-divider{ width:100%; display:flex; justify-content:center; padding: var(--s5) 0; }
@@ -530,12 +528,6 @@ footer{ border-top: 1px solid var(--line); padding-block: var(--s3); }
     }
   };
 
-  var currentLang = 'en';
-  var folioLabels = {
-    en: { about: "01 / 04 — About", experience: "02 / 04 — My Experience", flow: "03 / 04 — What I do", doing: "04 / 04 — What I'm doing" },
-    es: { about: "01 / 04 — Acerca de", experience: "02 / 04 — Mi experiencia", flow: "03 / 04 — Qué hago", doing: "04 / 04 — En qué estoy trabajando" }
-  };
-
   // ---------- Reveal on scroll ----------
   var revealEls = document.querySelectorAll('[data-reveal]');
   var io = new IntersectionObserver(function(entries){
@@ -569,7 +561,6 @@ footer{ border-top: 1px solid var(--line); padding-block: var(--s3); }
   var langMenu = document.getElementById('langMenu');
   var langBtnLabel = document.getElementById('langBtnLabel');
   function setLang(lang){
-    currentLang = lang;
     document.documentElement.setAttribute('lang', lang);
     document.querySelectorAll('[data-i18n]').forEach(function(el){
       var key = el.getAttribute('data-i18n');
@@ -588,7 +579,6 @@ footer{ border-top: 1px solid var(--line); padding-block: var(--s3); }
         : 'https://www.linkedin.com/in/monserrat-molina-ramirez/?locale=en-US';
     }
     try{ localStorage.setItem('lang', lang); }catch(e){}
-    renderFolio();
   }
   if(langBtn && langSwitch && langMenu){
     langBtn.addEventListener('click', function(e){
@@ -626,23 +616,6 @@ footer{ border-top: 1px solid var(--line); padding-block: var(--s3); }
       if(y > lastY && y > 140){ nav.classList.add('hide'); } else { nav.classList.remove('hide'); }
       lastY = y;
     }, { passive: true });
-  }
-
-  // ---------- Folio indicator ----------
-  var sections = document.querySelectorAll('[data-section]');
-  var folioText = document.getElementById('folio-text');
-  var activeFolioKey = sections.length ? sections[0].getAttribute('data-section') : null;
-  function renderFolio(){
-    if(folioText && activeFolioKey && folioLabels[currentLang]){
-      folioText.textContent = folioLabels[currentLang][activeFolioKey] || '';
-    }
-  }
-  if(folioText && sections.length){
-    var folioIO = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){ if(e.isIntersecting){ activeFolioKey = e.target.getAttribute('data-section'); renderFolio(); } });
-    }, { threshold: 0, rootMargin: '-50% 0px -50% 0px' });
-    sections.forEach(function(s){ folioIO.observe(s); });
-    renderFolio();
   }
 
   // ---------- Path draw-in (works on any element with .draw-path) ----------

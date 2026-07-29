@@ -157,8 +157,6 @@ h1,h2,h3{ font-family: var(--serif); font-weight: 400; letter-spacing: -0.01em; 
 }
 
 /* ============ FOLIO ============ */
-.folio{ position: fixed; right: var(--s3); bottom: var(--s3); z-index: 90; font-family: var(--mono); font-size: var(--fs-cap); color: var(--ink-soft); writing-mode: vertical-rl; letter-spacing: 0.08em; display:flex; align-items:center; gap: 10px; pointer-events:none; }
-@media (max-width: 640px){ .folio{ display:none; } }
 
 /* ============ LINE MOTIF / DIVIDERS ============ */
 .stroke-divider{ width:100%; display:flex; justify-content:center; padding: var(--s5) 0; }
@@ -396,7 +394,6 @@ footer{ border-top: 1px solid var(--line); padding-block: var(--s3); }
   </div>
 </nav>
 
-<div class="folio" id="folio"><span id="folio-text">01 / 05 — Hero</span></div>
 
 <main id="top">
 
@@ -674,10 +671,6 @@ footer{ border-top: 1px solid var(--line); padding-block: var(--s3); }
 
   var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var currentLang = 'en';
-  var folioLabels = {
-    en: { hero: "01 / 05 — Hero", work: "02 / 05 — Selected work", morework: "03 / 05 — More work", philosophy: "04 / 05 — Philosophy", contact: "05 / 05 — Contact" },
-    es: { hero: "01 / 05 — Portada", work: "02 / 05 — Trabajo seleccionado", morework: "03 / 05 — Más trabajo", philosophy: "04 / 05 — Filosofía", contact: "05 / 05 — Contacto" }
-  };
 
   // ---------- Reveal on scroll ----------
   var revealEls = document.querySelectorAll('[data-reveal]');
@@ -737,7 +730,6 @@ footer{ border-top: 1px solid var(--line); padding-block: var(--s3); }
     }
     try{ localStorage.setItem('lang', lang); }catch(e){}
     triggerHeroHighlight();
-    renderFolio();
   }
   function triggerHeroHighlight(){
     var em = document.querySelector('.hero h1 em');
@@ -782,23 +774,6 @@ footer{ border-top: 1px solid var(--line); padding-block: var(--s3); }
       if(y > lastY && y > 140){ nav.classList.add('hide'); } else { nav.classList.remove('hide'); }
       lastY = y;
     }, { passive: true });
-  }
-
-  // ---------- Folio indicator ----------
-  var sections = document.querySelectorAll('[data-section]');
-  var folioText = document.getElementById('folio-text');
-  var activeFolioKey = sections.length ? sections[0].getAttribute('data-section') : null;
-  function renderFolio(){
-    if(folioText && activeFolioKey && folioLabels[currentLang]){
-      folioText.textContent = folioLabels[currentLang][activeFolioKey] || '';
-    }
-  }
-  if(folioText && sections.length){
-    var folioIO = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){ if(e.isIntersecting){ activeFolioKey = e.target.getAttribute('data-section'); renderFolio(); } });
-    }, { threshold: 0, rootMargin: '-50% 0px -50% 0px' });
-    sections.forEach(function(s){ folioIO.observe(s); });
-    renderFolio();
   }
 
   // ---------- Path draw-in (works on any element with .draw-path) ----------

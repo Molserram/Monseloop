@@ -157,8 +157,6 @@ h1,h2,h3{ font-family: var(--serif); font-weight: 400; letter-spacing: -0.01em; 
 }
 
 /* ============ FOLIO ============ */
-.folio{ position: fixed; right: var(--s3); bottom: var(--s3); z-index: 90; font-family: var(--mono); font-size: var(--fs-cap); color: var(--ink-soft); writing-mode: vertical-rl; letter-spacing: 0.08em; display:flex; align-items:center; gap: 10px; pointer-events:none; }
-@media (max-width: 640px){ .folio{ display:none; } }
 
 /* ============ LINE MOTIF / DIVIDERS ============ */
 .stroke-divider{ width:100%; display:flex; justify-content:center; padding: var(--s5) 0; }
@@ -735,16 +733,6 @@ footer{ border-top: 1px solid var(--line); padding-block: var(--s3); }
       if(y > lastY && y > 140){ nav.classList.add('hide'); } else { nav.classList.remove('hide'); }
       lastY = y;
     }, { passive: true });
-  }
-
-  // ---------- Folio indicator ----------
-  var sections = document.querySelectorAll('[data-section]');
-  var folioText = document.getElementById('folio-text');
-  if(folioText && sections.length){
-    var folioIO = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){ if(e.isIntersecting){ folioText.textContent = e.target.getAttribute('data-section'); } });
-    }, { threshold: 0, rootMargin: '-50% 0px -50% 0px' });
-    sections.forEach(function(s){ folioIO.observe(s); });
   }
 
   // ---------- Path draw-in (works on any element with .draw-path) ----------
