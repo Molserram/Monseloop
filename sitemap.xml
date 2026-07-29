@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Replace https://your-domain.example with your real domain once it's live. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://your-domain.example/index.html</loc>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://your-domain.example/about.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://your-domain.example/case-studies/tomorrow-problem.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://your-domain.example/case-studies/growth-process.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://your-domain.example/case-studies/template-evolution.html</loc>
+    <priority>0.8</priority>
+  </url>
+</urlset>
