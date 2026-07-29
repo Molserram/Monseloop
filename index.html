@@ -284,11 +284,31 @@ a.work-card:hover{ border-color: var(--blue); }
 .contact{ padding-block: var(--s7) var(--s6); }
 .contact-inner{ grid-column: 1/13; text-align:left; }
 .contact h2{ font-size: var(--fs-h1); max-width: 13ch; }
-.contact-email{ display:inline-block; margin-top: var(--s5); font-family: var(--serif); font-style: italic; font-size: clamp(1.8rem,3.4vw,2.8rem); color: var(--blue); border-bottom: 1.5px solid var(--blue); padding-bottom: 6px; transition: color 0.3s ease, border-color 0.3s ease; }
-.contact-email:hover{ color: var(--coral); border-color: var(--coral); }
 .contact-links{ margin-top: var(--s6); display:flex; gap: var(--s5); flex-wrap:wrap; font-family: var(--mono); font-size: var(--fs-small); }
 .contact-links a{ border-bottom: 1px solid var(--line); padding-bottom: 2px; }
 .contact-links a:hover{ color: var(--blue); border-color: var(--blue); }
+.contact-form{ margin-top: var(--s5); max-width: 520px; }
+.hp-field{ position:absolute; left:-9999px; }
+.form-row{ margin-top: var(--s4); display:flex; flex-direction:column; gap: 8px; }
+.form-row:first-child{ margin-top:0; }
+.form-row label{ font-family: var(--mono); font-size: var(--fs-cap); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-soft); }
+.form-row input, .form-row textarea{
+  font-family: var(--sans); font-size: var(--fs-body); color: var(--ink);
+  background: transparent; border: none; border-bottom: 1.5px solid var(--line);
+  padding: 10px 2px; transition: border-color 0.3s ease; resize: vertical;
+}
+.form-row input:focus, .form-row textarea:focus{ outline: none; border-color: var(--blue); }
+.form-row textarea{ min-height: 120px; }
+.form-submit{
+  margin-top: var(--s5); position:relative; display:inline-flex; align-items:center; gap:8px;
+  font-family: var(--mono); font-size: var(--fs-small); letter-spacing: 0.04em; text-transform: uppercase;
+  background:none; border:none; cursor:pointer; color: var(--ink); padding-bottom: 4px;
+  border-bottom: 1px solid var(--line); transition: color 0.3s ease, border-color 0.3s ease;
+}
+.form-submit:hover{ color: var(--blue); border-color: var(--blue); }
+.form-submit:disabled{ opacity: 0.5; cursor: default; }
+.form-status{ margin-top: var(--s4); font-family: var(--mono); font-size: var(--fs-small); color: var(--ink-soft); }
+.form-status.is-error{ color: var(--coral); }
 
 footer{ border-top: 1px solid var(--line); padding-block: var(--s3); }
 .footer-inner{ display:flex; justify-content: space-between; flex-wrap:wrap; gap: var(--s2); font-family: var(--mono); font-size: var(--fs-cap); color: var(--ink-soft); }
@@ -612,8 +632,24 @@ footer{ border-top: 1px solid var(--line); padding-block: var(--s3); }
     <div class="contact-inner" data-reveal>
       <p class="eyebrow" data-i18n="contact_eyebrow">Contact</p>
       <h2 data-i18n="contact_title">Say hello, or send a brief.</h2>
-      <a class="contact-email" id="contact-email-link" href="#" rel="nofollow"></a>
-      <script>(function(){var l=document.getElementById('contact-email-link');var u='molserram',d='gmail.com';var addr=u+'@'+d;l.textContent=addr;l.href='mailto:'+addr;})();</script>
+      <form class="contact-form" id="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="contact">
+        <p class="hp-field"><label>Don't fill this out if you're human: <input name="bot-field"></label></p>
+        <div class="form-row">
+          <label for="cf-name" data-i18n="contact_name_label">Name</label>
+          <input type="text" id="cf-name" name="name" autocomplete="name" required>
+        </div>
+        <div class="form-row">
+          <label for="cf-email" data-i18n="contact_email_label">Email</label>
+          <input type="email" id="cf-email" name="email" autocomplete="email" required>
+        </div>
+        <div class="form-row">
+          <label for="cf-message" data-i18n="contact_message_label">Message</label>
+          <textarea id="cf-message" name="message" required></textarea>
+        </div>
+        <button type="submit" class="form-submit" data-i18n="contact_submit">Send message</button>
+      </form>
+      <p class="form-status" id="contact-form-status" aria-live="polite" hidden></p>
       <div class="contact-links">
         <a href="https://www.behance.net/tarresnom" target="_blank" rel="noopener">Behance</a>
         <a href="https://www.linkedin.com/in/monserrat-molina-ramirez/?locale=en-US" target="_blank" rel="noopener" data-linkedin>LinkedIn</a>
@@ -669,6 +705,12 @@ footer{ border-top: 1px solid var(--line); padding-block: var(--s3); }
       flow1: "Problem", flow2: "Context", flow3: "Thinking", flow4: "System", flow5: "Execution", flow6: "Outcome",
       contact_eyebrow: "Contact",
       contact_title: "Say hello, or send a brief.",
+      contact_name_label: "Name",
+      contact_email_label: "Email",
+      contact_message_label: "Message",
+      contact_submit: "Send message",
+      contact_success: "Thanks — I'll get back to you soon.",
+      contact_error: "Something went wrong. Please try again, or reach out on Behance or LinkedIn.",
       footer1: "© 2026 Monserrat Molina Ramirez — Visual systems &amp; design strategy",
       footer2: "One continuous stroke. Infinite possibilities."
     },
@@ -706,6 +748,12 @@ footer{ border-top: 1px solid var(--line); padding-block: var(--s3); }
       flow1: "Problema", flow2: "Contexto", flow3: "Pensamiento", flow4: "Sistema", flow5: "Ejecución", flow6: "Resultado",
       contact_eyebrow: "Contacto",
       contact_title: "Saluda, o envía un brief.",
+      contact_name_label: "Nombre",
+      contact_email_label: "Correo electrónico",
+      contact_message_label: "Mensaje",
+      contact_submit: "Enviar mensaje",
+      contact_success: "Gracias — te responderé pronto.",
+      contact_error: "Algo salió mal. Intenta de nuevo o escríbeme por Behance o LinkedIn.",
       footer1: "© 2026 Monserrat Molina Ramirez — Sistemas visuales y estrategia de diseño",
       footer2: "Un solo trazo continuo. Infinitas posibilidades."
     }
@@ -897,6 +945,37 @@ footer{ border-top: 1px solid var(--line); padding-block: var(--s3); }
     var d = window.logSpiral(cfg[0], cfg[1], cfg[2], 500, cfg[3]||0, cfg[4]||0);
     el.setAttribute('d', d);
   });
+
+  var contactForm = document.getElementById('contact-form');
+  if(contactForm){
+    contactForm.addEventListener('submit', function(e){
+      e.preventDefault();
+      var pageLang = i18n[document.documentElement.getAttribute('lang')] ? document.documentElement.getAttribute('lang') : 'en';
+      var status = document.getElementById('contact-form-status');
+      var submitBtn = contactForm.querySelector('.form-submit');
+      var data = new FormData(contactForm);
+      var encoded = [];
+      data.forEach(function(v,k){ encoded.push(encodeURIComponent(k) + '=' + encodeURIComponent(v)); });
+      submitBtn.disabled = true;
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: encoded.join('&')
+      }).then(function(res){
+        if(!res.ok) throw new Error('Bad response');
+        contactForm.reset();
+        contactForm.hidden = true;
+        status.textContent = i18n[pageLang].contact_success;
+        status.classList.remove('is-error');
+        status.hidden = false;
+      }).catch(function(){
+        submitBtn.disabled = false;
+        status.textContent = i18n[pageLang].contact_error;
+        status.classList.add('is-error');
+        status.hidden = false;
+      });
+    });
+  }
 })();
 
 </script>
