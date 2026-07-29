@@ -5,14 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Growth Process Overhaul — Monserrat Molina Ramirez</title>
 <meta name="description" content="A case study on taking ownership of an orphaned website — designing a repeatable pipeline for brief, copy, design and build before redesigning a single page.">
+<link rel="canonical" href="https://monmolina.com/case-studies/growth-process.html">
+<link rel="alternate" hreflang="en" href="https://monmolina.com/case-studies/growth-process.html">
+<link rel="alternate" hreflang="es" href="https://monmolina.com/es/case-studies/growth-process.html">
+<link rel="alternate" hreflang="x-default" href="https://monmolina.com/case-studies/growth-process.html">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Growth Process Overhaul — Monserrat Molina Ramirez">
 <meta property="og:description" content="A case study on taking ownership of an orphaned website and designing a repeatable pipeline from brief to publish.">
-<meta property="og:image" content="../assets/images/Open Graph.png">
+<meta property="og:image" content="https://monmolina.com/assets/images/Open%20Graph.png">
+<meta property="og:url" content="https://monmolina.com/case-studies/growth-process.html">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Growth Process Overhaul — Monserrat Molina Ramirez">
 <meta name="twitter:description" content="A case study on taking ownership of an orphaned website and designing a repeatable pipeline from brief to publish.">
-<meta name="twitter:image" content="../assets/images/Open Graph.png">
+<meta name="twitter:image" content="https://monmolina.com/assets/images/Open%20Graph.png">
 <link rel="icon" type="image/svg+xml" href="../assets/favicons/favicon_light.svg">
 <link rel="icon" type="image/svg+xml" href="../assets/favicons/favicon_light.svg" media="(prefers-color-scheme: light)">
 <link rel="icon" type="image/svg+xml" href="../assets/favicons/favicon_dark.svg" media="(prefers-color-scheme: dark)">
@@ -152,8 +157,6 @@ h1,h2,h3{ font-family: var(--serif); font-weight: 400; letter-spacing: -0.01em; 
 }
 
 /* ============ FOLIO ============ */
-.folio{ position: fixed; right: var(--s3); bottom: var(--s3); z-index: 90; font-family: var(--mono); font-size: var(--fs-cap); color: var(--ink-soft); writing-mode: vertical-rl; letter-spacing: 0.08em; display:flex; align-items:center; gap: 10px; pointer-events:none; }
-@media (max-width: 640px){ .folio{ display:none; } }
 
 /* ============ LINE MOTIF / DIVIDERS ============ */
 .stroke-divider{ width:100%; display:flex; justify-content:center; padding: var(--s5) 0; }
@@ -374,8 +377,8 @@ footer{ border-top: 1px solid var(--line); padding-block: var(--s3); }
           <svg class="lang-chevron" viewBox="0 0 12 8" width="10" height="7" aria-hidden="true"><path d="M1 1L6 6L11 1" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
         <ul class="lang-menu" id="langMenu" role="listbox">
-          <li role="option" data-lang="en" aria-selected="true">EN</li>
-          <li role="option" data-lang="es" aria-selected="false">ES</li>
+          <li role="option" data-lang="en" data-href="growth-process.html" aria-selected="true">EN</li>
+          <li role="option" data-lang="es" data-href="../es/case-studies/growth-process.html" aria-selected="false">ES</li>
         </ul>
       </div>
       <button type="button" class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Menu">
@@ -702,7 +705,11 @@ footer{ border-top: 1px solid var(--line); padding-block: var(--s3); }
     });
     langMenu.querySelectorAll('li').forEach(function(li){
       li.addEventListener('click', function(){
-        setLang(li.getAttribute('data-lang'));
+        var href = li.getAttribute('data-href');
+        if(href && li.getAttribute('data-lang') !== document.documentElement.getAttribute('lang')){
+          window.location.href = href;
+          return;
+        }
         langSwitch.classList.remove('open');
         langBtn.setAttribute('aria-expanded', 'false');
       });
@@ -714,7 +721,7 @@ footer{ border-top: 1px solid var(--line); padding-block: var(--s3); }
       if(e.key === 'Escape') langSwitch.classList.remove('open');
     });
   }
-  var savedLang = (function(){ try{ return localStorage.getItem('lang'); }catch(e){ return null; } })() || 'en';
+  var savedLang = 'en';
   setLang(savedLang);
 
   // ---------- Nav hide on scroll down ----------
@@ -726,16 +733,6 @@ footer{ border-top: 1px solid var(--line); padding-block: var(--s3); }
       if(y > lastY && y > 140){ nav.classList.add('hide'); } else { nav.classList.remove('hide'); }
       lastY = y;
     }, { passive: true });
-  }
-
-  // ---------- Folio indicator ----------
-  var sections = document.querySelectorAll('[data-section]');
-  var folioText = document.getElementById('folio-text');
-  if(folioText && sections.length){
-    var folioIO = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){ if(e.isIntersecting){ folioText.textContent = e.target.getAttribute('data-section'); } });
-    }, { threshold: 0, rootMargin: '-50% 0px -50% 0px' });
-    sections.forEach(function(s){ folioIO.observe(s); });
   }
 
   // ---------- Path draw-in (works on any element with .draw-path) ----------
