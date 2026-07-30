@@ -227,22 +227,16 @@ h1,h2,h3{ font-family: var(--serif); font-weight: 400; letter-spacing: -0.01em; 
 }
 
 /* ============ PHILOSOPHY ============ */
-.philosophy{ background: var(--black); color: var(--paper); }
-.philosophy-sticky-wrap{ position:relative; min-height: 190vh; }
-.philosophy-sticky-frame{ position:sticky; top:0; height:100vh; overflow:hidden; }
-.philosophy-img-wrap{ position:absolute; inset:0; overflow:hidden; }
-.philosophy-img-wrap img{ position:absolute; top:-15%; left:0; width:100%; height:130%; object-fit:cover; display:block; will-change:transform; }
-.philosophy-content{ position:absolute; inset:0; pointer-events:none; }
-.philosophy-content-inner{ pointer-events:auto; position:absolute; top:24vh; right: var(--margin); width:42%; max-width:560px; }
-.philosophy-content-inner h2{ font-size: var(--fs-h1); margin-top: var(--s3); }
-.philosophy-content-inner p{ margin-top: var(--s4); font-size: var(--fs-lead); line-height: 1.6; color: rgba(250,250,248,0.82); max-width: 46ch; }
-.philosophy-flow-wrap{ padding-block: var(--s6); }
-@media (max-width: 1024px){
-  .philosophy-sticky-wrap{ min-height: auto; }
-  .philosophy-sticky-frame{ position:relative; height:50vh; }
-  .philosophy-content{ position:static; }
-  .philosophy-content-inner{ position:static; width:100%; max-width:none; padding-inline: var(--margin); margin-top: var(--s5); }
-}
+.philosophy{ position:relative; padding-block: var(--s6); background: var(--black); color: var(--paper); overflow:hidden; }
+.philosophy-bg{ position:absolute; inset:0; overflow:hidden; z-index:0; }
+.philosophy-bg img{ position:absolute; top:-10%; left:0; width:100%; height:120%; object-fit:cover; display:block; will-change:transform; }
+.philosophy .container{ position:relative; z-index:1; }
+.philosophy .grid{ align-items:start; }
+.philosophy-text{ grid-column: 3 / 10; }
+.philosophy h2{ font-size: var(--fs-h1); margin-top: var(--s3); }
+.philosophy p{ margin-top: var(--s4); font-size: var(--fs-lead); line-height: 1.6; color: rgba(250,250,248,0.82); max-width: 46ch; }
+@media (max-width: 1024px){ .philosophy-text{ grid-column: 1 / 9; } }
+@media (max-width: 640px){ .philosophy-text{ grid-column: 1 / 5; } }
 
 .flow{ grid-column: 1 / 13; margin-top: var(--s6); display:flex; align-items:center; justify-content: space-between; gap: var(--s2); flex-wrap: wrap; }
 .flow-step{ display:flex; flex-direction:column; align-items:center; gap: var(--s2); text-align:center; width: 100px; }
@@ -604,22 +598,19 @@ footer{ border-top: 1px solid var(--line); padding-block: var(--s3); }
 </section>
 
 <section class="philosophy" id="philosophy" data-section="philosophy">
-  <div class="philosophy-sticky-wrap">
-    <div class="philosophy-sticky-frame">
-      <div class="philosophy-img-wrap">
-        <img id="philosophy-img" src="assets/gradient_background.webp" alt="" aria-hidden="true">
-      </div>
-    </div>
-    <div class="philosophy-content">
-      <div class="philosophy-content-inner" data-reveal>
+  <div class="philosophy-bg" aria-hidden="true">
+    <img id="philosophy-img" src="assets/gradient_background.webp" alt="">
+  </div>
+  <div class="container">
+    <div class="grid">
+      <div class="philosophy-text" data-reveal>
         <p class="eyebrow on-dark" data-i18n="philosophy_eyebrow">Philosophy</p>
         <h2 data-i18n="philosophy_title">A template doesn't limit. It reduces the noise so someone can decide better.</h2>
         <p data-i18n="philosophy_body">Most of my work starts with the same challenge: making structured systems feel human, practical, and easy to use. When a system becomes too technical, it stops helping the people it was built for. Make it too dependent on craft, and it stops being scalable. The work is finding that balance — and giving people the confidence to use these tools independently. The goal isn't the template itself. It's creating an environment where people can focus on their ideas instead of the mechanics.</p>
       </div>
     </div>
-  </div>
 
-  <div class="container philosophy-flow-wrap">
+    <div class="grid">
     <div class="grid">
       <div class="flow" data-reveal>
         <div class="flow-step"><div class="dot">01</div><div class="label" data-i18n="flow1">Problem</div></div>
@@ -1013,19 +1004,16 @@ footer{ border-top: 1px solid var(--line); padding-block: var(--s3); }
     updateHeroGradient();
   }
 
-  var philosophyWrap = document.querySelector('.philosophy-sticky-wrap');
+  var philosophySection = document.querySelector('.philosophy');
   var philosophyImg = document.getElementById('philosophy-img');
-  if(philosophyWrap && philosophyImg && !reducedMotion){
+  if(philosophySection && philosophyImg && !reducedMotion){
     var philosophyTicking = false;
-    var isPhilosophyMobile = function(){ return window.innerWidth <= 1024; };
     var updatePhilosophyImg = function(){
-      var rect = philosophyWrap.getBoundingClientRect();
+      var rect = philosophySection.getBoundingClientRect();
       var vh = window.innerHeight;
-      var speed = isPhilosophyMobile() ? 0.18 : 0.5;
-      var range = isPhilosophyMobile() ? 40 : 160;
-      var total = rect.height - vh;
-      var progress = total > 0 ? Math.min(1, Math.max(0, -rect.top / total)) : 0;
-      var offset = (progress - 0.5) * range * speed;
+      var center = rect.top + rect.height / 2;
+      var progress = (vh / 2 - center) / (vh / 2 + rect.height / 2);
+      var offset = progress * 50;
       philosophyImg.style.transform = 'translateY(' + offset.toFixed(1) + 'px)';
       philosophyTicking = false;
     };
