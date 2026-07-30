@@ -972,6 +972,27 @@ footer{ border-top: 1px solid var(--line); padding-block: var(--s3); }
       });
     });
   }
+
+  var heroGradientBg = document.querySelector('.hero-gradient-bg');
+  var heroSection = document.getElementById('hero');
+  if(heroGradientBg && heroSection && !reducedMotion){
+    var gradientTicking = false;
+    var updateHeroGradient = function(){
+      var rect = heroSection.getBoundingClientRect();
+      var scrolled = Math.max(0, -rect.top);
+      var progress = Math.min(1, scrolled / rect.height);
+      heroGradientBg.style.transform = 'translateY(' + (scrolled * 0.35).toFixed(1) + 'px)';
+      heroGradientBg.style.opacity = (1 - progress * 0.9).toFixed(3);
+      gradientTicking = false;
+    };
+    window.addEventListener('scroll', function(){
+      if(!gradientTicking){
+        requestAnimationFrame(updateHeroGradient);
+        gradientTicking = true;
+      }
+    }, { passive: true });
+    updateHeroGradient();
+  }
 })();
 
 </script>
