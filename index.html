@@ -1010,9 +1010,10 @@ footer{ border-top: 1px solid var(--line); padding-block: var(--s3); }
     var updatePhilosophyImg = function(){
       var rect = philosophySection.getBoundingClientRect();
       var vh = window.innerHeight;
-      var center = rect.top + rect.height / 2;
-      var progress = (vh / 2 - center) / (vh / 2 + rect.height / 2);
-      var offset = progress * 50;
+      var total = rect.height + vh;
+      var scrolled = vh - rect.top;
+      var progress = Math.min(1, Math.max(0, scrolled / total));
+      var offset = (progress - 0.5) * 100;
       philosophyImg.style.transform = 'translateY(' + offset.toFixed(1) + 'px)';
       philosophyTicking = false;
     };
