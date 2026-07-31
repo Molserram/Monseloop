@@ -227,12 +227,11 @@ h1,h2,h3{ font-family: var(--serif); font-weight: 400; letter-spacing: -0.01em; 
 
 /* ============ PHILOSOPHY ============ */
 .philosophy{ position:relative; background: var(--black); color: var(--paper); overflow:hidden; }
-.philosophy-spacer{ position:relative; height: 150vh; }
-.philosophy-sticky-frame{ position:sticky; top:0; height:100vh; overflow:hidden; z-index:0; }
-.philosophy-bg{ position:absolute; inset:0; overflow:hidden; }
-.philosophy-bg img{ position:absolute; top:-25%; left:0; width:100%; height:150%; object-fit:cover; display:block; will-change:transform; }
-.philosophy-overlay{ position:absolute; top:0; left:0; right:0; height:100vh; z-index:1; display:flex; align-items:center; }
-.philosophy-overlay .container{ width:100%; padding-block: var(--s6); }
+.philosophy-spacer{ position:relative; }
+.philosophy-sticky-frame{ position:sticky; top:0; min-height:100vh; overflow:hidden; z-index:0; display:flex; align-items:center; }
+.philosophy-bg{ position:absolute; inset:0; overflow:hidden; z-index:0; }
+.philosophy-bg img{ position:absolute; top:-30%; left:0; width:100%; height:160%; object-fit:cover; display:block; will-change:transform; }
+.philosophy-sticky-frame .container{ position:relative; z-index:1; width:100%; padding-block: var(--s6); }
 .philosophy .grid{ align-items:start; }
 .philosophy-text{ grid-column: 3 / 10; }
 .philosophy h2{ font-size: var(--fs-h1); margin-top: var(--s3); }
@@ -240,9 +239,7 @@ h1,h2,h3{ font-family: var(--serif); font-weight: 400; letter-spacing: -0.01em; 
 @media (max-width: 1024px){ .philosophy-text{ grid-column: 1 / 9; } }
 @media (max-width: 640px){ .philosophy-text{ grid-column: 1 / 5; } }
 @media (max-width: 1024px){
-  .philosophy-spacer{ height: auto; }
-  .philosophy-sticky-frame{ position:relative; height:60vh; }
-  .philosophy-overlay{ position:relative; top:auto; height:auto; }
+  .philosophy-sticky-frame{ position:relative; min-height:auto; }
 }
 
 .flow{ grid-column: 1 / 13; margin-top: var(--s6); display:flex; align-items:center; justify-content: space-between; gap: var(--s2); flex-wrap: wrap; }
@@ -605,14 +602,12 @@ footer{ border-top: 1px solid var(--line); padding-block: var(--s3); }
 </section>
 
 <section class="philosophy" id="philosophy" data-section="philosophy">
-  <div class="philosophy-spacer">
-  <div class="philosophy-sticky-frame">
+  <div class="philosophy-spacer" id="philosophy-spacer">
+  <div class="philosophy-sticky-frame" id="philosophy-sticky-frame">
     <div class="philosophy-bg" aria-hidden="true">
       <img id="philosophy-img" src="../assets/gradient_background.webp" alt="">
     </div>
-  </div>
-  <div class="philosophy-overlay">
-  <div class="container">
+    <div class="container">
     <div class="grid">
       <div class="philosophy-text" data-reveal="">
         <p class="eyebrow on-dark" data-i18n="philosophy_eyebrow">Filosofía</p>
@@ -636,7 +631,7 @@ footer{ border-top: 1px solid var(--line); padding-block: var(--s3); }
         <div class="flow-step"><div class="dot">06</div><div class="label" data-i18n="flow6">Resultado</div></div>
       </div>
     </div>
-  </div>
+    </div>
   </div>
   </div>
 </section>
@@ -1013,29 +1008,40 @@ footer{ border-top: 1px solid var(--line); padding-block: var(--s3); }
     updateHeroGradient();
   }
 
-  var philosophySection = document.querySelector('.philosophy-spacer');
+  var philosophySpacer = document.getElementById('philosophy-spacer');
+  var philosophyFrame = document.getElementById('philosophy-sticky-frame');
   var philosophyImg = document.getElementById('philosophy-img');
-  if(philosophySection && philosophyImg && !reducedMotion){
-    var philosophyTicking = false;
+  if(philosophySpacer && philosophyFrame && philosophyImg){
     var isPhilosophyMobile = function(){ return window.innerWidth <= 1024; };
-    var updatePhilosophyImg = function(){
-      if(isPhilosophyMobile()){ philosophyTicking = false; return; }
-      var rect = philosophySection.getBoundingClientRect();
-      var vh = window.innerHeight;
-      var totalScrollable = Math.max(0, rect.height - vh);
-      var scrolledWithin = Math.min(totalScrollable, Math.max(0, -rect.top));
-      var offset = -scrolledWithin * 0.4;
-      philosophyImg.style.transform = 'translateY(' + offset.toFixed(1) + 'px)';
-      philosophyTicking = false;
+    var setPhilosophySpacerHeight = function(){
+      if(isPhilosophyMobile()){ philosophySpacer.style.height = ''; return; }
+      var frameHeight = philosophyFrame.getBoundingClientRect().height;
+      philosophySpacer.style.height = (frameHeight + 500) + 'px';
     };
-    window.addEventListener('scroll', function(){
-      if(!philosophyTicking){
-        requestAnimationFrame(updatePhilosophyImg);
-        philosophyTicking = true;
-      }
-    }, { passive: true });
-    window.addEventListener('resize', function(){ requestAnimationFrame(updatePhilosophyImg); });
-    updatePhilosophyImg();
+    setPhilosophySpacerHeight();
+    window.addEventListener('resize', function(){ setPhilosophySpacerHeight(); });
+
+    if(!reducedMotion){
+      var philosophyTicking = false;
+      var updatePhilosophyImg = function(){
+        if(isPhilosophyMobile()){ philosophyTicking = false; return; }
+        var rect = philosophySpacer.getBoundingClientRect();
+        var vh = window.innerHeight;
+        var totalScrollable = Math.max(0, rect.height - vh);
+        var scrolledWithin = Math.min(totalScrollable, Math.max(0, -rect.top));
+        var offset = -Math.min(scrolledWithin * 0.4, 200);
+        philosophyImg.style.transform = 'translateY(' + offset.toFixed(1) + 'px)';
+        philosophyTicking = false;
+      };
+      window.addEventListener('scroll', function(){
+        if(!philosophyTicking){
+          requestAnimationFrame(updatePhilosophyImg);
+          philosophyTicking = true;
+        }
+      }, { passive: true });
+      window.addEventListener('resize', function(){ requestAnimationFrame(updatePhilosophyImg); });
+      updatePhilosophyImg();
+    }
   }
 })();
 
